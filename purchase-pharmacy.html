@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy A Pharmacy Request Form - Bendik Pharmacy Consultancy</title>
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ====== BASIC RESET & GLOBAL STYLES ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* ====== COLORS ====== */
+        :root {
+            --green: #7CB342;
+            --dark-green: #689F38;
+            --light-green: #AED581;
+            --very-light-green: #F1F8E9;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            padding-top: 80px; /* Added for fixed header */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 120px;
+        }
+
+        /* ====== HEADER STYLES ====== */
+        header {
+            background: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 80px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            color: #7CB342;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Mobile Menu */
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #7CB342;
+            background: none;
+            border: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #7CB342;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 5px 0;
+            display: inline-block;
+            font-size: 17px;
+        }
+
+        nav ul li a:hover {
+            transform: scale(1.2);
+            color: #558B2F;
+        }
+
+        .call-button {
+            background-color: none;
+            color: #7CB342;
+            border: 2px solid #7CB342;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: 0.3s;  
+        }
+
+        .call-button:hover {
+            transform: scale(1.1);
+            background-color: none;
+            color: #7CB342;
+        }
+
+        /* ====== FORM STYLES ====== */
+        .header {
+            background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 90%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .form-content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            border: 1px solid hsl(214, 20%, 88%);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: hsl(214, 20%, 96%);
+            padding: 1rem;
+            font-weight: 600;
+            color: hsl(214, 32%, 14%);
+            border-bottom: 1px solid hsl(214, 20%, 88%);
+        }
+
+        .section-content {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+        
+        .input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            background-color: #f4f4f5;
+            font-size: 1rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        
+        .input:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                margin: 20px;
+                margin-top: 100px;
+            }
+            
+            .form-content {
+                padding: 1.5rem;
+            }
+            
+            .header {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section {
+                margin-bottom: 1.5rem;
+            }
+            
+            .section-content {
+                padding: 1rem;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .fees-table-container {
+                margin: 1rem -1rem;
+                padding: 0 1rem;
+            }
+            
+            .fees-table {
+                font-size: 0.9rem;
+                min-width: 500px;
+            }
+            
+            .fees-table th,
+            .fees-table td {
+                padding: 0.5rem 0.4rem;
+            }
+            
+            .submit-button {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .pay-button {
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                margin: 10px;
+                margin-top: 90px;
+            }
+            
+            .form-content {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+            
+            .section-header {
+                padding: 0.75rem;
+                font-size: 0.95rem;
+            }
+            
+            .section-content {
+                padding: 0.75rem;
+            }
+            
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            input[type="number"],
+            select,
+            textarea {
+                padding: 0.625rem;
+                font-size: 0.95rem;
+            }
+            
+            .submit-button {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+            
+            .pay-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            .company-contact {
+                padding: 1rem;
+            }
+            
+            .company-contact h3 {
+                font-size: 1rem;
+            }
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: hsl(214, 32%, 14%);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid hsl(214, 20%, 88%);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: hsl(214, 20%, 99%);
+            transition: all 0.2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: hsl(214, 84%, 56%);
+            box-shadow: 0 0 0 3px hsla(214, 84%, 56%, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .fees-table th,
+        .fees-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid hsl(214, 20%, 88%);
+        }
+
+        .fees-table th {
+            background: hsl(214, 20%, 96%);
+            font-weight: 600;
+            color: hsl(214, 32%, 14%);
+        }
+
+        .fees-table tr:hover {
+            background: hsl(214, 20%, 99%);
+        }
+
+        /* Mobile responsive styles for fees table */
+        .fees-table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1rem 0;
+        }
+
+        .fees-table {
+            min-width: 600px; /* Ensure table doesn't get too compressed */
+        }
+
+        @media (max-width: 768px) {
+            .fees-table-container {
+                margin: 1rem -1rem; /* Extend to container edges */
+                padding: 0 1rem;
+            }
+            
+            .fees-table {
+                font-size: 0.85rem;
+                min-width: 500px;
+            }
+            
+            .fees-table th,
+            .fees-table td {
+                padding: 0.5rem 0.4rem;
+                white-space: nowrap;
+            }
+            
+            .fees-table th:first-child,
+            .fees-table td:first-child {
+                min-width: 120px;
+            }
+            
+            .fees-table th:nth-child(2),
+            .fees-table td:nth-child(2) {
+                min-width: 200px;
+            }
+            
+            .fees-table th:last-child,
+            .fees-table td:last-child {
+                min-width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fees-table-container {
+                margin: 1rem -0.5rem;
+                padding: 0 0.5rem;
+            }
+            
+            .fees-table {
+                font-size: 0.8rem;
+                min-width: 450px;
+            }
+            
+            .fees-table th,
+            .fees-table td {
+                padding: 0.4rem 0.3rem;
+            }
+            
+            .fees-table th:first-child,
+            .fees-table td:first-child {
+                min-width: 100px;
+            }
+            
+            .fees-table th:nth-child(2),
+            .fees-table td:nth-child(2) {
+                min-width: 180px;
+            }
+            
+            .fees-table th:last-child,
+            .fees-table td:last-child {
+                min-width: 130px;
+            }
+        }
+
+        .company-contact {
+            background: hsl(214, 20%, 96%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .company-contact h3 {
+            color: hsl(214, 32%, 14%);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 0.5rem;
+            color: hsl(214, 32%, 14%);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 90%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .note {
+            background: hsl(142, 76%, 96%);
+            border: 1px solid hsl(142, 76%, 80%);
+            color: hsl(142, 76%, 20%);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .required {
+            color: hsl(0, 84%, 60%);
+        }
+
+        /* ====== FOOTER STYLES ====== */
+        footer {
+            background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 100%);
+            color: white;
+            margin-top: 50px;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 60px 0 40px;
+        }
+
+        .footer-section h4 {
+            color: #ffffff !important;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Company Info Section */
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .footer-logo h3 {
+            color: #ffffff !important;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-description {
+            color: #ffffff !important;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-link:hover {
+            background: #ffffff;
+            color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Quick Links & Services */
+        .footer-links-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-list a {
+            color: #ffffff !important;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links-list a:hover {
+            color: #ffffff !important;
+            transform: translateX(5px);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-links-list a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+
+        .footer-links-list a:hover::before {
+            opacity: 1;
+            left: -15px;
+        }
+
+        /* Contact Information */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item i {
+            color: #ffffff !important;
+            width: 20px;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-item span {
+            font-size: 0.95rem;
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copy {
+            color: #ffffff !important;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom-links a:hover {
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            footer {
+                margin-top: 30px;
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 25px 0 20px;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-logo {
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+
+            .footer-section h4 {
+                font-size: 1rem;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .footer-section h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .company-description {
+                text-align: center;
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-links-list {
+                text-align: center;
+            }
+
+            .footer-links-list li {
+                margin-bottom: 8px;
+            }
+
+            .contact-info {
+                align-items: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                padding: 15px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                margin-top: 20px;
+            }
+            
+            .footer-container {
+                padding: 0 15px;
+            }
+
+            .footer-main {
+                gap: 15px;
+                padding: 20px 0 15px;
+            }
+
+            .footer-section h4 {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+
+            .footer-logo h3 {
+                font-size: 1rem;
+            }
+
+            .company-description {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+
+            .footer-links-list a {
+                font-size: 0.8rem;
+            }
+
+            .footer-links-list li {
+                margin-bottom: 6px;
+            }
+
+            .contact-item span {
+                font-size: 0.8rem;
+            }
+
+            .social-link {
+                width: 35px;
+                height: 35px;
+            }
+
+            .footer-bottom {
+                padding: 12px 0;
+            }
+
+            .copy {
+                font-size: 0.75rem;
+            }
+        }
+    /* Style the Pay button */
+.pay-button {
+  background-color: #1b5e20; /* dark green */
+  color: #fff;               /* white text */
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;     /* removes underline */
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical center */
+
+}
+
+/* Hover effect */
+.pay-button:hover {
+  background-color: #43a047; /* lighter green on hover */
+  transform: translateY(-3px) scale(1.05); /* slight lift + zoom */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* stronger shadow on hover */
+}
+
+
+        /* ====== MOBILE STYLES ====== */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                transition: all 0.3s;
+                box-shadow: 0 2px 10px rgba(124, 179, 66, 0.2);
+                padding-top: 30px;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .mv-box {
+                padding: 30px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mv-box {
+                padding: 25px;
+                min-width: 280px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo img {
+                width: 60px;
+            }
+        }
+
+        /* WhatsApp Floating Icon */
+        #whatsapp-float {
+            position: fixed;
+            bottom: 0px;
+            right: 65px;
+            z-index: 99999;
+            cursor: pointer;
+            background: #25D366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile responsiveness for WhatsApp icon */
+        @media (max-width: 768px) {
+            #whatsapp-float {
+                right: 85px !important;
+                bottom: 20px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #whatsapp-float {
+                right: 65px !important;
+                bottom: 0px !important;
+            }
+        }
+        /* ===== Payment Modal ===== */
+        .payment-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: none; align-items: center; justify-content: center; z-index: 10000; }
+        .payment-modal { background: #ffffff; width: 100%; max-width: 520px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden; }
+        .payment-header { padding: 16px 20px; font-weight: 600; color: #111827; border-bottom: 1px solid #e5e7eb; }
+        .payment-body { padding: 16px 20px; }
+        .payment-row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+        .pay-option { flex: 1 1 30%; border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; cursor: pointer; text-align: center; user-select: none; }
+        .pay-option.active { border-color: #059669; box-shadow: 0 0 0 3px rgba(5,150,105,0.1); }
+        .payment-input { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; }
+        .payment-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 14px 20px; border-top: 1px solid #e5e7eb; }
+        .btn { padding: 10px 16px; border-radius: 8px; border: none; cursor: pointer; }
+        .btn-secondary { background: #e5e7eb; color: #111827; }
+        .btn-primary { background: linear-gradient(to right, #059669, #0891b2); color: #ffffff; }
+        
+        /* Language Switcher Styles (match privacy.html) */
+        .language-switcher-overlay {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1100;
+            display: flex;
+            gap: 8px;
+        }
+
+        .language-switcher-overlay button {
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--green);
+            background: #ffffff;
+            color: var(--green);
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .language-switcher-overlay button:hover {
+            background: var(--green);
+            color: #ffffff;
+        }
+
+        /* === Unified header/nav like privacy.html === */
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(124, 179, 66, 0.12);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--green);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            line-height: 1.2;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--green);
+            background: none;
+            border: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 24px;
+        }
+
+        nav ul li a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 4px 0;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--dark-green);
+            transform: scale(1.05);
+        }
+
+        .call-button {
+            margin-left: 20px;
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .call-button:hover {
+            transform: scale(1.05);
+        }
+
+        .language-switcher-overlay {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1100;
+            display: flex;
+            gap: 8px;
+        }
+
+        .language-switcher-overlay button {
+            border-radius: 4px;
+            border: 1px solid var(--green);
+            background: #ffffff;
+            color: var(--green);
+            font-size: 11px;
+        }
+
+        .language-switcher-overlay button:hover {
+            background: var(--green);
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 75%;
+                max-width: 320px;
+                height: calc(100vh - 70px);
+                background: #ffffff;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                gap: 16px;
+                box-shadow: -2px 0 10px rgba(15, 23, 42, 0.1);
+                transition: right 0.3s ease;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher-overlay">
+        <button onclick="setLanguage('en')">ENG</button>
+        <button onclick="setLanguage('rw')">KINY</button>
+    </div>
+    
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="BPC LTD Logo" class="logo-img">
+                <span class="logo-text">Bendik Pharmacy<br> Consultancy</span>
+            </a>
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="mission.html">Mission</a></li>
+                    <li><a href="corevalue.html">Core Values</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a class="call-button" href="tel:+250796690160">Call: +250796690160</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <div class="header">
+            <p data-translate="purchase_form_title"> Pharmacy Purchase Request Form</p>
+        </div>
+
+        <div class="form-content">
+            <p style="margin-bottom: 2rem; color: hsl(214, 32%, 14%); line-height: 1.6;" data-translate="purchase_form_subtitle">
+                Please complete the form accurately. The information you provide will help us to match with potential sellers. All information is treated as confidential.
+            </p>
+
+            <form id="pharmacyForm">
+                <!-- Section 1: Client Details -->
+                <div class="section">
+                    <div class="section-header" data-translate="purchase_section_1">1. CLIENT DETAILS</div>
+                    <div class="section-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sellerName" data-translate="purchase_buyer_name">a) Buyer Full Name <span class="required">*</span></label>
+                                <input type="text" id="buyerName" name="buyerName" class="input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber" data-translate="purchase_phone_number">b) Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" class="input" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" data-translate="purchase_email_address">c) Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" class="input" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="purchase_contact_method">d) Preferred Contact Method <span class="required">*</span></label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="contactPhone" name="contactMethod" value="phone">
+                                        <label for="contactPhone" data-translate="form_phone">Phone</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="contactEmail" name="contactMethod" value="email">
+                                        <label for="contactEmail" data-translate="form_email">Email</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="contactWhatsApp" name="contactMethod" value="whatsapp">
+                                        <label for="contactWhatsApp" data-translate="form_whatsapp">WhatsApp</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nationalId" data-translate="purchase_national_id">e) National ID (Optional)</label>
+                                <input type="text" id="nationalId" name="nationalId" class="input">
+                            </div>
+                            <div class="form-group">
+                                <label for="tinNumber" data-translate="purchase_tin_number">f) TIN Number (if applicable)</label>
+                                <input type="text" id="tinNumber" name="tinNumber" class="input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!-- Section 2: Type of Pharmacy -->
+<div class="section">
+    <div class="section-header" data-translate="purchase_section_2">2. TYPE OF PHARMACY INTERESTED IN</div>
+    <div class="section-content">
+        <p style="margin-bottom: 1rem;" data-translate="purchase_pharmacy_type_intro">Please indicate the type of pharmaceutical business you wish to acquire:</p>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" id="retail" name="pharmacyType[]" value="retail">
+                <label for="retail" data-translate="purchase_pharmacy_type_retail">Retail Pharmacy (Community-based)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="wholesale" name="pharmacyType[]" value="wholesale">
+                <label for="wholesale" data-translate="purchase_pharmacy_type_wholesale">Wholesale Pharmacy (Distribution business)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="importExport" name="pharmacyType[]" value="importExport">
+                <label for="importExport" data-translate="purchase_pharmacy_type_import">Import/Export Business</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="hospital" name="pharmacyType[]" value="hospital">
+                <label for="hospital" data-translate="purchase_pharmacy_type_hospital">Hospital/Clinic-Linked Pharmacy</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="franchise" name="pharmacyType[]" value="franchise">
+                <label for="franchise" data-translate="purchase_pharmacy_type_franchise">New Setup/Franchise Opportunity</label>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 1rem;">
+            <label for="otherType" data-translate="purchase_other_type">Other (please specify):</label>
+            <input type="text" id="otherType" name="otherType">
+        </div>
+    </div>
+</div>
+ <!-- Section 3: Preferences & Specifications -->
+                <div class="section">
+                    <div class="section-header" data-translate="purchase_section_3">3. PREFERENCES & SPECIFICATIONS</div>
+                    <div class="section-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="preferredLocation" data-translate="purchase_preferred_location">Preferred Location(s)</label>
+                                <input type="text" id="preferredLocation" name="preferredLocation">
+                            </div>
+                            <div class="form-group">
+                                <label class="label" data-translate="purchase_desired_operating_area">Desired Operating Area</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="urban" name="operatingArea" value="urban">
+                                        <label for="urban" data-translate="purchase_urban">Urban</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="semiUrban" name="operatingArea" value="semiUrban">
+                                        <label for="semiUrban" data-translate="purchase_semi_urban">Semi-Urban</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="rural" name="operatingArea" value="rural">
+                                        <label for="rural" data-translate="purchase_rural">Rural</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="noPreference" name="operatingArea" value="noPreference">
+                                        <label for="noPreference" data-translate="purchase_no_preference">No Preference</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="label" data-translate="purchase_business_status">Business Status Preference</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="running" name="businessStatus" value="running">
+                                        <label for="running" data-translate="purchase_running_business">Running Business</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="closed" name="businessStatus" value="closed">
+                                        <label for="closed" data-translate="purchase_closed_business">Closed/Inactive</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="either" name="businessStatus" value="either">
+                                        <label for="either" data-translate="purchase_either_status">Either</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label" data-translate="purchase_ownership_type">Ownership Type Preferred</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="rented" name="ownershipType" value="rented">
+                                        <label for="rented" data-translate="purchase_sole_ownership">Rented Premises</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="owned" name="ownershipType" value="owned">
+                                        <label for="owned" data-translate="purchase_partnership">Owned Premises</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="noPrefOwnership" name="ownershipType" value="noPreference">
+                                        <label for="noPrefOwnership" data-translate="purchase_corporate">No Preference</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="minRevenue" data-translate="purchase_minimum_budget">Minimum Monthly Revenue (if any)</label>
+                                <input type="text" id="minRevenue" name="minRevenue" class="input">
+                            </div>
+                            <div class="form-group">
+                                <label for="budgetRange" data-translate="purchase_budget_range">Budget Range (RWF)</label>
+                                <input type="text" id="budgetRange" name="budgetRange" class="input">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="label" data-translate="purchase_financing_required">Is your budget flexible?</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="flexibleYes" name="budgetFlexible" value="yes">
+                                        <label for="flexibleYes" data-translate="form_yes">Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="flexibleNo" name="budgetFlexible" value="no">
+                                        <label for="flexibleNo" data-translate="form_no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label" data-translate="purchase_timeline">Preferred Purchase Timeline</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="immediately" name="timeline" value="immediately">
+                                        <label for="immediately" data-translate="purchase_immediate">Immediately</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="oneMonth" name="timeline" value="oneMonth">
+                                        <label for="oneMonth" data-translate="purchase_within_3_months">Within 1 month</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="threeMonths" name="timeline" value="threeMonths">
+                                        <label for="threeMonths" data-translate="purchase_within_6_months">1-3 months</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="flexibleTime" name="timeline" value="flexible">
+                                        <label for="flexibleTime" data-translate="purchase_flexible">Flexible</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="insurancePartners" data-translate="purchase_special_requirements">Preferred health insurance partners:</label>
+                            <input type="text" id="insurancePartners" name="insurancePartners" placeholder="RAMA, MMI, UAP, SANLAM, PRIME, BRITAM, RADIANT, EDEN CARE, ITM, MS UR, RBA, ETC" data-translate-placeholder="purchase_insurance_list">
+                        </div>
+                    </div>
+                </div>
+
+
+<!-- Section 4: Optional Support Services -->
+<div class="section">
+    <div class="section-header" data-translate="purchase_section_4">4. OPTIONAL SUPPORT SERVICES</div>
+    <div class="section-content">
+        <p style="margin-bottom: 1rem;" data-translate="purchase_support_question">Would you like Bendik Pharmacy Consultancy Ltd to support you with any of the following? (Tick all that apply. Associated fees are listed in Section 5.)</p>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" id="valuation" name="supportServices[]" value="valuation">
+                <label for="valuation" data-translate="purchase_service_valuation">Pharmacy Valuation & Due Diligence</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="negotiation" name="supportServices[]" value="negotiation">
+                <label for="negotiation" data-translate="purchase_service_negotiation">Negotiation Support</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="legal" name="supportServices[]" value="legal">
+                <label for="legal" data-translate="purchase_service_legal">Legal & Contract Review</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="licensing" name="supportServices[]" value="licensing">
+                <label for="licensing" data-translate="purchase_service_licensing">Licensing & Regulatory Compliance (Rwanda DB)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="feasibility" name="supportServices[]" value="feasibility">
+                <label for="feasibility" data-translate="purchase_service_feasibility">Location Feasibility Study</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="businessPlan" name="supportServices[]" value="businessPlan">
+                <label for="businessPlan" data-translate="purchase_service_business_plan">Business Plan Development</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="staffRecruitment" name="supportServices[]" value="staffRecruitment">
+                <label for="staffRecruitment" data-translate="purchase_service_staff">Staff Recruitment & SOP Development</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="inventory" name="supportServices[]" value="inventory">
+                <label for="inventory" data-translate="purchase_service_inventory">Inventory & Financial Management Setup</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="postSale" name="supportServices[]" value="postSale">
+                <label for="postSale" data-translate="purchase_service_post_sale">Post-Sale Operational Support</label>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 1rem;">
+            <label for="otherServices" data-translate="purchase_other_services">Other (please specify):</label>
+            <input type="text" id="otherServices" name="otherServices">
+        </div>
+    </div>
+</div>
+
+
+                <!-- Section 5: Service Fees -->
+                <div class="section">
+                     <div class="section-header" data-translate="purchase_section_5">5. SERVICE FEES</div>
+                    <div class="section-content">
+                        <div class="fees-table-container">
+                            <table class="fees-table">
+                            <thead>
+                                <tr>
+                                     <th data-translate="purchase_table_service">Service</th>
+                                     <th data-translate="purchase_table_description">Description</th>
+                                     <th data-translate="purchase_table_fee">Estimated Starting Fee (RWF)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-translate="purchase_table_valuation">Pharmacy Valuation</td>
+                                    <td data-translate="purchase_table_valuation_desc">Full business review incl. site visit and report</td>
+                                    <td data-translate="purchase_table_valuation_fee">From 100,000</td>
+                                </tr>
+                                <tr>
+                                    <td data-translate="purchase_table_negotiation">Negotiation Support</td>
+                                    <td data-translate="purchase_table_negotiation_desc">Mediation, pricing strategy, offer facilitation</td>
+                                    <td data-translate="purchase_table_negotiation_fee">From 150,000</td>
+                                </tr>
+                                <tr>
+                                    <td data-translate="purchase_table_legal">Legal/Contract Review</td>
+                                    <td data-translate="purchase_table_legal_desc">With partnered legal professionals</td>
+                                    <td data-translate="purchase_table_legal_fee">Quoted separately</td>
+                                </tr>
+                                <tr>
+                                    <td data-translate="purchase_table_licensing">Licensing Support</td>
+                                    <td data-translate="purchase_table_licensing_desc">Application and compliance with MOH/RRA/RDB</td>
+                                    <td data-translate="purchase_table_licensing_fee">From 100,000</td>
+                                </tr>
+                                <tr>
+                                    <td data-translate="purchase_table_feasibility">Location Feasibility Study</td>
+                                    <td data-translate="purchase_table_feasibility_desc">Market research and viability scoring</td>
+                                    <td data-translate="purchase_table_feasibility_fee">From 80,000</td>
+                                </tr>
+                                <tr>
+                                    <td data-translate="purchase_table_business_plan">Business Plan Development</td>
+                                    <td data-translate="purchase_table_business_plan_desc">Customized for buyer/investor purpose</td>
+                                    <td data-translate="purchase_table_business_plan_fee">From 200,000</td>
+                                </tr>
+                                <tr>
+                                    <td data-translate="purchase_table_staff">Staff & SOP Setup</td>
+                                    <td data-translate="purchase_table_staff_desc">Hiring assistance and regulatory SOPs</td>
+                                    <td data-translate="purchase_table_staff_fee">From 120,000</td>
+                                </tr>
+                                <tr>
+                                    <td data-translate="purchase_table_inventory">Inventory & Finance Setup</td>
+                                    <td data-translate="purchase_table_inventory_desc">POS, inventory control, cost tracking tools</td>
+                                    <td data-translate="purchase_table_inventory_fee">From 100,000</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="note" data-translate="purchase_service_pricing_note">
+                            ℹ️ Formal quotation provided before service delivery. Fees may vary by project complexity, location, and business type.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Additional Information -->
+                <div class="section">
+                     <div class="section-header" data-translate="purchase_section_6">6. ADDITIONAL INFORMATION</div>
+                    <div class="section-content">
+                        <div class="form-group">
+                             <label for="additionalInfo" data-translate="purchase_additional_info_label">Please describe your expectations, experience in the pharmaceutical business (if any), or any specific requirements for the pharmacy you want to purchase:</label>
+                            <textarea id="additionalInfo" name="additionalInfo" placeholder="Describe your expectations, experience, and specific requirements..." data-translate-placeholder="purchase_additional_info"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: Non-Disclosure Agreement -->
+                <div class="section">
+                     <div class="section-header" data-translate="purchase_section_7">7. NON-DISCLOSURE OF AGREEMENT INFORMATION</div>
+                    <div class="section-content">
+                         <p data-translate="purchase_confidentiality_text">The information shared between BPC LTD and client must be kept confidential and will only be shared to third party upon mutual agreement after BPC ltd consulted both parties.</p>
+                    </div>
+                </div>
+
+                <!-- Date Field -->
+                <div class="section">
+                     <div class="section-header" data-translate="purchase_section_date">DATE</div>
+                    <div class="section-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                 <label for="date" data-translate="purchase_date_label">Date <span class="required">*</span></label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 8: Registration Fee (removed) -->
+                <button type="submit" class="submit-button" data-translate="form_submit">Submit</button>
+                <script>
+        // Handle form submission - Direct submit (no payment redirect)
+        (function() {
+	            const BACKEND_BASE_URL = 'https://bendik-pharmacy-consultancy.onrender.com';
+
+            const FORM_ENDPOINT = BACKEND_BASE_URL + '/api/pharmacy-purchase-requests';
+
+            const form = document.getElementById('pharmacyForm');
+            const submitBtn = document.querySelector('.submit-button');
+            const STORAGE_KEY = 'purchaseFormData';
+
+            if (!form || !submitBtn) return;
+
+            function buildFormDataJson(formEl) {
+                const selectedContact = document.querySelector('input[name="contactMethod"]:checked');
+                const pharmacyTypeChecked = Array.from(document.querySelectorAll('input[name="pharmacyType[]"]:checked')).map(i => i.value);
+                const supportServicesChecked = Array.from(document.querySelectorAll('input[name="supportServices[]"]:checked')).map(i => i.value);
+
+                const data = {
+                    buyerName: (document.getElementById('buyerName') || {}).value || '',
+                    phoneNumber: (document.getElementById('phoneNumber') || {}).value || '',
+                    email: (document.getElementById('email') || {}).value || '',
+                    contactMethod: selectedContact ? selectedContact.value : '',
+                    nationalId: (document.getElementById('nationalId') || {}).value || '',
+                    tinNumber: (document.getElementById('tinNumber') || {}).value || '',
+                    pharmacyType: pharmacyTypeChecked,
+                    otherType: (document.getElementById('otherType') || {}).value || '',
+                    preferredLocation: (document.getElementById('preferredLocation') || {}).value || '',
+                    operatingArea: (document.querySelector('input[name="operatingArea"]:checked') || {}).value || '',
+                    businessStatus: (document.querySelector('input[name="businessStatus"]:checked') || {}).value || '',
+                    ownershipType: (document.querySelector('input[name="ownershipType"]:checked') || {}).value || '',
+                    minRevenue: (document.getElementById('minRevenue') || {}).value || '',
+                    budgetRange: (document.getElementById('budgetRange') || {}).value || '',
+                    budgetFlexible: (document.querySelector('input[name="budgetFlexible"]:checked') || {}).value || '',
+                    timeline: (document.querySelector('input[name="timeline"]:checked') || {}).value || '',
+                    insurancePartners: (document.getElementById('insurancePartners') || {}).value || '',
+                    supportServices: supportServicesChecked,
+                    otherServices: (document.getElementById('otherServices') || {}).value || '',
+                    additionalInfo: (document.getElementById('additionalInfo') || {}).value || '',
+                    date: (document.getElementById('date') || {}).value || ''
+                };
+                
+                console.log('Form data being sent:', data);
+                return data;
+            }
+
+            function saveFormToStorage() {
+                const data = buildFormDataJson(form);
+                try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (_) {}
+                return data;
+            }
+
+            async function submitStoredDataIfAny() {
+                let stored = null;
+                try { stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null'); } catch (_) {}
+                if (!stored) return;
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                try {
+                    const res = await fetch(FORM_ENDPOINT, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        mode: 'cors',
+                        credentials: 'omit',
+                        body: JSON.stringify(stored)
+                    });
+                    if (res.ok) {
+                        alert('Form submitted successfully! We received your purchase request.');
+                        form.reset();
+                        try { sessionStorage.removeItem(STORAGE_KEY); } catch (_) {}
+                    } else {
+                        let msg = 'Unknown error';
+                        try { const err = await res.json(); msg = err.error || msg; } catch(_) {}
+                        alert('Submission failed: ' + msg);
+                    }
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    alert('Submission failed: ' + (error && error.message ? error.message : 'Network error'));
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                    // Clean URL (remove paySuccess param)
+                    try {
+                        const url = new URL(window.location.href);
+                        url.searchParams.delete('paySuccess');
+                        history.replaceState(null, '', url.toString());
+                    } catch (_) {}
+                }
+            }
+
+            // Handle Submit -> direct POST to backend
+            submitBtn.addEventListener('click', function(e){
+                e.preventDefault();
+
+                // Basic required validation
+                const data = buildFormDataJson(form);
+                if (!data.buyerName || !data.phoneNumber || !data.email || !data.contactMethod || !data.date) {
+                    alert('Please fill all required fields: Full Name, Phone, Email, Contact Method, and Date.');
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    mode: 'cors',
+                    credentials: 'omit',
+                    body: JSON.stringify(data)
+                }).then(async (res) => {
+                    if (res.ok) {
+                        alert('Form submitted successfully! We received your purchase request.');
+                        form.reset();
+                        try { sessionStorage.removeItem(STORAGE_KEY); } catch (_) {}
+                    } else {
+                        let msg = 'Unknown error';
+                        try { const err = await res.json(); msg = err.error || msg; } catch(_) {}
+                        alert('Submission failed: ' + msg);
+                    }
+                }).catch((error) => {
+                    console.error('Submission error:', error);
+                    alert('Submission failed: ' + (error && error.message ? error.message : 'Network error'));
+                }).finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                });
+            });
+
+            // Prevent native submit; use our handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitBtn.click();
+            });
+        })();
+        </script>
+            </form>
+            <br>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Company Info Section -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.jpg" alt="BPC LTD Logo" class="footer-logo-img">
+                        <h3>Bendik Pharmacy Consultancy</h3>
+                    </div>
+                    <p class="company-description">
+                        Your trusted partner in pharmaceutical business consultancy, providing expert guidance for pharmacy operations, compliance, and growth across Rwanda.
+                    </p>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="corevalue.html">Core Values</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+
+
+                <!-- Contact Section -->
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+250 796 690 160</span>
+                        </div>
+                                                 <div class="contact-item">
+                             <i class="fas fa-envelope"></i>
+                             <span>bendikpharmacyconsultancy@gmail.com</span>
+                         </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kigali, Rwanda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copy">&copy; 2025 Bendik Pharmacy Consultancy Ltd. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Icon -->
+    <div id="whatsapp-float" onclick="openWhatsApp()">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <script>
+        // MOBILE MENU TOGGLE - Enhanced version
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const navMenu = document.getElementById('navMenu');
+            const body = document.body;
+
+            // Toggle menu function
+            function toggleMenu() {
+                const isExpanded = !navMenu.classList.contains('active');
+                navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isExpanded);
+                body.classList.toggle('menu-open', isExpanded);
+                
+                // Change menu icon
+                menuBtn.textContent = isExpanded ? '✕' : '☰';
+            }
+
+            // Menu button click event
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            // Close menu when clicking nav links
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && e.target !== menuBtn && navMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+
+            // Prevent closing when clicking inside menu
+            navMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Handle same-page links
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetHref = this.getAttribute('href');
+                    const currentPage = window.location.pathname.split('/').pop();
+                    
+                    if (targetHref === currentPage) {
+                        e.preventDefault();
+                        window.location.href = targetHref;
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+        
+        // IMAGE SLIDER - Original unchanged
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        setInterval(nextSlide, 3000);
+        
+        // IMPROVED SMOOTH SCROLLING - Fixed header offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, this.getAttribute('href'));
+                    }
+                }
+            });
+        });
+        
+        // FORM SUBMISSION - Original unchanged (guard if element exists)
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            contactForm.reset();
+        });
+        }
+
+        // WhatsApp Function
+        function openWhatsApp() {
+            const phoneNumber = '+250796690160'; // Replace with your actual WhatsApp number
+            const message = 'Hello! I would like to get more information about your services.';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+    
+    <script>
+// Redirect /Admin or /Admin/ (case-insensitive) to login
+const path = window.location.pathname.toLowerCase();
+if (path === '/admin' || path === '/admin/') {
+    window.location.replace('/LoginForm.html');
+}
+</script>
+
+
+    <!-- Language Translation Script -->
+    <script src="public/lang.js"></script>
+
+    <!-- 3CX Live Chat -->
+    <call-us-selector phonesystem-url="https://1538.3cx.cloud" party="bendik"></call-us-selector>
+    <script defer src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js" id="tcx-callus-js" charset="utf-8"></script>
+</body>
+</html>

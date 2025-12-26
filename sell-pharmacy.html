@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Pharmacy Sale Information Form</title>
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 120px;
+        }
+        
+        .form-content {
+            padding: 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        form section {
+            margin-bottom: 2rem;
+            border: 1px solid hsl(214, 20%, 88%);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        form h2 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: hsl(214, 32%, 14%);
+            border-bottom: 1px solid hsl(214, 20%, 88%);
+            padding-bottom: 0.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: hsl(214, 32%, 14%);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+        
+        .input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            background-color: #f4f4f5;
+            font-size: 1rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        
+        .input:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+        
+        .radio-group {
+            margin-top: 0.5rem;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .radio-item input[type="radio"],
+        .radio-item input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid hsl(214, 20%, 88%);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: hsl(214, 20%, 99%);
+            margin-top: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 90%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+        }
+
+        .required {
+            color: hsl(0, 84%, 60%);
+        }
+             /* other css of navbars*/
+
+         /* ====== BASIC RESET ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        /* ====== COLORS ====== */
+        :root {
+            --green: #7CB342;
+            --dark-green: #689F38;
+            --light-green: #AED581;
+            --very-light-green: #F1F8E9;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--white);
+            padding-top: 80px; /* Added for fixed header */
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: var(--green);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* ====== HEADER ====== */
+        header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(124, 179, 66, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            width: 80px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        /* ====== MOBILE MENU ====== */
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--green);
+            background: none;
+            border: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+      nav ul li a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 5px 0;
+            display: inline-block; /* important for scale to work smoothly */
+            transition: transform 0.3s ease;
+            font-size: 17px;
+        }
+        nav ul li a:hover {
+            transform: scale(1.2); /* 👈 Grows smoothly without shifting others */
+            color: #558B2F; /* A deeper shade of green, elegant and visible */
+}
+       
+         .call-button {
+  background-color: none;
+  color: var(--green);
+  border: 2px var(--green);
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: 0.3s;  
+}
+
+.call-button:hover {
+    transform: scale(1.1);
+  background-color: none;
+  color: var(--green);
+}
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 100%);
+            color: white;
+            margin-top: 50px;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 60px 0 40px;
+        }
+
+        .footer-section h4 {
+            color: #ffffff !important;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Company Info Section */
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .footer-logo h3 {
+            color: #ffffff !important;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-description {
+            color: #ffffff !important;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-link:hover {
+            background: #ffffff;
+            color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Quick Links & Services */
+        .footer-links-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-list a {
+            color: #ffffff !important;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links-list a:hover {
+            color: #ffffff !important;
+            transform: translateX(5px);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-links-list a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+
+        .footer-links-list a:hover::before {
+            opacity: 1;
+            left: -15px;
+        }
+
+        /* Contact Information */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item i {
+            color: #ffffff !important;
+            width: 20px;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-item span {
+            font-size: 0.95rem;
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copy {
+            color: #ffffff !important;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom-links a:hover {
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            footer {
+                margin-top: 30px;
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 25px 0 20px;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-logo {
+                justify-content: center;
+            }
+
+            .footer-section h4 {
+                font-size: 1.1rem;
+                text-align: center;
+            }
+
+            .footer-section h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .company-description {
+                text-align: center;
+                font-size: 0.95rem;
+            }
+
+            .footer-links-list {
+                text-align: center;
+            }
+
+            .contact-info {
+                align-items: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                margin-top: 20px;
+            }
+            
+            .footer-container {
+                padding: 0 15px;
+            }
+
+            .footer-main {
+                gap: 15px;
+                padding: 20px 0 15px;
+            }
+
+            .footer-section h4 {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-logo h3 {
+                font-size: 1.1rem;
+            }
+
+            .company-description {
+                font-size: 0.9rem;
+            }
+
+            .footer-links-list a {
+                font-size: 0.9rem;
+            }
+
+            .contact-item span {
+                font-size: 0.9rem;
+            }
+
+            .social-link {
+                width: 35px;
+                height: 35px;
+            }
+
+            .footer-bottom {
+                padding: 20px 0;
+            }
+
+            .copy {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ====== MOBILE STYLES ====== */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                transition: all 0.3s;
+                box-shadow: 0 2px 10px rgba(124, 179, 66, 0.2);
+                padding-top: 30px;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .mv-box {
+                padding: 30px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+            
+            /* Form Mobile Responsiveness */
+            .container {
+                margin: 20px;
+                margin-top: 80px;
+            }
+            
+            .form-content {
+                padding: 1.5rem;
+            }
+            
+            .header {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            section {
+                margin-bottom: 1.5rem;
+                padding: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.1rem;
+            }
+            
+            input, select, textarea {
+                padding: 0.625rem;
+                font-size: 0.95rem;
+            }
+            
+            .submit-button {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .pay-button {
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mv-box {
+                padding: 25px;
+                min-width: 280px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo img {
+                width: 60px;
+            }
+            
+            /* Form Mobile Responsiveness */
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                margin: 10px;
+                margin-top: 70px;
+            }
+            
+            .form-content {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+            
+            section {
+                padding: 0.75rem;
+            }
+            
+            h2 {
+                font-size: 1rem;
+            }
+            
+            input, select, textarea {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .submit-button {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+            
+            .pay-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+         /* WhatsApp Floating Icon */
+        #whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 90px;
+            z-index: 99999;
+            cursor: pointer;
+            background: #25D366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile responsiveness for WhatsApp icon */
+        @media (max-width: 768px) {
+            #whatsapp-float {
+                right: 85px !important;
+                bottom: 20px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #whatsapp-float {
+                right: 75px !important;
+                bottom: 20px !important;
+            }
+        }
+                    /* Style the Pay button */
+.pay-button {
+  background-color: #1b5e20; /* dark green */
+  color: #fff;               /* white text */
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;     /* removes underline */
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical center */
+
+}
+
+/* Hover effect */
+.pay-button:hover {
+  background-color: #43a047; /* lighter green on hover */
+  transform: translateY(-3px) scale(1.05); /* slight lift + zoom */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* stronger shadow on hover */
+}
+  .submit-button {
+            background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 90%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* === Unified header/nav like privacy.html === */
+        header {
+            background: #ffffff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(124, 179, 66, 0.12);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--green);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            line-height: 1.2;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--green);
+            background: none;
+            border: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 24px;
+        }
+
+        nav ul li a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 4px 0;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--dark-green);
+            transform: scale(1.05);
+        }
+
+        .call-button {
+            margin-left: 20px;
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .call-button:hover {
+            transform: scale(1.05);
+        }
+
+        .language-switcher-overlay {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1100;
+            display: flex;
+            gap: 8px;
+        }
+
+        .language-switcher-overlay button {
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--green);
+            background: #ffffff;
+            color: var(--green);
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .language-switcher-overlay button:hover {
+            background: var(--green);
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 75%;
+                max-width: 320px;
+                height: calc(100vh - 70px);
+                background: #ffffff;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                gap: 16px;
+                box-shadow: -2px 0 10px rgba(15, 23, 42, 0.1);
+                transition: right 0.3s ease;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher-overlay">
+        <button onclick="setLanguage('en')">ENG</button>
+        <button onclick="setLanguage('rw')">KINY</button>
+    </div>
+    
+     <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="BPC LTD Logo" class="logo-img">
+                <span class="logo-text">Bendik Pharmacy<br> Consultancy</span>
+            </a>
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="mission.html">Mission</a></li>
+                    <li><a href="corevalue.html">Core Values</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a class="call-button" href="tel:+250796690160">Call: +250796690160</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="header">
+            <h1 data-translate="sell_form_title">Retail Pharmacy Sale Information Form</h1>
+            <p data-translate="sell_form_subtitle">Provide details about your pharmacy for sale</p>
+        </div>
+        <div class="form-content">
+
+        <form id="saleForm">
+          <!-- Section 1: Client Details -->
+            <section>
+                <h2 data-translate="sell_section_1">1. SELLER DETAILS</h2>
+                <div class="form-group">
+                    <label class="label" for="ownerName" data-translate="sell_owner_name">Owner Full Name: *</label>
+                    <input type="text" id="ownerName" name="ownerName" class="input" required>
+                </div>
+                <div class="form-group">
+                    <label class="label" for="phoneNumber" data-translate="sell_phone_number">Phone Number: *</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" class="input" required>
+                </div>
+                <div class="form-group">
+                    <label class="label" for="email" data-translate="sell_email_address">Email Address: *</label>
+                    <input type="email" id="email" name="email" class="input" required>
+                </div>
+                <div class="form-group">
+                    <label class="label" data-translate="sell_preferred_contact">Preferred Mode of Contact: *</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="contactPhone" name="contactMode" value="Phone" required>
+                            <label for="contactPhone" data-translate="sell_contact_phone">Phone</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contactEmail" name="contactMode" value="Email" required>
+                            <label for="contactEmail" data-translate="sell_contact_email">Email</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contactWhatsApp" name="contactMode" value="WhatsApp" required>
+                            <label for="contactWhatsApp" data-translate="sell_contact_whatsapp">WhatsApp</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Pharmacy Info -->
+            <section>
+                <h2 data-translate="sell_section_2">2. PHARMACY INFORMATION</h2>
+                <div class="form-group">
+                  <label class="label" for="pharmacyName" data-translate="sell_pharmacy_name">Pharmacy Name:</label>
+                  <input type="text" id="pharmacyName" name="pharmacyName" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" data-translate="sell_business_type">Business Type:</label>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="businessSole" name="businessType" value="Sole Proprietorship" />
+                      <label for="businessSole" data-translate="sell_sole_proprietorship">Sole Proprietorship</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="businessPartnership" name="businessType" value="Partnership" />
+                      <label for="businessPartnership" data-translate="sell_partnership">Partnership</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="businessCompany" name="businessType" value="Company" />
+                      <label for="businessCompany" data-translate="sell_company">Company</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="label" for="location" data-translate="sell_location">Location (District/Sector):</label>
+                  <input type="text" id="location" name="location" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" data-translate="sell_ownership_type">Ownership Type:</label>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="ownershipRented" name="ownershipType" value="Rented" />
+                      <label for="ownershipRented" data-translate="sell_rented_premises">Rented Premises</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="ownershipOwned" name="ownershipType" value="Owned" />
+                      <label for="ownershipOwned" data-translate="sell_owned_premises">Owned Premises</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="label" for="premisesSize" data-translate="sell_premises_size">Size of Premises (m²):</label>
+                  <input type="text" id="premisesSize" name="premisesSize" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" data-translate="sell_license_status">License Status:</label>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="licenseFully" name="licenseStatus" value="Fully Licensed" />
+                      <label for="licenseFully" data-translate="sell_fully_licensed">Fully Licensed</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="licenseExpired" name="licenseStatus" value="Expired" />
+                      <label for="licenseExpired" data-translate="sell_expired">Expired</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="licenseRenewal" name="licenseStatus" value="Under Renewal" />
+                      <label for="licenseRenewal" data-translate="sell_under_renewal">Under Renewal</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="label" for="years" data-translate="sell_years_operation">Years in Operation:</label>
+                  <input type="text" id="years" name="years" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" for="salesRange" data-translate="sell_sales_range">Daily/Monthly Sales Range:</label>
+                  <input type="text" id="salesRange" name="salesRange" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" for="insurancePartners" data-translate="sell_insurance_partners">Insurance Partners:</label>
+                  <input type="text" id="insurancePartners" name="insurancePartners" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" for="staffCount" data-translate="sell_staff_count">Number of Staff:</label>
+                  <input type="text" id="staffCount" name="staffCount" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" for="inventoryValue" data-translate="sell_inventory_value">Inventory Value:</label>
+                  <input type="text" id="inventoryValue" name="inventoryValue" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" data-translate="sell_equipment_included">Furniture, Fixtures, Equipment Included?</label>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="equipmentYes" name="equipmentIncluded" value="Yes" />
+                      <label for="equipmentYes" data-translate="form_yes">Yes</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="equipmentNo" name="equipmentIncluded" value="No" />
+                      <label for="equipmentNo" data-translate="form_no">No</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="equipmentPartially" name="equipmentIncluded" value="Partially" />
+                      <label for="equipmentPartially" data-translate="sell_partially">Partially</label>
+                    </div>
+                  </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Financial & Legal -->
+              <section>
+                <h2 data-translate="sell_section_3">3. FINANCIAL & LEGAL INFORMATION</h2>
+                <div class="form-group">
+                  <label class="label" for="reason" data-translate="sell_reason_selling">Reason for Selling:</label>
+                  <input type="text" id="reason" name="reason" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" data-translate="sell_existing_debts">Any Existing Debts/Liabilities?</label>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="debtYes" name="debts" value="Yes" onclick="toggleDebtAmount()" />
+                      <label for="debtYes" data-translate="form_yes">Yes</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="debtNo" name="debts" value="No" onclick="toggleDebtAmount()" />
+                      <label for="debtNo" data-translate="form_no">No</label>
+                    </div>
+                  </div>
+                </div>
+                <div id="debtAmountField" style="display:none;" class="form-group">
+                  <label class="label" for="debtAmount" data-translate="sell_debt_amount">If Yes, Debt Amount:</label>
+                  <input type="text" id="debtAmount" name="debtAmount" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" for="price" data-translate="sell_business_price">Business Price (RWF):</label>
+                  <input type="text" id="price" name="price" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="label" data-translate="sell_price_negotiable">Is the price negotiable?</label>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="negotiableYes" name="negotiable" value="Yes" />
+                      <label for="negotiableYes" data-translate="form_yes">Yes</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="negotiableNo" name="negotiable" value="No" />
+                      <label for="negotiableNo" data-translate="form_no">No</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="label" data-translate="sell_sale_timeline">Preferred Sale Timeline:</label>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="timelineUrgently" name="timeline" value="Urgently" />
+                      <label for="timelineUrgently" data-translate="sell_urgently">Urgently</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="timeline1Month" name="timeline" value="1 Month" />
+                      <label for="timeline1Month" data-translate="sell_within_1_month">Within 1 month</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="timelineFlexible" name="timeline" value="Flexible" />
+                      <label for="timelineFlexible" data-translate="sell_flexible">Flexible</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="label" data-translate="sell_valuation_service">Would you like a pharmacy valuation service?</label>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="valuationYes" name="valuationService" value="Yes" onclick="toggleValuationFee()" />
+                      <label for="valuationYes" data-translate="form_yes">Yes</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="valuationNo" name="valuationService" value="No" onclick="toggleValuationFee()" />
+                      <label for="valuationNo" data-translate="form_no">No</label>
+                    </div>
+                  </div>
+                </div>
+                <p id="valuationFeeNote" style="display:none;" data-translate="sell_valuation_fee"><small>Valuation fee is 200,000 RWF and paid before service due date.</small></p>
+            </section>
+
+            <!-- Section 4: Additional Info -->
+            <section>
+                <h2 data-translate="sell_section_4">4. ADDITIONAL INFORMATION</h2>
+                <div class="form-group">
+                  <label class="label" for="additionalInfo" data-translate="sell_additional_info">Additional Information:</label>
+                  <textarea id="additionalInfo" name="additionalInfo" class="input" rows="4" placeholder="Provide relevant details like customer base, competition, etc." data-translate-placeholder="sell_additional_info"></textarea>
+                </div>
+            </section>
+
+            <!-- Section 5: Documents -->
+            <section>
+                <h2 data-translate="sell_section_5">5. DOCUMENTS REQUIRED(Tick if available)</h2>
+                <div class="form-group">
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="checkbox" id="docLicense" name="documents" value="License" />
+                      <label for="docLicense" data-translate="sell_documents_license">Pharmacy License</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="checkbox" id="docRegistration" name="documents" value="Registration" />
+                      <label for="docRegistration" data-translate="sell_documents_registration">Business Registration Certificate</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="checkbox" id="docLease" name="documents" value="Lease" />
+                      <label for="docLease" data-translate="sell_documents_lease">Lease Agreement (if rented)</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="checkbox" id="docInventory" name="documents" value="Inventory" />
+                      <label for="docInventory" data-translate="sell_documents_inventory">Inventory List (summary)</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="checkbox" id="docTax" name="documents" value="Tax" />
+                      <label for="docTax" data-translate="sell_documents_tax">Latest Tax Declaration/Financial Statement</label>
+                    </div>
+                  </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Declaration -->
+            <section>
+                <h2 data-translate="sell_section_6">6. DECLARATION</h2>
+                <p data-translate="sell_declaration_text">I confirm that the above information is true and complete to the best of my knowledge. I understand that BENDIK Pharmacy Consultancy Ltd will keep this information confidential and use it solely for the purpose of pharmacy sale facilitation.</p>
+                <div class="form-group">
+                  <label class="label" for="signature" data-translate="form_signature">Digital Signature (Type your full name): *</label>
+                  <input type="text" id="signature" name="signature" class="input" placeholder="Enter your full name as digital signature" data-translate-placeholder="form_signature_placeholder" required />
+                </div>
+                <div class="form-group">
+                  <label class="label" for="date" data-translate="form_date">Date: *</label>
+                  <input type="date" id="date" name="date" class="input" required />
+                </div>
+            </section>
+            
+            <!-- Section 7: Registration Fee (removed) -->
+
+                            <button class="submit-button" type="button" id="submitBtn" data-translate="form_submit">Submit</button>
+
+        </form>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Company Info Section -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.jpg" alt="BPC LTD Logo" class="footer-logo-img">
+                        <h3>Bendik Pharmacy Consultancy</h3>
+                    </div>
+                    <p class="company-description">
+                        Your trusted partner in pharmaceutical business consultancy, providing expert guidance for pharmacy operations, compliance, and growth across Rwanda.
+                    </p>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="corevalue.html">Core Values</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+
+
+                <!-- Contact Section -->
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+250 796 690 160</span>
+                        </div>
+                                                 <div class="contact-item">
+                             <i class="fas fa-envelope"></i>
+                             <span>bendikpharmacyconsultancy@gmail.com</span>
+                         </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kigali, Rwanda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copy">&copy; 2025 Bendik Pharmacy Consultancy Ltd. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment modal removed -->
+     <!-- WhatsApp Floating Icon -->
+    <div id="whatsapp-float" onclick="openWhatsApp()">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+    </div>
+
+    <!-- SCRIPTS -->
+    <!-- Removed Font Awesome kit JS to avoid CORS; CSS is already included in <head> -->
+    
+    <script>
+        // MOBILE MENU TOGGLE - Enhanced version
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const navMenu = document.getElementById('navMenu');
+            const body = document.body;
+
+            // Toggle menu function
+            function toggleMenu() {
+                const isExpanded = !navMenu.classList.contains('active');
+                navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isExpanded);
+                body.classList.toggle('menu-open', isExpanded);
+                
+                // Change menu icon
+                menuBtn.textContent = isExpanded ? '✕' : '☰';
+            }
+
+            // Menu button click event
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            // Close menu when clicking nav links
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && e.target !== menuBtn && navMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+
+            // Prevent closing when clicking inside menu
+            navMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Handle same-page links
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetHref = this.getAttribute('href');
+                    const currentPage = window.location.pathname.split('/').pop();
+                    
+                    if (targetHref === currentPage) {
+                        e.preventDefault();
+                        window.location.href = targetHref;
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+        
+        // IMAGE SLIDER (guard if no slides exist)
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        if (slides.length > 0) {
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+            function nextSlide() { showSlide(currentSlide + 1); }
+            setInterval(nextSlide, 3000);
+        }
+        
+        // IMPROVED SMOOTH SCROLLING - Fixed header offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, this.getAttribute('href'));
+                    }
+                }
+            });
+        });
+        
+        // FORM SUBMISSION - Original unchanged (guard if element exists)
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Form submitted successfully! Pay the required registration fee for form review.');
+                contactForm.reset();
+            });
+        }
+
+        // WhatsApp Function
+        function openWhatsApp() {
+            const phoneNumber = '+250796690160'; // Replace with your actual WhatsApp number
+            const message = 'Hello! I would like to get more information about your services.';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Submit integration for pharmacy sale form - Direct submit (no payment redirect)
+        (function() {
+            const BACKEND_BASE_URL = 'https://bendik-pharmacy-consultancy.onrender.com';
+            const FORM_ENDPOINT = BACKEND_BASE_URL + '/api/pharmacy-sale-requests';
+
+            const form = document.getElementById('saleForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const STORAGE_KEY = 'saleFormData';
+
+            // Check if elements exist before proceeding
+            if (!form || !submitBtn) {
+                console.error('Form or submit button not found');
+                return;
+            }
+
+            function buildFormDataJson(formEl) {
+                const fd = new FormData(formEl);
+                const obj = {};
+                fd.forEach((value, key) => {
+                    if (obj[key] !== undefined) {
+                        if (Array.isArray(obj[key])) obj[key].push(value); else obj[key] = [obj[key], value];
+                    } else {
+                        obj[key] = value;
+                    }
+                });
+                
+                // Ensure signature field is included
+                const signatureField = formEl.querySelector('input[name="signature"]');
+                if (signatureField && signatureField.value.trim()) {
+                    obj.signature = signatureField.value.trim();
+                } else {
+                    obj.signature = 'Digital Signature Required';
+                }
+                
+                console.log('Form data being sent:', obj);
+                return obj;
+            }
+
+            function saveFormToStorage() {
+                const data = buildFormDataJson(form);
+                try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (_) {}
+                return data;
+            }
+
+            async function submitStoredDataIfAny() {
+                let stored = null;
+                try { stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null'); } catch (_) {}
+                if (!stored) return;
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                try {
+                    const res = await fetch(FORM_ENDPOINT, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        mode: 'cors',
+                        credentials: 'omit',
+                        body: JSON.stringify(stored)
+                    });
+                    
+                    if (res.ok) {
+                        alert('Form submitted successfully! We received your sale request.');
+                        form.reset();
+                        try { sessionStorage.removeItem(STORAGE_KEY); } catch (_) {}
+                    } else {
+                        let msg = 'Unknown error';
+                        try { const err = await res.json(); msg = err.error || msg; } catch(_) {}
+                        alert('Submission failed: ' + msg);
+                    }
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    alert('Submission failed: ' + (error && error.message ? error.message : 'Network error'));
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                    // Clean URL (remove paySuccess param)
+                    try {
+                        const url = new URL(window.location.href);
+                        url.searchParams.delete('paySuccess');
+                        history.replaceState(null, '', url.toString());
+                    } catch (_) {}
+                }
+            }
+
+            // Handle Submit -> direct POST to backend
+            submitBtn.addEventListener('click', function(e){
+                e.preventDefault();
+                
+                // Validate signature field
+                const signatureField = form.querySelector('input[name="signature"]');
+                if (!signatureField || !signatureField.value.trim()) {
+                    alert('Please provide your digital signature by typing your full name in the signature field.');
+                    signatureField.focus();
+                    return;
+                }
+
+                const payload = buildFormDataJson(form);
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    mode: 'cors',
+                    credentials: 'omit',
+                    body: JSON.stringify(payload)
+                }).then(async (res) => {
+                    if (res.ok) {
+                        alert('Form submitted successfully! We received your sale request.');
+                        form.reset();
+                        try { sessionStorage.removeItem(STORAGE_KEY); } catch (_) {}
+                    } else {
+                        let msg = 'Unknown error';
+                        try { const err = await res.json(); msg = err.error || msg; } catch(_) {}
+                        alert('Submission failed: ' + msg);
+                    }
+                }).catch((error) => {
+                    console.error('Submission error:', error);
+                    alert('Submission failed: ' + (error && error.message ? error.message : 'Network error'));
+                }).finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                });
+            });
+
+            // Prevent native submit; use our handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitBtn.click();
+            });
+        })();
+
+        // Auto-fill current date (guard if element exists)
+        (function(){
+            const dateEl = document.getElementById('date');
+            if (dateEl) dateEl.valueAsDate = new Date();
+        })();
+
+        // Redirect /Admin or /admin (case-insensitive) to login
+        if (window.location.pathname.toLowerCase() === '/admin') {
+            window.location.replace('/LoginForm.html');
+        }
+    </script>
+
+    <!-- 3CX Live Chat -->
+    <call-us-selector phonesystem-url="https://1538.3cx.cloud" party="bendik"></call-us-selector>
+    <script defer src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js" id="tcx-callus-js" charset="utf-8"></script>
+  <script>
+  </script>
+    <script>
+        function toggleValuationFee() {
+            const yesOption = document.getElementById('valuationYes');
+            const feeNote = document.getElementById('valuationFeeNote');
+            if (yesOption.checked) {
+                feeNote.style.display = 'block';
+            } else {
+                feeNote.style.display = 'none';
+            }
+        }
+
+        function toggleDebtAmount() {
+            const yesOption = document.getElementById('debtYes');
+            const AmountField = document.getElementById('debtAmountField');
+             if (yesOption.checked) {
+                AmountField.style.display = 'block';
+            } else {
+                AmountField.style.display = 'none';
+            }
+        }
+
+        // (Old direct submit removed in favor of payment-first flow)
+    </script>
+    
+    <!-- Language Translation Script -->
+    <script src="public/lang.js"></script>
+</body>
+</html>

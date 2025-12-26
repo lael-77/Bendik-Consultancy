@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pharmacist Recruitment Request Form</title>
+  <link rel="icon" href="logo.jpg" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 20px; min-height: 100vh;
+    }
+    .container {
+      max-width: 800px; 
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-top: 120px;
+    }
+    
+    .form-content {
+      padding: 2rem;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 100%);
+      color: white; padding: 2rem; border-radius: 8px;
+      text-align: center; margin-bottom: 2rem;
+    }
+    .header h1 { font-size: 1.8rem; font-weight: bold; }
+    .header p { opacity: 0.9; }
+    section { margin-bottom: 2rem; border: 1px solid hsl(214, 20%, 88%); border-radius: 8px; padding: 1.5rem; }
+    h2 { font-size: 1.2rem; color: hsl(214, 32%, 14%); border-bottom: 1px solid hsl(214, 20%, 88%); margin-bottom: 1rem; padding-bottom: 0.5rem; }
+    label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: hsl(214, 32%, 14%); }
+    input, select, textarea {
+      width: 100%; padding: 0.75rem;
+      border: 1px solid hsl(214, 20%, 88%);
+      border-radius: 6px; font-size: 1rem;
+      background: hsl(214, 20%, 99%);
+      margin-bottom: 1rem;
+    }
+    input[type="checkbox"], input[type="radio"] { width: auto; margin-right: 8px; }
+    button[type="submit"] {
+      background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 90%);
+      color: white; border: none;
+      padding: 1rem 2rem; border-radius: 8px;
+      font-size: 1rem; font-weight: 600;
+      cursor: pointer; width: 100%;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: translateY(-2px); }
+     /* other css of navbars*/
+
+         /* ====== BASIC RESET ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        /* ====== COLORS ====== */
+        :root {
+            --green: #7CB342;
+            --dark-green: #689F38;
+            --light-green: #AED581;
+            --very-light-green: #F1F8E9;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--white);
+            padding-top: 80px; /* Added for fixed header */
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: var(--green);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* ====== HEADER ====== */
+        header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(124, 179, 66, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            width: 80px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        /* ====== MOBILE MENU ====== */
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--green);
+            background: none;
+            border: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+      nav ul li a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 5px 0;
+            display: inline-block; /* important for scale to work smoothly */
+            transition: transform 0.3s ease;
+            font-size: 17px;
+        }
+        nav ul li a:hover {
+            transform: scale(1.2); /* 👈 Grows smoothly without shifting others */
+            color: #558B2F; /* A deeper shade of green, elegant and visible */
+}
+       
+         .call-button {
+  background-color: none;
+  color: var(--green);
+  border: 2px var(--green);
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: 0.3s;  
+}
+
+.call-button:hover {
+    transform: scale(1.1);
+  background-color: none;
+  color: var(--green);
+}
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 100%);
+            color: white;
+            margin-top: 50px;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 60px 0 40px;
+        }
+
+        .footer-section h4 {
+            color: #ffffff !important;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Company Info Section */
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .footer-logo h3 {
+            color: #ffffff !important;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-description {
+            color: #ffffff !important;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-link:hover {
+            background: #ffffff;
+            color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Quick Links & Services */
+        .footer-links-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-list a {
+            color: #ffffff !important;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links-list a:hover {
+            color: #ffffff !important;
+            transform: translateX(5px);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-links-list a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+
+        .footer-links-list a:hover::before {
+            opacity: 1;
+            left: -15px;
+        }
+
+        /* Contact Information */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item i {
+            color: #ffffff !important;
+            width: 20px;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-item span {
+            font-size: 0.95rem;
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copy {
+            color: #ffffff !important;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom-links a:hover {
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            footer {
+                margin-top: 30px;
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 25px 0 20px;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-logo {
+                justify-content: center;
+            }
+
+            .footer-section h4 {
+                font-size: 1.1rem;
+                text-align: center;
+            }
+
+            .footer-section h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .company-description {
+                text-align: center;
+                font-size: 0.95rem;
+            }
+
+            .footer-links-list {
+                text-align: center;
+            }
+
+            .contact-info {
+                align-items: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                margin-top: 20px;
+            }
+            
+            .footer-container {
+                padding: 0 15px;
+            }
+
+            .footer-main {
+                gap: 15px;
+                padding: 20px 0 15px;
+            }
+
+            .footer-section h4 {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-logo h3 {
+                font-size: 1.1rem;
+            }
+
+            .company-description {
+                font-size: 0.9rem;
+            }
+
+            .footer-links-list a {
+                font-size: 0.9rem;
+            }
+
+            .contact-item span {
+                font-size: 0.9rem;
+            }
+
+            .social-link {
+                width: 35px;
+                height: 35px;
+            }
+
+            .footer-bottom {
+                padding: 20px 0;
+            }
+
+            .copy {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ====== MOBILE STYLES ====== */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                transition: all 0.3s;
+                box-shadow: 0 2px 10px rgba(124, 179, 66, 0.2);
+                padding-top: 30px;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .mv-box {
+                padding: 30px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+            
+            /* Form Mobile Responsiveness */
+            .container {
+                margin: 20px;
+                margin-top: 80px;
+            }
+            
+            .form-content {
+                padding: 1.5rem;
+            }
+            
+            .header {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            section {
+                margin-bottom: 1.5rem;
+                padding: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.1rem;
+            }
+            
+            input, select, textarea {
+                padding: 0.625rem;
+                font-size: 0.95rem;
+            }
+            
+            button[type="submit"] {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .pay-button {
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+            
+            .h2 {
+                padding-left: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mv-box {
+                padding: 25px;
+                min-width: 280px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo img {
+                width: 60px;
+            }
+            
+            /* Form Mobile Responsiveness */
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                margin: 10px;
+                margin-top: 70px;
+            }
+            
+            .form-content {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+            
+            section {
+                padding: 0.75rem;
+            }
+            
+            h2 {
+                font-size: 1rem;
+            }
+            
+            input, select, textarea {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            button[type="submit"] {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+            
+            .pay-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            .h2 {
+                padding-left: 10px;
+                font-size: 1.1rem;
+            }
+        }
+         /* WhatsApp Floating Icon */
+        #whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 90px;
+            z-index: 99999;
+            cursor: pointer;
+            background: #25D366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile responsiveness for WhatsApp icon */
+        @media (max-width: 768px) {
+            #whatsapp-float {
+                right: 85px !important;
+                bottom: 20px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #whatsapp-float {
+                right: 75px !important;
+                bottom: 20px !important;
+            }
+        }
+
+        /*payments*/
+            /* Style the Pay button */
+.pay-button {
+  background-color: #1b5e20; /* dark green */
+  color: #fff;               /* white text */
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;     /* removes underline */
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical center */
+
+}
+
+/* Hover effect */
+.pay-button:hover {
+  background-color: #43a047; /* lighter green on hover */
+  transform: translateY(-3px) scale(1.05); /* slight lift + zoom */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* stronger shadow on hover */
+}
+ .h2{
+    padding-left: 140px;
+}
+
+/* Form Structure Styles */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.label {
+    display: block;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background-color: #f4f4f5;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+.radio-group {
+    margin-top: 0.5rem;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.radio-item input[type="radio"],
+.radio-item input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background-color: #f4f4f5;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    min-height: 80px;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+ 
+/* === Unified header/nav like privacy.html === */
+header {
+    background: #ffffff;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(124, 179, 66, 0.12);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--green);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.logo-text {
+    line-height: 1.2;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--green);
+    background: none;
+    border: none;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 24px;
+}
+
+nav ul li a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 4px 0;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: var(--dark-green);
+    transform: scale(1.05);
+}
+
+.call-button {
+    margin-left: 20px;
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: transform 0.2s ease;
+}
+
+.call-button:hover {
+    transform: scale(1.05);
+}
+
+.language-switcher-overlay {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1100;
+    display: flex;
+    gap: 8px;
+}
+
+.language-switcher-overlay button {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--green);
+    background: #ffffff;
+    color: var(--green);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.language-switcher-overlay button:hover {
+    background: var(--green);
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: calc(100vh - 70px);
+        background: #ffffff;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 16px;
+        box-shadow: -2px 0 10px rgba(15, 23, 42, 0.1);
+        transition: right 0.3s ease;
+    }
+
+    nav ul.active {
+        right: 0;
+    }
+}
+
+  </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher-overlay">
+        <button onclick="setLanguage('en')">ENG</button>
+        <button onclick="setLanguage('rw')">KINY</button>
+    </div>
+    
+      <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="BPC LTD Logo" class="logo-img">
+                <span class="logo-text">Bendik Pharmacy<br> Consultancy</span>
+            </a>
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="mission.html">Mission</a></li>
+                    <li><a href="corevalue.html">Core Values</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a class="call-button" href="tel:+250796690160">Call: +250796690160</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+  <div class="container">
+    <div class="header">
+      <h1 data-translate="recruitment_form_title">Pharmacist Recruitment Request Form</h1>
+      <p data-translate="recruitment_form_subtitle">Find the right pharmaceutical professionals</p>
+    </div>
+    <div class="form-content">
+
+    <form id="recruitmentForm">
+      <!-- SECTION 1: EMPLOYER INFORMATION -->
+      <section>
+        <h2 data-translate="recruitment_section_1">1. EMPLOYER INFORMATION</h2>
+        <div class="form-group">
+          <label class="label" for="pharmacyName" data-translate="recruitment_pharmacy_name">Pharmacy Name: *</label>
+          <input type="text" id="pharmacyName" name="pharmacyName" class="input" required />
+        </div>
+        <div class="form-group">
+          <label class="label" for="contactPerson" data-translate="recruitment_contact_person">Business Owner / Contact Person: *</label>
+          <input type="text" id="contactPerson" name="contactPerson" class="input" required />
+        </div>
+        <div class="form-group">
+          <label class="label" for="phoneNumber" data-translate="form_phone_number">Phone Number: *</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" class="input" required />
+        </div>
+        <div class="form-group">
+          <label class="label" for="email" data-translate="form_email_address">Email Address: *</label>
+          <input type="email" id="email" name="email" class="input" required />
+        </div>
+        <div class="form-group">
+          <label class="label" for="location" data-translate="form_location">Location (District / Sector): *</label>
+          <input type="text" id="location" name="location" class="input" required />
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_pharmacy_type">Pharmacy Type:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="checkbox" id="typeRetail" name="type" value="Retail" />
+              <label for="typeRetail" data-translate="job_retail">Retail</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="typeWholesale" name="type" value="Wholesale" />
+              <label for="typeWholesale" data-translate="job_wholesale">Wholesale</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="typeHospital" name="type" value="Hospital-based" />
+              <label for="typeHospital" data-translate="recruitment_hospital_based">Hospital-based</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="typeOther" name="type" value="Other" />
+              <label for="typeOther" data-translate="form_other">Other:</label>
+              <input type="text" id="typeOtherText" name="typeOther" class="input" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" for="branches" data-translate="recruitment_branches">Number of Branches:</label>
+          <input type="number" id="branches" name="branches" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" for="staffCount" data-translate="recruitment_staff_count">Current Staff Count:</label>
+          <input type="number" id="staffCount" name="staffCount" class="input" />
+        </div>
+      </section>
+
+      <!-- SECTION 2: POSITION DETAILS -->
+      <section>
+        <h2 data-translate="recruitment_section_2">2. POSITION DETAILS</h2>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_position_title">Position Title:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="positionPharmacist" name="position" value="Pharmacist" />
+              <label for="positionPharmacist" data-translate="job_pharmacist">Pharmacist</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="positionNurse" name="position" value="Nurse" />
+              <label for="positionNurse" data-translate="recruitment_nurse">Nurse</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="positionAssistant" name="position" value="Assistant Pharmacist" />
+              <label for="positionAssistant" data-translate="job_assistant_pharmacist">Assistant Pharmacist</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" for="positionsAvailable" data-translate="recruitment_positions_available">Number of Positions Available:</label>
+          <input type="number" id="positionsAvailable" name="positionsAvailable" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_employment_type">Nature of Employment:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="employmentFull" name="employmentType" value="Full-Time" />
+              <label for="employmentFull" data-translate="job_full_time">Full-Time</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="employmentPart" name="employmentType" value="Part-Time" />
+              <label for="employmentPart" data-translate="job_part_time">Part-Time</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" for="startDate" data-translate="recruitment_start_date">Preferred Start Date:</label>
+          <input type="date" id="startDate" name="startDate" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" for="workingHours" data-translate="recruitment_working_hours">Working Hours & Days:</label>
+          <input type="text" id="workingHours" name="workingHours" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_salary_range">Monthly Salary Range (RWF):</label>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="label" for="salaryFrom" data-translate="job_salary_from">From:</label>
+              <input type="text" id="salaryFrom" name="salaryFrom" class="input" />
+            </div>
+            <div class="form-group">
+              <label class="label" for="salaryTo" data-translate="job_salary_to">To:</label>
+              <input type="text" id="salaryTo" name="salaryTo" class="input" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_housing_transport">Housing or Transport Provided?:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="housingYes" name="housingTransport" value="Yes" />
+              <label for="housingYes" data-translate="form_yes">Yes</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="housingNo" name="housingTransport" value="No" />
+              <label for="housingNo" data-translate="form_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_bonus">Performance Bonus/Commission?:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="bonusYes" name="bonus" value="Yes" />
+              <label for="bonusYes" data-translate="form_yes">Yes</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="bonusNo" name="bonus" value="No" />
+              <label for="bonusNo" data-translate="form_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" for="bonusDetails" data-translate="recruitment_bonus_details">If yes, details:</label>
+          <input type="text" id="bonusDetails" name="bonusDetails" class="input" />
+        </div>
+      </section>
+
+      <!-- SECTION 3: QUALIFICATIONS & REQUIREMENTS -->
+      <section>
+        <h2 data-translate="recruitment_section_3">3. QUALIFICATIONS & REQUIREMENTS</h2>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_minimum_qualification">Minimum Academic Qualification:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="checkbox" id="qualificationBPharm" name="qualification" value="BPharm" />
+              <label for="qualificationBPharm" data-translate="recruitment_bpharm">Bachelor of Pharmacy (BPharm)</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_licensure_required">Licensure Required:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="checkbox" id="licenseLicensed" name="license" value="Licensed" />
+              <label for="licenseLicensed" data-translate="recruitment_licensed">Licensed with NPC</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="licenseNotLicensed" name="license" value="Not Licensed" />
+              <label for="licenseNotLicensed" data-translate="recruitment_not_licensed">Not yet licensed</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_experience_level">Experience Level:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="expFresh" name="experience" value="Fresh Graduate" />
+              <label for="expFresh" data-translate="job_fresh_graduate">Fresh Graduate</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="exp1_2" name="experience" value="1–2 Years" />
+              <label for="exp1_2" data-translate="job_1_2_years">1–2 Years</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="exp3plus" name="experience" value="3+ Years" />
+              <label for="exp3plus" data-translate="recruitment_3_plus_years">3+ Years</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="expNoPref" name="experience" value="No preference" />
+              <label for="expNoPref" data-translate="recruitment_no_preference">No preference</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_language_requirements">Language Requirements:</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="checkbox" id="langEnglish" name="language" value="English" />
+              <label for="langEnglish" data-translate="form_english">English</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="langKinyarwanda" name="language" value="Kinyarwanda" />
+              <label for="langKinyarwanda" data-translate="recruitment_kinyarwanda">Kinyarwanda</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="langFrench" name="language" value="French" />
+              <label for="langFrench" data-translate="recruitment_french">French</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="langOther" name="language" value="Other" />
+              <label for="langOther" data-translate="form_other">Other:</label>
+              <input type="text" id="otherLanguage" name="otherLanguage" class="input" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" for="additionalSkills" data-translate="recruitment_additional_skills">Additional Skills Required:</label>
+          <textarea id="additionalSkills" name="additionalSkills" class="input"></textarea>
+        </div>
+      </section>
+
+      <!-- SECTION 4: RESPONSIBILITIES -->
+      <section>
+        <h2 data-translate="recruitment_section_4">4. RESPONSIBILITIES</h2>
+        <div class="form-group">
+          <label class="label" for="responsibility1" data-translate="recruitment_responsibility">1.</label>
+          <input type="text" id="responsibility1" name="responsibility1" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" for="responsibility2" data-translate="recruitment_responsibility">2.</label>
+          <input type="text" id="responsibility2" name="responsibility2" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" for="responsibility3" data-translate="recruitment_responsibility">3.</label>
+          <input type="text" id="responsibility3" name="responsibility3" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" for="responsibility4" data-translate="recruitment_responsibility">4.</label>
+          <input type="text" id="responsibility4" name="responsibility4" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" for="responsibility5" data-translate="recruitment_responsibility">5.</label>
+          <input type="text" id="responsibility5" name="responsibility5" class="input" />
+        </div>
+      </section>
+
+      <!-- SECTION 5: WORKPLACE ENVIRONMENT -->
+      <section>
+        <h2 data-translate="recruitment_section_5">5. WORKPLACE ENVIRONMENT & SUPPORT</h2>
+        <div class="form-group">
+          <label class="label" for="reportingLine" data-translate="recruitment_reporting_line">Reporting Line (e.g., Manager/Owner):</label>
+          <input type="text" id="reportingLine" name="reportingLine" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" for="systemUsed" data-translate="recruitment_system_used">System Used for Inventory/Sales:</label>
+          <input type="text" id="systemUsed" name="systemUsed" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" for="teamStructure" data-translate="recruitment_team_structure">Team Structure:</label>
+          <input type="text" id="teamStructure" name="teamStructure" class="input" />
+        </div>
+        <div class="form-group">
+          <label class="label" data-translate="recruitment_training_available">Is on-the-job training available?</label>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="trainingYes" name="training" value="Yes" />
+              <label for="trainingYes" data-translate="form_yes">Yes</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="trainingNo" name="training" value="No" />
+              <label for="trainingNo" data-translate="form_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" for="challenges" data-translate="recruitment_challenges">Any challenges the new employee should be aware of?</label>
+          <textarea id="challenges" name="challenges" class="input"></textarea>
+        </div>
+      </section>
+
+      <!-- SECTION 6: RECRUITMENT SUPPORT -->
+      <section>
+        <h2 data-translate="recruitment_section_6">6. RECRUITMENT SUPPORT REQUESTED</h2>
+        <div class="form-group">
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="checkbox" id="supportShortlisting" name="support" value="Shortlisting" />
+              <label for="supportShortlisting" data-translate="recruitment_shortlisting">Candidate shortlisting only</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="supportInterview" name="support" value="Interview" />
+              <label for="supportInterview" data-translate="recruitment_interview">Interview coordination</label>
+            </div>
+            <div class="radio-item">
+              <input type="checkbox" id="supportFull" name="support" value="Full" />
+              <label for="supportFull" data-translate="recruitment_full">Full recruitment and onboarding</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+             <!-- SECTION 7: DECLARATION -->
+       <section>
+         <h2 data-translate="recruitment_section_7">7. DECLARATION</h2>
+         <p data-translate="recruitment_declaration_text">I confirm that the above information is accurate and understand that Bendik Pharmacy Consultancy Ltd will provide recruitment assistance as per the agreed service terms and conditions. I agree to maintain confidentiality of any candidate details shared.</p>
+         <div class="form-group">
+           <label class="label" for="signatureDate" data-translate="form_date">Date: *</label>
+           <input type="date" id="signatureDate" name="signatureDate" class="input" required />
+         </div>
+       </section>
+
+      <!-- SECTION 8: REGISTRATION FEE (removed) -->
+
+       <button type="submit" data-translate="form_submit">Submit</button>
+    </form>
+    </div>
+  </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Company Info Section -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.jpg" alt="BPC LTD Logo" class="footer-logo-img">
+                        <h3>Bendik Pharmacy Consultancy</h3>
+                    </div>
+                    <p class="company-description">
+                        Your trusted partner in pharmaceutical business consultancy, providing expert guidance for pharmacy operations, compliance, and growth across Rwanda.
+                    </p>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="corevalue.html">Core Values</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+
+
+                <!-- Contact Section -->
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+250 796 690 160</span>
+                        </div>
+                                                 <div class="contact-item">
+                             <i class="fas fa-envelope"></i>
+                             <span>bendikpharmacyconsultancy@gmail.com</span>
+                         </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kigali, Rwanda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copy">&copy; 2025 Bendik Pharmacy Consultancy Ltd. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Payment modal removed -->
+     <!-- WhatsApp Floating Icon -->
+    <div id="whatsapp-float" onclick="openWhatsApp()">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+    </div>
+
+    <!-- SCRIPTS -->
+    
+    <script>
+        // MOBILE MENU TOGGLE - Enhanced version
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const navMenu = document.getElementById('navMenu');
+            const body = document.body;
+
+            // Toggle menu function
+            function toggleMenu() {
+                const isExpanded = !navMenu.classList.contains('active');
+                navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isExpanded);
+                body.classList.toggle('menu-open', isExpanded);
+                
+                // Change menu icon
+                menuBtn.textContent = isExpanded ? '✕' : '☰';
+            }
+
+            // Menu button click event
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            // Close menu when clicking nav links
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && e.target !== menuBtn && navMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+
+            // Prevent closing when clicking inside menu
+            navMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Handle same-page links
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetHref = this.getAttribute('href');
+                    const currentPage = window.location.pathname.split('/').pop();
+                    
+                    if (targetHref === currentPage) {
+                        e.preventDefault();
+                        window.location.href = targetHref;
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+        
+        // Image slider code removed - not needed for this page
+        
+        // Smooth scrolling for anchor links (only if they exist)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return; // Skip empty href
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, href);
+                    }
+                }
+            });
+        });
+        
+        // FORM SUBMISSION - Original unchanged (guard if element exists)
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Form submitted successfully! Pay the required registration fee for form review.');
+                contactForm.reset();
+            });
+        }
+
+        // WhatsApp Function
+        function openWhatsApp() {
+            const phoneNumber = '+250796690160'; // Replace with your actual WhatsApp number
+            const message = 'Hello! I would like to get more information about your services.';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Removed stray purchase form handler; using payment-first flow below
+
+        // Auto-fill current date (guard if element exists)
+        (function(){
+            const dateEl = document.getElementById('date');
+            if (dateEl) dateEl.valueAsDate = new Date();
+        })();
+
+        // Redirect /Admin or /admin (case-insensitive) to login
+        if (window.location.pathname.toLowerCase() === '/admin') {
+            window.location.replace('/LoginForm.html');
+        }
+    </script>
+
+    <!-- 3CX Live Chat -->
+    <call-us-selector phonesystem-url="https://1538.3cx.cloud" party="bendik"></call-us-selector>
+    <script defer src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js" id="tcx-callus-js" charset="utf-8"></script>
+  <script>
+    // Form submission handler - Direct submit (no payment redirect)
+    (function() {
+        const BACKEND_BASE_URL = 'https://bendik-pharmacy-consultancy.onrender.com';
+        const FORM_ENDPOINT = BACKEND_BASE_URL + '/api/recruitment-requests';
+        
+        const form = document.getElementById('recruitmentForm');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const STORAGE_KEY = 'recruitmentFormData';
+
+        if (!form || !submitBtn) return;
+
+        function buildFormDataJson(formEl) {
+            const formData = new FormData(formEl);
+            const data = {};
+            
+            formData.forEach((value, key) => {
+                if (data[key] !== undefined) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+            
+            console.log('Form data being sent:', data);
+            return data;
+        }
+
+        function saveFormToStorage() {
+            const data = buildFormDataJson(form);
+            try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (_) {}
+            return data;
+        }
+
+        async function submitStoredDataIfAny() {
+            let stored = null;
+            try { stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null'); } catch (_) {}
+            if (!stored) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            try {
+                const res = await fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    mode: 'cors',
+                    credentials: 'omit',
+                    body: JSON.stringify(stored)
+                });
+                
+                if (res.ok) {
+                    alert('Form submitted successfully! We received your recruitment request.');
+                    form.reset();
+                    try { sessionStorage.removeItem(STORAGE_KEY); } catch (_) {}
+                } else {
+                    let msg = 'Unknown error';
+                    try { const err = await res.json(); msg = err.error || msg; } catch(_) {}
+                    alert('Submission failed: ' + msg);
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('Submission failed: ' + (error && error.message ? error.message : 'Network error'));
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+                // Clean URL (remove paySuccess param)
+                try {
+                    const url = new URL(window.location.href);
+                    url.searchParams.delete('paySuccess');
+                    history.replaceState(null, '', url.toString());
+                } catch (_) {}
+            }
+        }
+
+        // Handle Submit -> direct POST to backend
+        submitBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            
+            // Basic required validation
+            const data = buildFormDataJson(form);
+            if (!data.pharmacyName || !data.contactPerson || !data.phoneNumber || !data.email || !data.signatureDate) {
+                alert('Please fill all required fields: Pharmacy Name, Contact Person, Phone, Email, and Date.');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                mode: 'cors',
+                credentials: 'omit',
+                body: JSON.stringify(data)
+            }).then(async (res) => {
+                if (res.ok) {
+                    alert('Form submitted successfully! We received your recruitment request.');
+                    form.reset();
+                    try { sessionStorage.removeItem(STORAGE_KEY); } catch (_) {}
+                } else {
+                    let msg = 'Unknown error';
+                    try { const err = await res.json(); msg = err.error || msg; } catch(_) {}
+                    alert('Submission failed: ' + msg);
+                }
+            }).catch((error) => {
+                console.error('Submission error:', error);
+                alert('Submission failed: ' + (error && error.message ? error.message : 'Network error'));
+            }).finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+            });
+        });
+
+        // Prevent native submit; use our click handler
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitBtn.click();
+        });
+    })();
+  </script>
+  
+  <!-- Language Translation Script -->
+  <script src="public/lang.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use | Bendik Pharmacy Consultancy</title>
+  <link rel="icon" type="image/x-icon" href="logo.jpg" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    :root {
+      --green: #7CB342;
+      --dark-green: #689F38;
+      --very-light-green: #F1F8E9;
+      --white: #ffffff;
+    }
+
+    body {
+      background: #f8f9fa;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--white);
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(124, 179, 66, 0.12);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      line-height: 1.2;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--green);
+      background: none;
+      border: none;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav ul li a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 4px 0;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--dark-green);
+      transform: scale(1.05);
+    }
+
+    .call-button {
+      margin-left: 20px;
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .call-button:hover {
+      transform: scale(1.05);
+    }
+
+    .language-switcher-overlay {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1100;
+      display: flex;
+      gap: 8px;
+    }
+
+    .language-switcher-overlay button {
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--green);
+      background: var(--white);
+      color: var(--green);
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .language-switcher-overlay button:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    main.section {
+      padding-top: 130px;
+      padding-bottom: 60px;
+    }
+
+    main.section h1 {
+      font-size: 2rem;
+      color: var(--green);
+    }
+
+    main.section h2 {
+      font-size: 1.1rem;
+    }
+
+    main.section p,
+    main.section li {
+      font-size: 0.96rem;
+      color: #4b5563;
+    }
+
+    main.section ul {
+      padding-left: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: calc(100vh - 70px);
+        background: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 16px;
+        box-shadow: -2px 0 10px rgba(15, 23, 42, 0.1);
+        transition: right 0.3s ease;
+      }
+
+      nav ul.active {
+        right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- LANGUAGE SWITCHER OVERLAY -->
+  <div class="language-switcher-overlay">
+    <button onclick="setLanguage('en')">ENG</button>
+    <button onclick="setLanguage('rw')">KINY</button>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <img src="logo.jpg" loading="lazy" alt="BPC LTD Logo" class="logo-img">
+        <span class="logo-text">Bendik Pharmacy<br> Consultancy</span>
+      </a>
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="index.html" data-translate="nav_home">Home</a></li>
+          <li><a href="aboutus.html" data-translate="nav_about">About Us</a></li>
+          <li><a href="mission.html" data-translate="nav_mission">Mission</a></li>
+          <li><a href="corevalue.html" data-translate="nav_core_values">Core Values</a></li>
+          <li><a href="services.html" data-translate="nav_services">Services</a></li>
+          <li><a href="contactus.html" data-translate="nav_contact">Contact Us</a></li>
+          <a class="call-button" href="tel:+250796690160" data-translate="nav_call">Call: +250796690160</a>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section" style="padding-top: 120px; max-width: 900px; margin: 0 auto;">
+    <h1 style="color:#7CB342; margin-bottom: 1rem;">Terms of Use</h1>
+    <p style="margin-bottom: 1rem; font-size: 0.95rem; color:#555;">Last updated: 2025</p>
+    <p style="margin-bottom: 1rem;">These Terms of Use ("Terms") govern your use of the Bendik Pharmacy Consultancy Ltd website ("Site"). By accessing or using the Site while in Rwanda or when your activities relate to services we provide in Rwanda, you agree to be bound by these Terms. If you do not agree, please do not use the Site.</p>
+
+    <h2 style="color:#1e293b; margin-top:2rem; margin-bottom:0.5rem;">1. Informational Nature of the Site</h2>
+    <p style="margin-bottom: 1rem;">The content on this Site is provided for general information about our consultancy and related services. It does not constitute legal, medical, financial or regulatory advice and should not be relied upon as such. You are responsible for how you use the information presented and should obtain appropriate professional advice before making decisions.</p>
+
+    <h2 style="color:#1e293b; margin-top:2rem; margin-bottom:0.5rem;">2. No Automatic Client Relationship</h2>
+    <p style="margin-bottom: 1rem;">Viewing this Site, contacting us through it, or submitting a form does not by itself create a client-consultant relationship. A formal written engagement or contract with Bendik Pharmacy Consultancy Ltd is required before we provide consultancy, recruitment or other professional services.</p>
+
+    <h2 style="color:#1e293b; margin-top:2rem; margin-bottom:0.5rem;">3. Your Responsibilities</h2>
+    <p style="margin-bottom: 1rem;">You agree to use the Site only for lawful purposes and in a manner that does not infringe the rights of, or restrict or inhibit the use and enjoyment of the Site by, any third party. You are responsible for ensuring that any information you provide is accurate and does not violate the rights of others.</p>
+
+    <h2 style="color:#1e293b; margin-top:2rem; margin-bottom:0.5rem;">4. Intellectual Property</h2>
+    <p style="margin-bottom: 1rem;">All text, graphics, logos, icons, images and other materials on this Site are owned by Bendik Pharmacy Consultancy Ltd or its licensors and are protected by applicable intellectual property laws. You may view and print content for your personal, non‑commercial use only. Any other use, including copying, modifying, distributing or publishing, is prohibited without our prior written consent.</p>
+
+    <h2 style="color:#1e293b; margin-top:2rem; margin-bottom:0.5rem;">5. Third‑Party Websites</h2>
+    <p style="margin-bottom: 1rem;">The Site may contain links to third‑party websites or resources. These are provided for convenience only. We do not control and are not responsible for the content, accuracy, security or privacy practices of such external sites.</p>
+
+    <h2 style="color:#1e293b; margin-top:2rem; margin-bottom:0.5rem;">6. Limitation of Liability</h2>
+    <p style="margin-bottom: 1rem;">To the fullest extent permitted under Rwandan law, Bendik Pharmacy Consultancy Ltd and its directors, employees and consultants shall not be liable for any indirect, incidental, consequential or punitive damages, or for any loss of profits, revenue, data or business opportunities, arising out of or in connection with your use of this Site or reliance on its content.</p>
+    <p style="margin-bottom: 1rem;">Nothing in these Terms is intended to exclude or limit any liability that cannot be excluded or limited under applicable Rwandan law.</p>
+
+    <h2 style="color:#1e293b; margin-top:2rem; margin-bottom:0.5rem;">7. Governing Law and Dispute Resolution</h2>
+    <p style="margin-bottom: 1rem;">These Terms and any dispute arising out of or relating to your use of the Site are governed by the laws of the Republic of Rwanda. Where possible, the parties shall first seek to resolve any dispute amicably. If a dispute cannot be resolved amicably, it shall be submitted to the competent courts of Rwanda.</p>
+
+    <h2 style="color:#1e293b; margin-top:2rem; margin-bottom:0.5rem;">8. Changes to These Terms</h2>
+    <p style="margin-bottom: 1rem;">We may update these Terms from time to time, for example to reflect changes in our services or in Rwandan law. When we do so, we will update the "Last updated" date above. Your continued use of the Site after any changes are posted will constitute your acceptance of the revised Terms.</p>
+  </main>
+</body>
+</html>
