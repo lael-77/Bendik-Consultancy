@@ -1,0 +1,6 @@
+Bendik-Pharmacy-Consultancy-main/backend
+Bendik-Pharmacy-Consultancy-main/backend/**
+**/node_modules
+**/node_modules/**
+**/.env
+**/.env.*
