@@ -1,7 +1,22 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
     {
       "handle": "filesystem"
+    },
+    {
+      "src": "/Admin",
+      "dest": "/Admin/index.html"
+    },
+    {
+      "src": "/admin",
+      "dest": "/Admin/index.html"
     },
     {
       "src": "/(.*)",
