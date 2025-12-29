@@ -788,29 +788,67 @@ textarea:focus {
     box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
 }
 
-/* Language Switcher Styles (match privacy.html) */
+/* Language Switcher Styles */
+/* ====== LANGUAGE SWITCHER OVERLAY ====== */
 .language-switcher-overlay {
     position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1100;
+    top: 72px;
+    right: 2px;
+    z-index: 1001;
     display: flex;
-    gap: 8px;
+    gap: 5px;
+    padding: 8px;
+    border-radius: 8px;
 }
 
 .language-switcher-overlay button {
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: 1px solid var(--green);
-    background: #ffffff;
-    color: var(--green);
-    font-size: 11px;
+    background: white;
+    color: #7CB342;
+    border: 2px solid #7CB342;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s;
+    min-width: 80px;
 }
 
 .language-switcher-overlay button:hover {
-    background: var(--green);
-    color: #ffffff;
+    background: #7CB342;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.language-switcher-overlay button.active {
+    background: #7CB342;
+    color: white;
+    box-shadow: 0 2px 8px rgba(124, 179, 66, 0.3);
+}
+
+/* ====== RESPONSIVE LANGUAGE SWITCHER BUTTONS ====== */
+@media (max-width: 768px) {
+    .language-switcher-overlay button {
+        padding: 4px 8px;
+        font-size: 10px;
+        min-width: 65px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-switcher-overlay button {
+        padding: 3px 6px;
+        font-size: 9px;
+        min-width: 55px;
+    }
+}
+
+@media (max-width: 360px) {
+    .language-switcher-overlay button {
+        padding: 2px 4px;
+        font-size: 8px;
+        min-width: 45px;
+    }
 }
 
   </style>
