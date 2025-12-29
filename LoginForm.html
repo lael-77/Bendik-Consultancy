@@ -433,6 +433,37 @@
                 return;
             }
 
+            loginBtn.classList.add('loading');
+            loginBtn.disabled = true;
+
+            fetch('https://bendik-pharmacy-consultancy.onrender.com/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            })
+            .then(async (res) => {
+                let data = {};
+                try {
+                    data = await res.json();
+                } catch (_) {
+                    data = {};
+                }
+                if (res.ok && data.token) {
+                    localStorage.setItem('token', data.token);
+                    window.location.href = '/admin-dashboard.html';
+                    return;
+                }
+                alert((data && data.message) ? data.message : 'Login failed. Invalid email or password.');
+            })
+            .catch(() => {
+                alert('Network error.');
+            })
+            .finally(() => {
+                loginBtn.classList.remove('loading');
+                loginBtn.disabled = false;
+            });
+
+            const __legacyInvalidSnippet = `
             .login-btn.loading .btn-text {
                 display: none;
             }
@@ -491,20 +522,9 @@
             @media (max-width: 640px) {
                 .container {
                     padding: 0 1rem;
-                if (res.ok && data.token) {
-                    localStorage.setItem('token', data.token);
-                    window.location.href = '/admin-dashboard.html';
-                } else {
-                    alert(data.message || 'Login failed. Invalid email or password.');
                 }
-            })
-            .catch(() => {
-                alert('Network error.');
-            })
-            .finally(() => {
-                loginBtn.classList.remove('loading');
-                loginBtn.disabled = false;
-            });
+            }
+            `;
         });
     </script>
 </body>
