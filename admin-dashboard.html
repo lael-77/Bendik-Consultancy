@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bendik Pharmacy Consultancy Admin Dashboard</title>
     <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="stylesheet" href="./AdminLTE-4.0.0-rc4/AdminLTE-4.0.0-rc4/dist/css/adminlte.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"
+      crossorigin="anonymous"
+    />
     <style>
         * {
             margin: 0;
@@ -17,6 +28,14 @@
             background-color: #f8fafc;
             color: #334155;
             line-height: 1.6;
+        }
+
+        .app-content {
+            padding-top: 1rem;
+        }
+
+        .app-content-header {
+            background: transparent;
         }
 
         .dashboard-container {
@@ -37,18 +56,18 @@
             top: 0;
             z-index: 100;
         }
-        .nav-brand {
+        .topnav .nav-brand {
             font-size: 1.25rem;
             font-weight: 700;
             color: #1e293b;
             letter-spacing: 1px;
         }
-        .nav-links {
+        .topnav .nav-links {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
-        .nav-item {
+        .topnav .nav-item {
             color: #64748b;
             text-decoration: none;
             font-weight: 500;
@@ -57,12 +76,12 @@
             border-radius: 4px;
             transition: background 0.2s, color 0.2s;
         }
-        .nav-item:hover,
-        .nav-item.active {
+        .topnav .nav-item:hover,
+        .topnav .nav-item.active {
             background-color: #e0e7ef;
             color: #2563eb;
         }
-        .menu-toggle {
+        .topnav .menu-toggle {
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -75,7 +94,7 @@
             background: #ffffff;
             cursor: pointer;
         }
-        .menu-toggle span {
+        .topnav .menu-toggle span {
             display: block;
             width: 18px;
             height: 2px;
@@ -84,13 +103,13 @@
             margin: 2px 0;
             transition: transform 0.2s ease, opacity 0.2s ease;
         }
-        .menu-toggle.open span:nth-child(1) {
+        .topnav .menu-toggle.open span:nth-child(1) {
             transform: translateY(4px) rotate(45deg);
         }
-        .menu-toggle.open span:nth-child(2) {
+        .topnav .menu-toggle.open span:nth-child(2) {
             opacity: 0;
         }
-        .menu-toggle.open span:nth-child(3) {
+        .topnav .menu-toggle.open span:nth-child(3) {
             transform: translateY(-4px) rotate(-45deg);
         }
 
@@ -119,13 +138,13 @@
                 padding: 0.75rem 1rem;
                 gap: 0.5rem;
             }
-            .nav-brand {
+            .topnav .nav-brand {
                 font-size: 1.1rem;
             }
-            .menu-toggle {
+            .topnav .menu-toggle {
                 display: flex;
             }
-            .nav-links {
+            .topnav .nav-links {
                 position: absolute;
                 top: 64px;
                 left: 0;
@@ -138,10 +157,10 @@
                 padding: 0.5rem 1rem 0.75rem;
                 display: none;
             }
-            .nav-links.open {
+            .topnav .nav-links.open {
                 display: flex;
             }
-            .nav-item {
+            .topnav .nav-item {
                 padding: 0.4rem 0.75rem;
                 font-size: 0.95rem;
                 width: 100%;
@@ -155,14 +174,15 @@
         }
 
         .page-header {
-            margin-bottom: 2rem;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 0;
         }
 
-        .page-title {
-            font-size: 2rem;
-            font-weight: 700;
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
             color: #1e293b;
-            margin-bottom: 0.5rem;
         }
 
         .page-subtitle {
@@ -197,54 +217,370 @@
             margin-top: 0.25rem;
         }
 
-        /* Tables */
-        .section {
-            background: white;
-            border-radius: 0.5rem;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-
-        .section-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
+        /* High-Performance Table Styles */
         .table-container {
             overflow-x: auto;
+            overflow-y: auto;
+            max-height: 70vh;
+            position: relative;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
         }
 
-        table {
+        .section .table-container {
+            border: none;
+            border-radius: 0;
+            max-height: 70vh;
+        }
+
+        .data-table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: fixed;
+            font-size: 14px;
         }
 
-        th, td {
-            padding: 1rem;
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem 1rem;
             text-align: left;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #f1f5f9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            height: 48px;
         }
 
-        th {
+        /* Column width constraints */
+        .data-table .col-checkbox { width: 40px; min-width: 40px; max-width: 40px; }
+        .data-table .col-id { width: 80px; min-width: 60px; max-width: 100px; }
+        .data-table .col-name { width: 200px; min-width: 150px; max-width: 300px; }
+        .data-table .col-contact { width: 150px; min-width: 120px; max-width: 200px; }
+        .data-table .col-email { width: 180px; min-width: 150px; max-width: 250px; }
+        .data-table .col-phone { width: 130px; min-width: 110px; max-width: 150px; }
+        .data-table .col-status { width: 100px; min-width: 80px; max-width: 120px; }
+        .data-table .col-type { width: 120px; min-width: 100px; max-width: 150px; }
+        .data-table .col-location { width: 140px; min-width: 120px; max-width: 180px; }
+        .data-table .col-date { width: 140px; min-width: 120px; max-width: 160px; }
+        .data-table .col-actions { width: 120px; min-width: 100px; max-width: 140px; }
+        .data-table .col-flex { width: auto; min-width: 100px; }
+
+        /* Sticky header and first column */
+        .data-table thead th {
             background-color: #f8fafc;
             font-weight: 600;
             color: #374151;
-            font-size: 0.875rem;
+            font-size: 13px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 2px solid #e2e8f0;
+            user-select: none;
         }
 
-        td {
-            color: #6b7280;
+        .data-table tbody td {
+            color: #334155;
         }
 
-        tbody tr:hover {
+        .data-table thead th.sortable {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .data-table thead th.sortable:hover {
+            background-color: #f1f5f9;
+        }
+
+        .data-table thead th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 11;
+            border-right: 2px solid #e2e8f0;
+        }
+
+        .data-table tbody td:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            background-color: white;
+            border-right: 2px solid #e2e8f0;
+        }
+
+        /* Zebra striping */
+        .data-table tbody tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+
+        .data-table tbody tr:hover {
             background-color: #f8fafc;
+        }
+
+        .data-table tbody tr.selected {
+            background-color: #eff6ff;
+        }
+
+        /* Tooltip styles */
+        .cell-tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .cell-tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1e293b;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
+            max-width: 300px;
+            white-space: normal;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sort indicators */
+        .sort-indicator {
+            display: inline-block;
+            margin-left: 0.5rem;
+            opacity: 0.5;
+        }
+
+        .sort-indicator.active {
+            opacity: 1;
+            color: #2563eb;
+        }
+
+        /* Filter dropdown */
+        .filter-dropdown {
+            position: relative;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 0.25rem;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        .filter-btn:hover {
+            opacity: 1;
+        }
+
+        .filter-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem;
+            min-width: 200px;
+            z-index: 100;
+            display: none;
+        }
+
+        .filter-menu.show {
+            display: block;
+        }
+
+        .filter-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            font-size: 13px;
+            margin-bottom: 0.5rem;
+        }
+
+        .filter-option {
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            font-size: 13px;
+        }
+
+        .filter-option:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Checkbox styles */
+        .row-checkbox {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        /* Bulk actions */
+        .bulk-actions {
+            padding: 1rem;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bulk-actions.show {
+            display: flex;
+        }
+
+        .selected-count {
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        /* Column visibility toggle */
+        .column-controls {
+            padding: 1rem;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .column-toggle-btn {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .column-toggle-btn:hover {
+            background-color: #f8fafc;
+        }
+
+        .column-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem;
+            min-width: 180px;
+            z-index: 100;
+            display: none;
+        }
+
+        .column-menu.show {
+            display: block;
+        }
+
+        .column-option {
+            display: flex;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            font-size: 13px;
+        }
+
+        .column-option:hover {
+            background-color: #f8fafc;
+        }
+
+        .column-option input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        /* Loading state */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Search and pagination */
+        .table-controls {
+            padding: 1rem;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            font-size: 14px;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pagination-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 0.375rem;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background-color: #f8fafc;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-info {
+            font-size: 13px;
+            color: #64748b;
         }
 
         /* Status badges */
@@ -331,7 +667,77 @@
             background: #dc2626;
         }
 
-        /* Responsive */
+        /* Print-friendly styles */
+        @media print {
+            .app-header,
+            .app-sidebar,
+            .bulk-actions,
+            .table-controls,
+            .column-controls,
+            .action-btn,
+            .action-btn1,
+            .delete-btn,
+            .filter-dropdown,
+            .pagination {
+                display: none !important;
+            }
+
+            .main-content {
+                padding: 0;
+            }
+
+            .section {
+                box-shadow: none;
+                border: 1px solid #000;
+                margin-bottom: 1rem;
+                page-break-inside: avoid;
+            }
+
+            .table-container {
+                max-height: none;
+                overflow: visible;
+            }
+
+            .data-table {
+                font-size: 10px;
+                table-layout: auto;
+            }
+
+            .data-table th,
+            .data-table td {
+                border: 1px solid #000;
+                padding: 4px 8px;
+                height: auto;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+            }
+
+            .data-table th {
+                background-color: #f0f0f0 !important;
+                position: static;
+            }
+
+            .data-table td:first-child {
+                position: static;
+                background-color: white;
+            }
+
+            .data-table tbody tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+            .page-header {
+                margin-bottom: 1rem;
+            }
+
+            .section-title {
+                font-size: 16px;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .dashboard-container {
                 flex-direction: column;
@@ -343,6 +749,53 @@
 
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+
+            /* Table responsive styles */
+            .table-container {
+                max-height: 60vh;
+            }
+
+            .table-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .search-box {
+                max-width: none;
+            }
+
+            .pagination {
+                justify-content: center;
+            }
+
+            .column-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .bulk-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: stretch;
+            }
+
+            .data-table {
+                font-size: 12px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.5rem;
+                height: 40px;
+            }
+
+            /* Hide some columns on mobile */
+            .data-table .col-id,
+            .data-table .col-tinNumber,
+            .data-table .col-nationalId {
+                display: none;
             }
         }
 
@@ -356,15 +809,15 @@
                 padding: 0.5rem 0.75rem;
             }
 
-            .nav-brand {
+            .topnav .nav-brand {
                 font-size: 1rem;
             }
 
-            .nav-links {
+            .topnav .nav-links {
                 gap: 0.25rem;
             }
 
-            .nav-item {
+            .topnav .nav-item {
                 padding: 0.35rem 0.5rem;
                 font-size: 0.9rem;
                 text-align: center;
@@ -388,13 +841,21 @@
                 font-size: 1.3rem;
             }
 
-            table {
-                font-size: 0.8rem;
+            /* More aggressive mobile table styles */
+            .data-table {
+                font-size: 11px;
             }
 
-            th,
-            td {
-                padding: 0.5rem;
+            .data-table th,
+            .data-table td {
+                padding: 0.25rem 0.5rem;
+                height: 36px;
+            }
+
+            /* Hide more columns on small screens */
+            .data-table .col-location,
+            .data-table .col-contactMode {
+                display: none;
             }
 
             .action-btn,
@@ -417,64 +878,209 @@
                 padding: 0.6rem;
             }
         }
+
+        /* Sections */
+        .section {
+            background: white;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            overflow: hidden;
+        }
+
+        .section.card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
     </style>
 </head>
-<body>
-    <div class="dashboard-container">
-        <!-- Top Navigation Bar -->
-        <nav class="topnav">
-            <span class="nav-brand">Bendik Pharmacy Admin</span>
-            <div class="nav-links">
-                <a href="#client-requests" class="nav-item" id="client-requests-link">Client Requests</a>
-                <a href="#pharmacy-purchase-requests" class="nav-item" id="pharmacy-purchase-requests-link">Pharmacy Purchase Requests</a>
-                <a href="#pharmacy-sale-requests" class="nav-item" id="pharmacy-sale-requests-link">Pharmacy Sale Requests</a>
-                <a href="#job-applications" class="nav-item" id="job-applications-link">Job Applications</a>
-                <a href="#recruitment-requests" class="nav-item" id="recruitment-requests-link">Recruitment Requests</a>
-                <a href="#announcements" class="nav-item" id="announcements-link">Announcements</a>
+<body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
+    <div class="app-wrapper">
+        <nav class="app-header navbar navbar-expand bg-body">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button" aria-label="Toggle sidebar">
+                            <i class="bi bi-list"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item d-none d-md-flex align-items-center">
+                        <span class="navbar-text fw-semibold">Bendik Pharmacy Admin</span>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <button type="button" onclick="window.print()" class="btn btn-outline-secondary btn-sm me-2">Print</button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" onclick="logout()" class="btn btn-danger btn-sm">Logout</button>
+                    </li>
+                </ul>
             </div>
-            <button class="menu-toggle" type="button" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </nav>
 
-        <!-- Main Content -->
-        <main class="main-content">
-                <button onclick="logout()" class="action-btn" style="float:right;">Logout</button>
-                <button onclick="window.print()" class="action-btn1" style="float:right;">Print</button>
+        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+            <div class="sidebar-brand">
+                <a href="#" class="brand-link">
+                    <span class="brand-text fw-light">Bendik Pharmacy</span>
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <nav class="mt-2">
+                    <ul class="nav sidebar-menu flex-column" role="navigation" aria-label="Main navigation" id="navigation">
+                        <li class="nav-item">
+                            <a href="#client-requests" class="nav-link active" id="client-requests-link" data-section="client-requests">
+                                <i class="nav-icon bi bi-people"></i>
+                                <p>Client Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#pharmacy-purchase-requests" class="nav-link" id="pharmacy-purchase-requests-link" data-section="pharmacy-purchase-requests">
+                                <i class="nav-icon bi bi-bag"></i>
+                                <p>Pharmacy Purchase Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#pharmacy-sale-requests" class="nav-link" id="pharmacy-sale-requests-link" data-section="pharmacy-sale-requests">
+                                <i class="nav-icon bi bi-cart"></i>
+                                <p>Pharmacy Sale Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#job-applications" class="nav-link" id="job-applications-link" data-section="job-applications">
+                                <i class="nav-icon bi bi-person-badge"></i>
+                                <p>Job Applications</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#recruitment-requests" class="nav-link" id="recruitment-requests-link" data-section="recruitment-requests">
+                                <i class="nav-icon bi bi-briefcase"></i>
+                                <p>Recruitment Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#announcements" class="nav-link" id="announcements-link" data-section="announcements">
+                                <i class="nav-icon bi bi-megaphone"></i>
+                                <p>Announcements</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="app-main">
+            <div class="app-content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">Admin Dashboard</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-content">
+                <div class="container-fluid">
 
             <!-- Client Requests Section -->
-            <section class="section" id="client-requests">
-                <div class="page-header">
-                    <h2 class="section-title">Client Service Requests Dashboard</h2>
+            <section class="section card mb-4" id="client-requests">
+                <div class="card-header">
+                    <h3 class="card-title">Client Service Requests Dashboard</h3>
                 </div>
+                <div class="card-body p-0">
+                
+                <!-- Table Controls -->
+                <div class="table-controls">
+                    <div class="search-box">
+                        <input type="text" class="search-input" id="client-search" placeholder="Search requests...">
+                    </div>
+                    <div class="pagination">
+                        <button class="pagination-btn" id="client-prev" onclick="changePage('client', -1)">Previous</button>
+                        <span class="pagination-info" id="client-info">Page 1 of 1</span>
+                        <button class="pagination-btn" id="client-next" onclick="changePage('client', 1)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Column Controls -->
+                <div class="column-controls">
+                    <span style="font-size: 13px; color: #64748b;">Showing <span id="client-count">0</span> requests</span>
+                    <div style="position: relative;">
+                        <button class="column-toggle-btn" onclick="toggleColumnMenu('client')">
+                            ☰ Columns
+                        </button>
+                        <div class="column-menu" id="client-column-menu"></div>
+                    </div>
+                </div>
+
+                <!-- Bulk Actions -->
+                <div class="bulk-actions" id="client-bulk-actions">
+                    <span class="selected-count"><span id="client-selected-count">0</span> selected</span>
+                    <button class="action-btn" onclick="bulkDelete('client')">Delete Selected</button>
+                    <button class="action-btn1" onclick="bulkExport('client')">Export Selected</button>
+                </div>
+
                 <div class="table-container">
-                    <table>
+                    <div class="loading-overlay" id="client-loading" style="display: none;">
+                        <div class="loading-spinner"></div>
+                    </div>
+                    <table class="data-table" id="client-table">
                         <thead>
                             <tr>
-                                <th>Full Name</th>
-                                <th>Organization/Pharmacy Name</th>
-                                <th>Type of Business</th>
-                                <th>National ID</th>
-                                <th>TIN Number</th>
-                                <th>Location</th>
-                                <th>Phone Number</th>
-                                <th>Email Address</th>
-                                <th>Preferred Mode of Contact</th>
-                                <th>Services Requested</th>
-                                <th>Other Service</th>
-                                <th>Preferred Timeline</th>
-                                <th>Specific Dates</th>
-                                <th>Needs Description</th>
-                                <th>Prefered Insurance</th>
-                                <th>Quotation/Invoice Required</th>
-                                <th>Preferred Payment Mode</th>
-                                <th>Business Registered Name</th>
-                                <th>Declaration Accepted</th>
-                                <th>Name & Signature</th>
-                                <th>Date Submitted</th>
-                                <th>Actions</th>
+                                <th class="col-checkbox sortable" onclick="toggleSelectAll('client')">
+                                    <input type="checkbox" class="row-checkbox" id="client-select-all">
+                                </th>
+                                <th class="col-name sortable" onclick="sortTable('client', 'fullName')">
+                                    Full Name <span class="sort-indicator" data-column="fullName">↕</span>
+                                    <div class="filter-dropdown">
+                                        <button class="filter-btn" onclick="toggleFilter('client', 'fullName')">⚡</button>
+                                        <div class="filter-menu" id="client-filter-fullName">
+                                            <input type="text" class="filter-input" placeholder="Filter names..." onkeyup="filterColumn('client', 'fullName', this.value)">
+                                            <div class="filter-option" onclick="clearFilter('client', 'fullName')">Clear Filter</div>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th class="col-name sortable" onclick="sortTable('client', 'organizationName')">
+                                    Organization <span class="sort-indicator" data-column="organizationName">↕</span>
+                                </th>
+                                <th class="col-type sortable" onclick="sortTable('client', 'businessType')">
+                                    Business Type <span class="sort-indicator" data-column="businessType">↕</span>
+                                </th>
+                                <th class="col-id sortable" onclick="sortTable('client', 'nationalId')">
+                                    National ID <span class="sort-indicator" data-column="nationalId">↕</span>
+                                </th>
+                                <th class="col-id sortable" onclick="sortTable('client', 'tinNumber')">
+                                    TIN <span class="sort-indicator" data-column="tinNumber">↕</span>
+                                </th>
+                                <th class="col-location sortable" onclick="sortTable('client', 'location')">
+                                    Location <span class="sort-indicator" data-column="location">↕</span>
+                                </th>
+                                <th class="col-contact sortable" onclick="sortTable('client', 'phoneNumber')">
+                                    Phone <span class="sort-indicator" data-column="phoneNumber">↕</span>
+                                </th>
+                                <th class="col-email sortable" onclick="sortTable('client', 'email')">
+                                    Email <span class="sort-indicator" data-column="email">↕</span>
+                                </th>
+                                <th class="col-type sortable" onclick="sortTable('client', 'contactMode')">
+                                    Contact Mode <span class="sort-indicator" data-column="contactMode">↕</span>
+                                </th>
+                                <th class="col-flex sortable" onclick="sortTable('client', 'services')">
+                                    Services <span class="sort-indicator" data-column="services">↕</span>
+                                </th>
+                                <th class="col-date sortable" onclick="sortTable('client', 'createdAt')">
+                                    Date Submitted <span class="sort-indicator" data-column="createdAt">↕</span>
+                                </th>
+                                <th class="col-actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="client-requests-tbody">
@@ -482,232 +1088,239 @@
                         </tbody>
                     </table>
                 </div>
+                </div>
             </section>
 
             <!-- Pharmacy Purchase Requests Section -->
-            <section class="section" id="pharmacy-purchase-requests" style="display:none;">
-                <div class="section-header">
-                    <h2 class="section-title">Pharmacy Purchase Requests</h2>
+            <section class="section card mb-4" id="pharmacy-purchase-requests" style="display:none;">
+                <div class="card-header">
+                    <h3 class="card-title">Pharmacy Purchase Requests</h3>
                 </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Buyer Name</th>
-                                <th>Phone Number</th>
-                                <th>Email</th>
-                                <th>Contact Method</th>
-                                <th>National ID</th>
-                                <th>TIN Number</th>
-                                <th>Pharmacy Type</th>
-                                <th>Other Type</th>
-                                <th>Preferred Location</th>
-                                <th>Operating Area</th>
-                                <th>Business Status</th>
-                                <th>Ownership Type</th>
-                                <th>Min Revenue</th>
-                                <th>Budget Range</th>
-                                <th>Budget Flexible</th>
-                                <th>Timeline</th>
-                                <th>Insurance Partners</th>
-                                <th>Support Services</th>
-                                <th>Other Services</th>
-                                <th>Additional Info</th>
-                                <th>Client Signature</th>
-                                <th>Date</th>
-                                <th>Submitted At</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="pharmacy-purchase-requests-tbody">
-                            <!-- Dynamic content will be inserted here by JS -->
-                        </tbody>
-                    </table>
+                <div class="card-body p-0">
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="purchase-search" placeholder="Search purchase requests...">
+                        </div>
+                        <div class="pagination">
+                            <button class="pagination-btn" id="purchase-prev" onclick="changePage('purchase', -1)">Previous</button>
+                            <span class="pagination-info" id="purchase-info">Page 1 of 1</span>
+                            <button class="pagination-btn" id="purchase-next" onclick="changePage('purchase', 1)">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="column-controls">
+                        <span style="font-size: 13px; color: #64748b;">Showing <span id="purchase-count">0</span> requests</span>
+                        <div style="position: relative;">
+                            <button class="column-toggle-btn" onclick="toggleColumnMenu('purchase')">☰ Columns</button>
+                            <div class="column-menu" id="purchase-column-menu"></div>
+                        </div>
+                    </div>
+
+                    <div class="bulk-actions" id="purchase-bulk-actions">
+                        <span class="selected-count"><span id="purchase-selected-count">0</span> selected</span>
+                        <button class="action-btn" onclick="bulkDelete('purchase')">Delete Selected</button>
+                        <button class="action-btn1" onclick="bulkExport('purchase')">Export Selected</button>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="loading-overlay" id="purchase-loading" style="display: none;">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <table class="data-table" id="purchase-table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody id="purchase-requests-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             <!-- Pharmacy Sale Requests Section -->
-            <section class="section" id="pharmacy-sale-requests" style="display:none;">
-                <div class="section-header">
-                    <h2 class="section-title">Pharmacy Sale Requests</h2>
+            <section class="section card mb-4" id="pharmacy-sale-requests" style="display:none;">
+                <div class="card-header">
+                    <h3 class="card-title">Pharmacy Sale Requests</h3>
                 </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Owner Name</th>
-                                <th>Phone Number</th>
-                                <th>Email</th>
-                                <th>Contact Mode</th>
-                                <th>Pharmacy Name</th>
-                                <th>Business Type</th>
-                                <th>Location</th>
-                                <th>Ownership Type</th>
-                                <th>Premises Size</th>
-                                <th>License Status</th>
-                                <th>Years</th>
-                                <th>Sales Range</th>
-                                <th>Insurance Partners</th>
-                                <th>Staff Count</th>
-                                <th>Inventory Value</th>
-                                <th>Equipment Included</th>
-                                <th>Reason</th>
-                                <th>Debts</th>
-                                <th>Debt Amount</th>
-                                <th>Price</th>
-                                <th>Negotiable</th>
-                                <th>Timeline</th>
-                                <th>Valuation Service</th>
-                                <th>Additional Info</th>
-                                <th>Documents</th>
-                                <th>Signature</th>
-                                <th>Date</th>
-                                <th>Submitted At</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="pharmacy-sale-requests-tbody">
-                            <!-- Dynamic content will be inserted here by JS -->
-                        </tbody>
-                    </table>
+                <div class="card-body p-0">
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="sale-search" placeholder="Search sale requests...">
+                        </div>
+                        <div class="pagination">
+                            <button class="pagination-btn" id="sale-prev" onclick="changePage('sale', -1)">Previous</button>
+                            <span class="pagination-info" id="sale-info">Page 1 of 1</span>
+                            <button class="pagination-btn" id="sale-next" onclick="changePage('sale', 1)">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="column-controls">
+                        <span style="font-size: 13px; color: #64748b;">Showing <span id="sale-count">0</span> requests</span>
+                        <div style="position: relative;">
+                            <button class="column-toggle-btn" onclick="toggleColumnMenu('sale')">☰ Columns</button>
+                            <div class="column-menu" id="sale-column-menu"></div>
+                        </div>
+                    </div>
+
+                    <div class="bulk-actions" id="sale-bulk-actions">
+                        <span class="selected-count"><span id="sale-selected-count">0</span> selected</span>
+                        <button class="action-btn" onclick="bulkDelete('sale')">Delete Selected</button>
+                        <button class="action-btn1" onclick="bulkExport('sale')">Export Selected</button>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="loading-overlay" id="sale-loading" style="display: none;">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <table class="data-table" id="sale-table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody id="sale-requests-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             <!-- Job Applications Section -->
-            <section class="section" id="job-applications" style="display:none;">
-                <div class="section-header">
-                    <h2 class="section-title">Job Applications</h2>
+            <section class="section card mb-4" id="job-applications" style="display:none;">
+                <div class="card-header">
+                    <h3 class="card-title">Job Applications</h3>
                 </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Full Name</th>
-                                <th>Date of Birth</th>
-                                <th>Nationality</th>
-                                <th>National ID</th>
-                                <th>NPC Number</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Contact Mode</th>
-                                <th>Position</th>
-                                <th>Other Position</th>
-                                <th>License Status</th>
-                                <th>Qualification</th>
-                                <th>Institution</th>
-                                <th>Graduation Year</th>
-                                <th>Experience</th>
-                                <th>Pharmacy Type</th>
-                                <th>Schedule</th>
-                                <th>Location Pref</th>
-                                <th>Relocate</th>
-                                <th>Salary From</th>
-                                <th>Salary To</th>
-                                <th>Start Date</th>
-                                <th>Skills</th>
-                                <th>Other Skills</th>
-                                <th>Employer</th>
-                                <th>Position Held</th>
-                                <th>Duration</th>
-                                <th>Reason for Leaving</th>
-                                <th>Reference Name</th>
-                                <th>Reference Relation</th>
-                                <th>Reference Phone</th>
-                                <th>Signature</th>
-                                <th>Signature Date</th>
-                                <th>Submitted At</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="job-applications-tbody">
-                            <!-- Dynamic content will be inserted here by JS -->
-                        </tbody>
-                    </table>
+                <div class="card-body p-0">
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="jobs-search" placeholder="Search job applications...">
+                        </div>
+                        <div class="pagination">
+                            <button class="pagination-btn" id="jobs-prev" onclick="changePage('jobs', -1)">Previous</button>
+                            <span class="pagination-info" id="jobs-info">Page 1 of 1</span>
+                            <button class="pagination-btn" id="jobs-next" onclick="changePage('jobs', 1)">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="column-controls">
+                        <span style="font-size: 13px; color: #64748b;">Showing <span id="jobs-count">0</span> applications</span>
+                        <div style="position: relative;">
+                            <button class="column-toggle-btn" onclick="toggleColumnMenu('jobs')">☰ Columns</button>
+                            <div class="column-menu" id="jobs-column-menu"></div>
+                        </div>
+                    </div>
+
+                    <div class="bulk-actions" id="jobs-bulk-actions">
+                        <span class="selected-count"><span id="jobs-selected-count">0</span> selected</span>
+                        <button class="action-btn" onclick="bulkDelete('jobs')">Delete Selected</button>
+                        <button class="action-btn1" onclick="bulkExport('jobs')">Export Selected</button>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="loading-overlay" id="jobs-loading" style="display: none;">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <table class="data-table" id="jobs-table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody id="jobs-requests-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             <!-- Recruitment Requests Section -->
-            <section class="section" id="recruitment-requests" style="display:none;">
-                <div class="section-header">
-                    <h2 class="section-title">Recruitment Requests</h2>
+            <section class="section card mb-4" id="recruitment-requests" style="display:none;">
+                <div class="card-header">
+                    <h3 class="card-title">Recruitment Requests</h3>
                 </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Pharmacy Name</th>
-                                <th>Contact Person</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Location</th>
-                                <th>Type</th>
-                                <th>Type Other</th>
-                                <th>Branches</th>
-                                <th>Staff Count</th>
-                                <th>Position</th>
-                                <th>Positions Available</th>
-                                <th>Employment Type</th>
-                                <th>Start Date</th>
-                                <th>Working Hours</th>
-                                <th>Salary From</th>
-                                <th>Salary To</th>
-                                <th>Housing/Transport</th>
-                                <th>Bonus</th>
-                                <th>Bonus Details</th>
-                                <th>Qualification</th>
-                                <th>License</th>
-                                <th>Experience</th>
-                                <th>Language</th>
-                                <th>Other Language</th>
-                                <th>Additional Skills</th>
-                                <th>Responsibility 1</th>
-                                <th>Responsibility 2</th>
-                                <th>Responsibility 3</th>
-                                <th>Responsibility 4</th>
-                                <th>Responsibility 5</th>
-                                <th>Reporting Line</th>
-                                <th>System Used</th>
-                                <th>Team Structure</th>
-                                <th>Training</th>
-                                <th>Challenges</th>
-                                <th>Support</th>
-                                <th>Signature</th>
-                                <th>Signature Date</th>
-                                <th>Submitted At</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="recruitment-requests-tbody">
-                            <!-- Dynamic content will be inserted here by JS -->
-                        </tbody>
-                    </table>
+                <div class="card-body p-0">
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="recruitment-search" placeholder="Search recruitment requests...">
+                        </div>
+                        <div class="pagination">
+                            <button class="pagination-btn" id="recruitment-prev" onclick="changePage('recruitment', -1)">Previous</button>
+                            <span class="pagination-info" id="recruitment-info">Page 1 of 1</span>
+                            <button class="pagination-btn" id="recruitment-next" onclick="changePage('recruitment', 1)">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="column-controls">
+                        <span style="font-size: 13px; color: #64748b;">Showing <span id="recruitment-count">0</span> requests</span>
+                        <div style="position: relative;">
+                            <button class="column-toggle-btn" onclick="toggleColumnMenu('recruitment')">☰ Columns</button>
+                            <div class="column-menu" id="recruitment-column-menu"></div>
+                        </div>
+                    </div>
+
+                    <div class="bulk-actions" id="recruitment-bulk-actions">
+                        <span class="selected-count"><span id="recruitment-selected-count">0</span> selected</span>
+                        <button class="action-btn" onclick="bulkDelete('recruitment')">Delete Selected</button>
+                        <button class="action-btn1" onclick="bulkExport('recruitment')">Export Selected</button>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="loading-overlay" id="recruitment-loading" style="display: none;">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <table class="data-table" id="recruitment-table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody id="recruitment-requests-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             <!-- Announcements Section -->
-            <section class="section" id="announcements" style="display:none;">
-                <div class="page-header">
-                    <h2 class="section-title">Announcements Management</h2>
-                    <button onclick="openAnnouncementModal()" class="action-btn" style="margin-top: 1rem;">+ Create New Announcement</button>
+            <section class="section card mb-4" id="announcements" style="display:none;">
+                <div class="card-header">
+                    <h3 class="card-title">Announcements Management</h3>
+                    <div class="card-tools">
+                        <button onclick="openAnnouncementModal()" class="action-btn">+ Create New Announcement</button>
+                    </div>
                 </div>
 
-                <!-- Announcements Table -->
-                <div class="table-container" style="margin-bottom: 2rem;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Message</th>
-                                <th>Created</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="announcements-tbody">
-                            <!-- Dynamic content will be inserted here by JS -->
-                        </tbody>
-                    </table>
+                <div class="card-body p-0">
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="announcements-search" placeholder="Search announcements...">
+                        </div>
+                        <div class="pagination">
+                            <button class="pagination-btn" id="announcements-prev" onclick="changePage('announcements', -1)">Previous</button>
+                            <span class="pagination-info" id="announcements-info">Page 1 of 1</span>
+                            <button class="pagination-btn" id="announcements-next" onclick="changePage('announcements', 1)">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="column-controls">
+                        <span style="font-size: 13px; color: #64748b;">Showing <span id="announcements-count">0</span> announcements</span>
+                        <div style="position: relative;">
+                            <button class="column-toggle-btn" onclick="toggleColumnMenu('announcements')">☰ Columns</button>
+                            <div class="column-menu" id="announcements-column-menu"></div>
+                        </div>
+                    </div>
+
+                    <div class="bulk-actions" id="announcements-bulk-actions">
+                        <span class="selected-count"><span id="announcements-selected-count">0</span> selected</span>
+                        <button class="action-btn" onclick="bulkDelete('announcements')">Delete Selected</button>
+                        <button class="action-btn1" onclick="bulkExport('announcements')">Export Selected</button>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="loading-overlay" id="announcements-loading" style="display: none;">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <table class="data-table" id="announcements-table">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody id="announcements-requests-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -823,51 +1436,35 @@
     //   // Save file
     //   pdf.save("page.pdf");
     // }
-        // Simple navigation highlighting and section switching + mobile menu toggle
-        const navLinksContainer = document.querySelector('.nav-links');
-        const menuToggleBtn = document.querySelector('.menu-toggle');
+        // Simple navigation highlighting and section switching
+        const sidebarLinks = document.querySelectorAll('#navigation .nav-link');
 
-        if (menuToggleBtn && navLinksContainer) {
-            menuToggleBtn.addEventListener('click', () => {
-                const isOpen = navLinksContainer.classList.toggle('open');
-                menuToggleBtn.classList.toggle('open', isOpen);
-            });
+        function showSection(sectionId) {
+            document.querySelectorAll('.app-main .section').forEach(sec => (sec.style.display = 'none'));
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) activeSection.style.display = '';
+
+            if (sectionId === 'announcements') {
+                fetchAnnouncements();
+            }
         }
 
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                // Remove active class from all items
-                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-                // Add active class to clicked item
-                this.classList.add('active');
-                // Hide all sections
-                document.querySelectorAll('main .section').forEach(sec => sec.style.display = 'none');
-                // Show the relevant section
-                if (this.id === 'client-requests-link') {
-                    document.getElementById('client-requests').style.display = '';
-                } else if (this.id === 'pharmacy-purchase-requests-link') {
-                    document.getElementById('pharmacy-purchase-requests').style.display = '';
-                } else if (this.id === 'pharmacy-sale-requests-link') {
-                    document.getElementById('pharmacy-sale-requests').style.display = '';
-                } else if (this.id === 'job-applications-link') {
-                    document.getElementById('job-applications').style.display = '';
-                } else if (this.id === 'recruitment-requests-link') {
-                    document.getElementById('recruitment-requests').style.display = '';
-                } else if (this.id === 'announcements-link') {
-                    document.getElementById('announcements').style.display = '';
-                    fetchAnnouncements();
-                } else {
-                    // Default: show client requests
-                    document.getElementById('client-requests').style.display = '';
-                }
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
 
-                // Close mobile menu after selection on small screens
-                if (window.innerWidth <= 900 && navLinksContainer && menuToggleBtn) {
-                    navLinksContainer.classList.remove('open');
-                    menuToggleBtn.classList.remove('open');
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                const sectionId = this.dataset.section;
+                if (sectionId) {
+                    showSection(sectionId);
                 }
             });
         });
+
+        // Default view
+        showSection('client-requests');
 
         function logout() {
             localStorage.removeItem('token');
@@ -876,44 +1473,728 @@
     </script>
 
     <script>
+    // ========== HIGH-PERFORMANCE TABLE FUNCTIONALITY ==========
+    
+    // Table state management
+    const tableState = {
+        client: {
+            data: [],
+            filteredData: [],
+            currentPage: 1,
+            itemsPerPage: 50,
+            sortColumn: null,
+            sortDirection: 'asc',
+            filters: {},
+            selectedRows: new Set(),
+            searchQuery: '',
+            columns: [
+                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
+                { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
+                { key: 'organizationName', label: 'Organization', visible: true, class: 'col-name' },
+                { key: 'businessType', label: 'Business Type', visible: true, class: 'col-type' },
+                { key: 'nationalId', label: 'National ID', visible: true, class: 'col-id' },
+                { key: 'tinNumber', label: 'TIN', visible: true, class: 'col-id' },
+                { key: 'location', label: 'Location', visible: true, class: 'col-location' },
+                { key: 'phoneNumber', label: 'Phone', visible: true, class: 'col-contact' },
+                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
+                { key: 'services', label: 'Services', visible: true, class: 'col-flex' },
+                { key: 'createdAt', label: 'Date Submitted', visible: true, class: 'col-date' },
+                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+            ]
+        },
+
+        purchase: {
+            data: [],
+            filteredData: [],
+            currentPage: 1,
+            itemsPerPage: 50,
+            sortColumn: null,
+            sortDirection: 'asc',
+            filters: {},
+            selectedRows: new Set(),
+            searchQuery: '',
+            columns: [
+                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
+                { key: 'buyerName', label: 'Buyer Name', visible: true, class: 'col-name' },
+                { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
+                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                { key: 'contactMethod', label: 'Contact Method', visible: true, class: 'col-type' },
+                { key: 'nationalId', label: 'National ID', visible: true, class: 'col-id' },
+                { key: 'tinNumber', label: 'TIN Number', visible: true, class: 'col-id' },
+                { key: 'pharmacyType', label: 'Pharmacy Type', visible: true, class: 'col-type' },
+                { key: 'otherType', label: 'Other Type', visible: true, class: 'col-type' },
+                { key: 'preferredLocation', label: 'Preferred Location', visible: true, class: 'col-location' },
+                { key: 'operatingArea', label: 'Operating Area', visible: true, class: 'col-location' },
+                { key: 'businessStatus', label: 'Business Status', visible: true, class: 'col-type' },
+                { key: 'ownershipType', label: 'Ownership Type', visible: true, class: 'col-type' },
+                { key: 'minRevenue', label: 'Min Revenue', visible: true, class: 'col-type' },
+                { key: 'budgetRange', label: 'Budget Range', visible: true, class: 'col-type' },
+                { key: 'budgetFlexible', label: 'Budget Flexible', visible: true, class: 'col-type' },
+                { key: 'timeline', label: 'Timeline', visible: true, class: 'col-type' },
+                { key: 'insurancePartners', label: 'Insurance Partners', visible: true, class: 'col-flex' },
+                { key: 'supportServices', label: 'Support Services', visible: true, class: 'col-flex' },
+                { key: 'otherServices', label: 'Other Services', visible: true, class: 'col-flex' },
+                { key: 'additionalInfo', label: 'Additional Info', visible: true, class: 'col-flex' },
+                { key: 'clientSignature', label: 'Client Signature', visible: true, class: 'col-type' },
+                { key: 'date', label: 'Date', visible: true, class: 'col-date' },
+                { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+            ]
+        },
+
+        sale: {
+            data: [],
+            filteredData: [],
+            currentPage: 1,
+            itemsPerPage: 50,
+            sortColumn: null,
+            sortDirection: 'asc',
+            filters: {},
+            selectedRows: new Set(),
+            searchQuery: '',
+            columns: [
+                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
+                { key: 'ownerName', label: 'Owner Name', visible: true, class: 'col-name' },
+                { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
+                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
+                { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
+                { key: 'businessType', label: 'Business Type', visible: true, class: 'col-type' },
+                { key: 'location', label: 'Location', visible: true, class: 'col-location' },
+                { key: 'ownershipType', label: 'Ownership Type', visible: true, class: 'col-type' },
+                { key: 'premisesSize', label: 'Premises Size', visible: true, class: 'col-type' },
+                { key: 'licenseStatus', label: 'License Status', visible: true, class: 'col-type' },
+                { key: 'years', label: 'Years', visible: true, class: 'col-type' },
+                { key: 'salesRange', label: 'Sales Range', visible: true, class: 'col-type' },
+                { key: 'insurancePartners', label: 'Insurance Partners', visible: true, class: 'col-flex' },
+                { key: 'staffCount', label: 'Staff Count', visible: true, class: 'col-type' },
+                { key: 'inventoryValue', label: 'Inventory Value', visible: true, class: 'col-type' },
+                { key: 'equipmentIncluded', label: 'Equipment Included', visible: true, class: 'col-flex' },
+                { key: 'reason', label: 'Reason', visible: true, class: 'col-flex' },
+                { key: 'debts', label: 'Debts', visible: true, class: 'col-type' },
+                { key: 'debtAmount', label: 'Debt Amount', visible: true, class: 'col-type' },
+                { key: 'price', label: 'Price', visible: true, class: 'col-type' },
+                { key: 'negotiable', label: 'Negotiable', visible: true, class: 'col-type' },
+                { key: 'timeline', label: 'Timeline', visible: true, class: 'col-type' },
+                { key: 'valuationService', label: 'Valuation Service', visible: true, class: 'col-type' },
+                { key: 'additionalInfo', label: 'Additional Info', visible: true, class: 'col-flex' },
+                { key: 'documents', label: 'Documents', visible: true, class: 'col-flex' },
+                { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                { key: 'date', label: 'Date', visible: true, class: 'col-date' },
+                { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+            ]
+        },
+
+        jobs: {
+            data: [],
+            filteredData: [],
+            currentPage: 1,
+            itemsPerPage: 50,
+            sortColumn: null,
+            sortDirection: 'asc',
+            filters: {},
+            selectedRows: new Set(),
+            searchQuery: '',
+            columns: [
+                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
+                { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
+                { key: 'dob', label: 'Date of Birth', visible: true, class: 'col-date' },
+                { key: 'nationality', label: 'Nationality', visible: true, class: 'col-type' },
+                { key: 'idNumber', label: 'National ID', visible: true, class: 'col-id' },
+                { key: 'npcNumber', label: 'NPC Number', visible: true, class: 'col-id' },
+                { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
+                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
+                { key: 'position', label: 'Position', visible: true, class: 'col-type' },
+                { key: 'otherPosition', label: 'Other Position', visible: true, class: 'col-type' },
+                { key: 'licenseStatus', label: 'License Status', visible: true, class: 'col-type' },
+                { key: 'qualification', label: 'Qualification', visible: true, class: 'col-type' },
+                { key: 'institution', label: 'Institution', visible: true, class: 'col-name' },
+                { key: 'graduationYear', label: 'Graduation Year', visible: true, class: 'col-type' },
+                { key: 'experience', label: 'Experience', visible: true, class: 'col-type' },
+                { key: 'pharmacyType', label: 'Pharmacy Type', visible: true, class: 'col-type' },
+                { key: 'schedule', label: 'Schedule', visible: true, class: 'col-type' },
+                { key: 'locationPref', label: 'Location Pref', visible: true, class: 'col-location' },
+                { key: 'relocate', label: 'Relocate', visible: true, class: 'col-type' },
+                { key: 'salaryFrom', label: 'Salary From', visible: true, class: 'col-type' },
+                { key: 'salaryTo', label: 'Salary To', visible: true, class: 'col-type' },
+                { key: 'startDate', label: 'Start Date', visible: true, class: 'col-date' },
+                { key: 'skills', label: 'Skills', visible: true, class: 'col-flex' },
+                { key: 'otherSkills', label: 'Other Skills', visible: true, class: 'col-flex' },
+                { key: 'employer1', label: 'Employer', visible: true, class: 'col-name' },
+                { key: 'position1', label: 'Position Held', visible: true, class: 'col-type' },
+                { key: 'duration1', label: 'Duration', visible: true, class: 'col-type' },
+                { key: 'reason1', label: 'Reason for Leaving', visible: true, class: 'col-flex' },
+                { key: 'refName1', label: 'Reference Name', visible: true, class: 'col-name' },
+                { key: 'refRelation1', label: 'Reference Relation', visible: true, class: 'col-type' },
+                { key: 'refPhone1', label: 'Reference Phone', visible: true, class: 'col-contact' },
+                { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                { key: 'signatureDate', label: 'Signature Date', visible: true, class: 'col-date' },
+                { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+            ]
+        },
+
+        recruitment: {
+            data: [],
+            filteredData: [],
+            currentPage: 1,
+            itemsPerPage: 50,
+            sortColumn: null,
+            sortDirection: 'asc',
+            filters: {},
+            selectedRows: new Set(),
+            searchQuery: '',
+            columns: [
+                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
+                { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
+                { key: 'contactPerson', label: 'Contact Person', visible: true, class: 'col-name' },
+                { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
+                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                { key: 'location', label: 'Location', visible: true, class: 'col-location' },
+                { key: 'type', label: 'Type', visible: true, class: 'col-type' },
+                { key: 'typeOther', label: 'Type Other', visible: true, class: 'col-type' },
+                { key: 'branches', label: 'Branches', visible: true, class: 'col-type' },
+                { key: 'staffCount', label: 'Staff Count', visible: true, class: 'col-type' },
+                { key: 'position', label: 'Position', visible: true, class: 'col-type' },
+                { key: 'positionsAvailable', label: 'Positions Available', visible: true, class: 'col-type' },
+                { key: 'employmentType', label: 'Employment Type', visible: true, class: 'col-type' },
+                { key: 'startDate', label: 'Start Date', visible: true, class: 'col-date' },
+                { key: 'workingHours', label: 'Working Hours', visible: true, class: 'col-type' },
+                { key: 'salaryFrom', label: 'Salary From', visible: true, class: 'col-type' },
+                { key: 'salaryTo', label: 'Salary To', visible: true, class: 'col-type' },
+                { key: 'housingTransport', label: 'Housing/Transport', visible: true, class: 'col-type' },
+                { key: 'bonus', label: 'Bonus', visible: true, class: 'col-type' },
+                { key: 'bonusDetails', label: 'Bonus Details', visible: true, class: 'col-flex' },
+                { key: 'qualification', label: 'Qualification', visible: true, class: 'col-type' },
+                { key: 'license', label: 'License', visible: true, class: 'col-type' },
+                { key: 'experience', label: 'Experience', visible: true, class: 'col-type' },
+                { key: 'language', label: 'Language', visible: true, class: 'col-type' },
+                { key: 'otherLanguage', label: 'Other Language', visible: true, class: 'col-type' },
+                { key: 'additionalSkills', label: 'Additional Skills', visible: true, class: 'col-flex' },
+                { key: 'responsibility1', label: 'Responsibility 1', visible: true, class: 'col-flex' },
+                { key: 'responsibility2', label: 'Responsibility 2', visible: true, class: 'col-flex' },
+                { key: 'responsibility3', label: 'Responsibility 3', visible: true, class: 'col-flex' },
+                { key: 'responsibility4', label: 'Responsibility 4', visible: true, class: 'col-flex' },
+                { key: 'responsibility5', label: 'Responsibility 5', visible: true, class: 'col-flex' },
+                { key: 'reportingLine', label: 'Reporting Line', visible: true, class: 'col-type' },
+                { key: 'systemUsed', label: 'System Used', visible: true, class: 'col-type' },
+                { key: 'teamStructure', label: 'Team Structure', visible: true, class: 'col-flex' },
+                { key: 'training', label: 'Training', visible: true, class: 'col-flex' },
+                { key: 'challenges', label: 'Challenges', visible: true, class: 'col-flex' },
+                { key: 'support', label: 'Support', visible: true, class: 'col-flex' },
+                { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                { key: 'signatureDate', label: 'Signature Date', visible: true, class: 'col-date' },
+                { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+            ]
+        },
+
+        announcements: {
+            data: [],
+            filteredData: [],
+            currentPage: 1,
+            itemsPerPage: 50,
+            sortColumn: null,
+            sortDirection: 'asc',
+            filters: {},
+            selectedRows: new Set(),
+            searchQuery: '',
+            columns: [
+                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
+                { key: 'title', label: 'Title', visible: true, class: 'col-name' },
+                { key: 'message', label: 'Message', visible: true, class: 'col-flex' },
+                { key: 'createdAt', label: 'Created', visible: true, class: 'col-date' },
+                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+            ]
+        }
+    };
+
+    // Initialize table features
+    function initializeTable(tableType) {
+        const state = tableState[tableType];
+        
+        // Setup search
+        const searchInput = document.getElementById(`${tableType}-search`);
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                state.searchQuery = e.target.value.toLowerCase();
+                applyFiltersAndSearch(tableType);
+            });
+        }
+        
+        // Setup column menu
+        setupColumnMenu(tableType);
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.filter-dropdown') && !e.target.closest('.column-controls')) {
+                closeAllFilters(tableType);
+                closeColumnMenu(tableType);
+            }
+        });
+    }
+
+    // Setup column visibility menu
+    function setupColumnMenu(tableType) {
+        const state = tableState[tableType];
+        const menu = document.getElementById(`${tableType}-column-menu`);
+        if (!menu) return;
+        
+        menu.innerHTML = state.columns
+            .filter(col => col.key !== 'checkbox' && col.key !== 'actions')
+            .map(col => `
+            <div class="column-option">
+                <input type="checkbox" 
+                       id="col-${tableType}-${col.key}" 
+                       ${col.visible ? 'checked' : ''}
+                       onchange="toggleColumn('${tableType}', '${col.key}', this.checked)">
+                <label for="col-${tableType}-${col.key}">${col.label}</label>
+            </div>
+        `).join('');
+    }
+
+    // Toggle column visibility
+    function toggleColumn(tableType, columnKey, visible) {
+        const state = tableState[tableType];
+        const column = state.columns.find(col => col.key === columnKey);
+        if (column) {
+            column.visible = visible;
+            renderTable(tableType);
+        }
+    }
+
+    // Toggle column menu
+    function toggleColumnMenu(tableType) {
+        const menu = document.getElementById(`${tableType}-column-menu`);
+        if (menu) {
+            menu.classList.toggle('show');
+        }
+    }
+
+    function closeColumnMenu(tableType) {
+        const menu = document.getElementById(`${tableType}-column-menu`);
+        if (menu) {
+            menu.classList.remove('show');
+        }
+    }
+
+    // Sort table
+    function sortTable(tableType, column) {
+        const state = tableState[tableType];
+        
+        if (state.sortColumn === column) {
+            state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            state.sortColumn = column;
+            state.sortDirection = 'asc';
+        }
+        
+        updateSortIndicators(tableType);
+        applyFiltersAndSearch(tableType);
+    }
+
+    // Update sort indicators
+    function updateSortIndicators(tableType) {
+        const state = tableState[tableType];
+        const indicators = document.querySelectorAll(`#${tableType}-table .sort-indicator`);
+        
+        indicators.forEach(indicator => {
+            const column = indicator.dataset.column;
+            if (column === state.sortColumn) {
+                indicator.textContent = state.sortDirection === 'asc' ? '↑' : '↓';
+                indicator.classList.add('active');
+            } else {
+                indicator.textContent = '↕';
+                indicator.classList.remove('active');
+            }
+        });
+    }
+
+    // Toggle filter dropdown
+    function toggleFilter(tableType, column) {
+        const filterMenu = document.getElementById(`${tableType}-filter-${column}`);
+        if (filterMenu) {
+            filterMenu.classList.toggle('show');
+        }
+    }
+
+    function closeAllFilters(tableType) {
+        const filters = document.querySelectorAll(`#${tableType}-table .filter-menu`);
+        filters.forEach(filter => filter.classList.remove('show'));
+    }
+
+    // Filter column
+    function filterColumn(tableType, column, value) {
+        const state = tableState[tableType];
+        if (value) {
+            state.filters[column] = value.toLowerCase();
+        } else {
+            delete state.filters[column];
+        }
+        applyFiltersAndSearch(tableType);
+    }
+
+    // Clear filter
+    function clearFilter(tableType, column) {
+        const state = tableState[tableType];
+        delete state.filters[column];
+        const input = document.querySelector(`#${tableType}-filter-${column} .filter-input`);
+        if (input) input.value = '';
+        applyFiltersAndSearch(tableType);
+    }
+
+    // Apply filters and search
+    function applyFiltersAndSearch(tableType) {
+        const state = tableState[tableType];
+
+        state.filteredData = (state.data || []).filter(row => {
+            // Apply search
+            if (state.searchQuery) {
+                const searchableText = Object.values(row).join(' ').toLowerCase();
+                if (!searchableText.includes(state.searchQuery)) {
+                    return false;
+                }
+            }
+
+            // Apply column filters
+            for (const [column, filterValue] of Object.entries(state.filters)) {
+                const cellValue = String(row[column] || '').toLowerCase();
+                if (!cellValue.includes(filterValue)) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+
+        // Apply sorting
+        if (state.sortColumn) {
+            state.filteredData.sort((a, b) => {
+                const aVal = a[state.sortColumn] ?? '';
+                const bVal = b[state.sortColumn] ?? '';
+
+                if (aVal === bVal) return 0;
+                const comparison = aVal < bVal ? -1 : 1;
+                return state.sortDirection === 'asc' ? comparison : -comparison;
+            });
+        }
+
+        state.currentPage = 1;
+        renderTable(tableType);
+    }
+
+    function normalizeRowId(rowId) {
+        return String(rowId);
+    }
+
+    // Toggle select all
+    function toggleSelectAll(tableType) {
+        const state = tableState[tableType];
+        const selectAllCheckbox = document.getElementById(`${tableType}-select-all`);
+        const pageData = getCurrentPageData(tableType);
+
+        if (selectAllCheckbox && selectAllCheckbox.checked) {
+            pageData.forEach(row => state.selectedRows.add(normalizeRowId(row.id)));
+        } else {
+            pageData.forEach(row => state.selectedRows.delete(normalizeRowId(row.id)));
+        }
+
+        updateBulkActions(tableType);
+        renderTable(tableType);
+    }
+
+    // Toggle row selection
+    function toggleRowSelection(tableType, rowId) {
+        const state = tableState[tableType];
+        const normalizedId = normalizeRowId(rowId);
+
+        if (state.selectedRows.has(normalizedId)) {
+            state.selectedRows.delete(normalizedId);
+        } else {
+            state.selectedRows.add(normalizedId);
+        }
+
+        updateBulkActions(tableType);
+        renderTable(tableType);
+    }
+
+    // Update bulk actions visibility
+    function updateBulkActions(tableType) {
+        const state = tableState[tableType];
+        const bulkActions = document.getElementById(`${tableType}-bulk-actions`);
+        const selectedCount = document.getElementById(`${tableType}-selected-count`);
+
+        if (!bulkActions || !selectedCount) return;
+
+        if (state.selectedRows.size > 0) {
+            bulkActions.classList.add('show');
+            selectedCount.textContent = state.selectedRows.size;
+        } else {
+            bulkActions.classList.remove('show');
+            selectedCount.textContent = '0';
+        }
+    }
+
+    // Get current page data
+    function getCurrentPageData(tableType) {
+        const state = tableState[tableType];
+        const start = (state.currentPage - 1) * state.itemsPerPage;
+        const end = start + state.itemsPerPage;
+        return (state.filteredData || []).slice(start, end);
+    }
+
+    // Change page
+    function changePage(tableType, direction) {
+        const state = tableState[tableType];
+        const maxPage = Math.ceil((state.filteredData || []).length / state.itemsPerPage) || 1;
+
+        state.currentPage += direction;
+        state.currentPage = Math.max(1, Math.min(state.currentPage, maxPage));
+
+        renderTable(tableType);
+    }
+
+    function renderTableHeader(tableType) {
+        const state = tableState[tableType];
+        const table = document.getElementById(`${tableType}-table`);
+        if (!table) return;
+
+        const headerRow = table.querySelector('thead tr');
+        if (!headerRow) return;
+
+        headerRow.innerHTML = state.columns.map(col => {
+            if (!col.visible) return `<th style="display:none;"></th>`;
+
+            if (col.key === 'checkbox') {
+                return `
+                    <th class="${col.class} sortable" onclick="toggleSelectAll('${tableType}')">
+                        <input type="checkbox" class="row-checkbox" id="${tableType}-select-all">
+                    </th>
+                `;
+            }
+
+            if (col.key === 'actions') {
+                return `<th class="${col.class}">${col.label}</th>`;
+            }
+
+            return `
+                <th class="${col.class} sortable" onclick="sortTable('${tableType}', '${col.key}')">
+                    ${col.label} <span class="sort-indicator" data-column="${col.key}">↕</span>
+                    <div class="filter-dropdown">
+                        <button class="filter-btn" onclick="event.stopPropagation(); toggleFilter('${tableType}', '${col.key}')">⚡</button>
+                        <div class="filter-menu" id="${tableType}-filter-${col.key}">
+                            <input type="text" class="filter-input" placeholder="Filter..." onkeyup="filterColumn('${tableType}', '${col.key}', this.value)">
+                            <div class="filter-option" onclick="clearFilter('${tableType}', '${col.key}')">Clear Filter</div>
+                        </div>
+                    </div>
+                </th>
+            `;
+        }).join('');
+
+        updateSortIndicators(tableType);
+    }
+
+    // Render table
+    function renderTable(tableType) {
+        const state = tableState[tableType];
+        const tbody = document.getElementById(`${tableType}-requests-tbody`);
+        if (!tbody) return;
+
+        renderTableHeader(tableType);
+
+        const pageData = getCurrentPageData(tableType);
+
+        // Update count
+        const countElement = document.getElementById(`${tableType}-count`);
+        if (countElement) {
+            countElement.textContent = (state.filteredData || []).length;
+        }
+
+        // Update pagination
+        updatePagination(tableType);
+
+        // Update select all checkbox
+        const selectAllCheckbox = document.getElementById(`${tableType}-select-all`);
+        if (selectAllCheckbox) {
+            const allSelected = pageData.length > 0 && pageData.every(row => state.selectedRows.has(normalizeRowId(row.id)));
+            selectAllCheckbox.checked = allSelected;
+        }
+
+        // Render rows
+        if (pageData.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="${state.columns.length}" style="text-align: center; padding: 2rem;">No data found</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = pageData.map(row => {
+            const rowId = normalizeRowId(row.id);
+            const isSelected = state.selectedRows.has(rowId);
+            const rowClass = isSelected ? 'selected' : '';
+
+            return `
+                <tr class="${rowClass}">
+                    ${renderColumns(tableType, row)}
+                </tr>
+            `;
+        }).join('');
+    }
+
+    // Render columns for a row
+    function renderColumns(tableType, row) {
+        const state = tableState[tableType];
+        const rowId = normalizeRowId(row.id);
+
+        return state.columns.map(col => {
+            if (!col.visible) return '<td style="display: none;"></td>';
+
+            if (col.key === 'checkbox') {
+                return `
+                    <td class="${col.class}">
+                        <input type="checkbox" class="row-checkbox" 
+                               ${state.selectedRows.has(rowId) ? 'checked' : ''}
+                               onchange="toggleRowSelection('${tableType}', ${JSON.stringify(rowId)})">
+                    </td>
+                `;
+            }
+
+            if (col.key === 'actions') {
+                if (tableType === 'client') {
+                    return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick="confirmDelete('client-requests', ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})">Delete</button>
+                        </td>
+                    `;
+                }
+                if (tableType === 'purchase') {
+                    return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick="confirmDelete('pharmacy-purchase-requests', ${JSON.stringify(rowId)}, ${JSON.stringify(row.buyerName || 'Unknown')})">Delete</button>
+                        </td>
+                    `;
+                }
+                if (tableType === 'sale') {
+                    return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick="confirmDelete('pharmacy-sale-requests', ${JSON.stringify(rowId)}, ${JSON.stringify(row.ownerName || 'Unknown')})">Delete</button>
+                        </td>
+                    `;
+                }
+                if (tableType === 'jobs') {
+                    return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick="confirmDelete('job-applications', ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})">Delete</button>
+                        </td>
+                    `;
+                }
+                if (tableType === 'recruitment') {
+                    return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick="confirmDelete('recruitment-requests', ${JSON.stringify(rowId)}, ${JSON.stringify(row.pharmacyName || 'Unknown')})">Delete</button>
+                        </td>
+                    `;
+                }
+                if (tableType === 'announcements') {
+                    return `
+                        <td class="${col.class}">
+                            <button class="action-btn" onclick="editAnnouncement(${JSON.stringify(rowId)})" style="padding: 0.25rem 0.75rem; margin-right: 0.5rem;">Edit</button>
+                            <button class="delete-btn" onclick="confirmDeleteAnnouncement(${JSON.stringify(rowId)}, ${JSON.stringify(row.title || 'Unknown')})">Delete</button>
+                        </td>
+                    `;
+                }
+
+                return `<td class="${col.class}"></td>`;
+            }
+
+            let value = row[col.key] ?? '';
+            if (col.key === 'services' && Array.isArray(value)) {
+                value = value.join(', ');
+            }
+            if (col.key === 'createdAt' && value) {
+                value = new Date(value).toLocaleString();
+            }
+
+            const needsTooltip = String(value).length > 20;
+            const tooltipAttr = needsTooltip ? `data-tooltip="${String(value).replace(/"/g, '&quot;')}"` : '';
+            const tooltipClass = needsTooltip ? 'cell-tooltip' : '';
+
+            return `<td class="${col.class} ${tooltipClass}" ${tooltipAttr}>${value}</td>`;
+        }).join('');
+    }
+
+    // Update pagination
+    function updatePagination(tableType) {
+        const state = tableState[tableType];
+        const maxPage = Math.ceil((state.filteredData || []).length / state.itemsPerPage) || 1;
+        const info = document.getElementById(`${tableType}-info`);
+        const prevBtn = document.getElementById(`${tableType}-prev`);
+        const nextBtn = document.getElementById(`${tableType}-next`);
+
+        if (info) {
+            info.textContent = `Page ${state.currentPage} of ${maxPage}`;
+        }
+
+        if (prevBtn) prevBtn.disabled = state.currentPage <= 1;
+        if (nextBtn) nextBtn.disabled = state.currentPage >= maxPage;
+    }
+
+    // Bulk operations
+    function bulkDelete(tableType) {
+        const state = tableState[tableType];
+        if (confirm(`Are you sure you want to delete ${state.selectedRows.size} selected items?`)) {
+            console.log('Bulk delete:', tableType, Array.from(state.selectedRows));
+        }
+    }
+
+    function bulkExport(tableType) {
+        const state = tableState[tableType];
+        const selectedIds = new Set(Array.from(state.selectedRows));
+        const selectedData = (state.data || []).filter(row => selectedIds.has(normalizeRowId(row.id)));
+
+        const headers = state.columns
+            .filter(col => col.visible && col.key !== 'checkbox' && col.key !== 'actions')
+            .map(col => col.label);
+
+        const csvContent = [
+            headers.join(','),
+            ...selectedData.map(row => {
+                return state.columns
+                    .filter(col => col.visible && col.key !== 'checkbox' && col.key !== 'actions')
+                    .map(col => `"${String(row[col.key] ?? '').replace(/"/g, '""')}"`)
+                    .join(',');
+            })
+        ].join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${tableType}-export.csv`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }
+
+    // Show loading
+    function showLoading(tableType) {
+        const loading = document.getElementById(`${tableType}-loading`);
+        if (loading) loading.style.display = 'flex';
+    }
+
+    // Hide loading
+    function hideLoading(tableType) {
+        const loading = document.getElementById(`${tableType}-loading`);
+        if (loading) loading.style.display = 'none';
+    }
+
 // Redirect to login if not authenticated
 const token = localStorage.getItem('token');
 if (!token) {
     window.location.href = '/LoginForm.html';
 }
 
-// Delete confirmation function
-function confirmDelete(type, id, name) {
-    if (confirm(`Are you sure you want to delete this ${type} for ${name}? This action will hide it from the dashboard but can be restored later.`)) {
-        deleteRequest(type, id);
-    }
-}
-
-// Delete request function
-async function deleteRequest(type, id) {
-    try {
-        const endpoint = `https://bendik-pharmacy-consultancy.onrender.com/api/${type}/${id}`;
-        const response = await fetch(endpoint, {
-            method: 'DELETE',
-            headers: { 
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json'
-            }
-        });
-        
-        if (response.ok) {
-            alert('Request deleted successfully!');
-            // Refresh the current section
-            location.reload();
-        } else {
-            alert('Failed to delete request. Please try again.');
-        }
-    } catch (error) {
-        console.error('Error deleting request:', error);
-        alert('An error occurred while deleting the request.');
-    }
-}
-
+// Fetch and render client requests
 async function fetchClientRequests() {
     const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/client-requests', {
         headers: { 'Authorization': 'Bearer ' + token }
@@ -927,36 +2208,26 @@ async function fetchClientRequests() {
 }
 
 function renderClientRequests(requests) {
-    const tbody = document.getElementById('client-requests-tbody');
-    tbody.innerHTML = '';
-    requests.forEach(req => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${req.fullName || ''}</td>
-                <td>${req.organizationName || ''}</td>
-                <td>${req.businessType || ''}</td>
-                <td>${req.nationalId || ''}</td>
-                <td>${req.tinNumber || ''}</td>
-                <td>${req.location || ''}</td>
-                <td>${req.phoneNumber || ''}</td>
-                <td>${req.email || ''}</td>
-                <td>${req.contactMode || ''}</td>
-                <td>${Array.isArray(req.services) ? req.services.join(', ') : req.services || ''}</td>
-                <td>${req.otherService || ''}</td>
-                <td>${req.urgency || ''}</td>
-                <td>${req.specificDates || ''}</td>
-                <td>${req.description || ''}</td>
-                <td>${req.PreferedInsurance || ''}</td>
-                <td>${req.requireQuotation || ''}</td>
-                <td>${req.paymentMode || ''}</td>
-                <td>${req.invoicingName || ''}</td>
-                <td>${req.declaration ? 'Yes' : 'No'}</td>
-                <td>${req.signature || ''}</td>
-                <td>${req.createdAt ? new Date(req.createdAt).toLocaleString() : ''}</td>
-                <td><button class="delete-btn" onclick="confirmDelete('client-requests', ${req.id}, '${req.fullName || 'Unknown'}')">Delete</button></td>
-            </tr>
-        `;
-    });
+    const state = tableState.client;
+    
+    // Add unique IDs to requests if they don't have them
+    const requestsWithIds = requests.map((req, index) => ({
+        ...req,
+        id: String(req.id || `temp-${index}`)
+    }));
+    
+    // Update state
+    state.data = requestsWithIds;
+    state.filteredData = requestsWithIds;
+    
+    // Initialize table if not already done
+    if (!document.getElementById('client-search').dataset.initialized) {
+        initializeTable('client');
+        document.getElementById('client-search').dataset.initialized = 'true';
+    }
+    
+    // Render table
+    renderTable('client');
 }
 
 // Fetch and render pharmacy purchase requests
@@ -973,38 +2244,23 @@ async function fetchPharmacyPurchaseRequests() {
 }
 
 function renderPharmacyPurchaseRequests(requests) {
-    const tbody = document.getElementById('pharmacy-purchase-requests-tbody');
-    tbody.innerHTML = '';
-    requests.forEach(req => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${req.buyerName || ''}</td>
-                <td>${req.phoneNumber || ''}</td>
-                <td>${req.email || ''}</td>
-                <td>${req.contactMethod || ''}</td>
-                <td>${req.nationalId || ''}</td>
-                <td>${req.tinNumber || ''}</td>
-                <td>${req.pharmacyType || ''}</td>
-                <td>${req.otherType || ''}</td>
-                <td>${req.preferredLocation || ''}</td>
-                <td>${req.operatingArea || ''}</td>
-                <td>${req.businessStatus || ''}</td>
-                <td>${req.ownershipType || ''}</td>
-                <td>${req.minRevenue || ''}</td>
-                <td>${req.budgetRange || ''}</td>
-                <td>${req.budgetFlexible || ''}</td>
-                <td>${req.timeline || ''}</td>
-                <td>${req.insurancePartners || ''}</td>
-                <td>${req.supportServices || ''}</td>
-                <td>${req.otherServices || ''}</td>
-                <td>${req.additionalInfo || ''}</td>
-                <td>${req.clientSignature || ''}</td>
-                <td>${req.date || ''}</td>
-                <td>${req.createdAt ? new Date(req.createdAt).toLocaleString() : ''}</td>
-                <td><button class="delete-btn" onclick="confirmDelete('pharmacy-purchase-requests', ${req.id}, '${req.buyerName || 'Unknown'}')">Delete</button></td>
-            </tr>
-        `;
-    });
+    const state = tableState.purchase;
+
+    const requestsWithIds = (requests || []).map((req, index) => ({
+        ...req,
+        id: String(req.id || `temp-${index}`)
+    }));
+
+    state.data = requestsWithIds;
+    state.filteredData = requestsWithIds;
+
+    const search = document.getElementById('purchase-search');
+    if (search && !search.dataset.initialized) {
+        initializeTable('purchase');
+        search.dataset.initialized = 'true';
+    }
+
+    renderTable('purchase');
 }
 
 // Fetch and render pharmacy sale requests
@@ -1021,43 +2277,23 @@ async function fetchPharmacySaleRequests() {
 }
 
 function renderPharmacySaleRequests(requests) {
-    const tbody = document.getElementById('pharmacy-sale-requests-tbody');
-    tbody.innerHTML = '';
-    requests.forEach(req => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${req.ownerName || ''}</td>
-                <td>${req.phoneNumber || ''}</td>
-                <td>${req.email || ''}</td>
-                <td>${req.contactMode || ''}</td>
-                <td>${req.pharmacyName || ''}</td>
-                <td>${req.businessType || ''}</td>
-                <td>${req.location || ''}</td>
-                <td>${req.ownershipType || ''}</td>
-                <td>${req.premisesSize || ''}</td>
-                <td>${req.licenseStatus || ''}</td>
-                <td>${req.years || ''}</td>
-                <td>${req.salesRange || ''}</td>
-                <td>${req.insurancePartners || ''}</td>
-                <td>${req.staffCount || ''}</td>
-                <td>${req.inventoryValue || ''}</td>
-                <td>${req.equipmentIncluded || ''}</td>
-                <td>${req.reason || ''}</td>
-                <td>${req.debts || ''}</td>
-                <td>${req.debtAmount || ''}</td>
-                <td>${req.price || ''}</td>
-                <td>${req.negotiable || ''}</td>
-                <td>${req.timeline || ''}</td>
-                <td>${req.valuationService || ''}</td>
-                <td>${req.additionalInfo || ''}</td>
-                <td>${req.documents || ''}</td>
-                <td>${req.signature || ''}</td>
-                <td>${req.date || ''}</td>
-                <td>${req.createdAt ? new Date(req.createdAt).toLocaleString() : ''}</td>
-                <td><button class="delete-btn" onclick="confirmDelete('pharmacy-sale-requests', ${req.id}, '${req.ownerName || 'Unknown'}')">Delete</button></td>
-            </tr>
-        `;
-    });
+    const state = tableState.sale;
+
+    const requestsWithIds = (requests || []).map((req, index) => ({
+        ...req,
+        id: String(req.id || `temp-${index}`)
+    }));
+
+    state.data = requestsWithIds;
+    state.filteredData = requestsWithIds;
+
+    const search = document.getElementById('sale-search');
+    if (search && !search.dataset.initialized) {
+        initializeTable('sale');
+        search.dataset.initialized = 'true';
+    }
+
+    renderTable('sale');
 }
 
 // Fetch and render job applications
@@ -1074,49 +2310,23 @@ async function fetchJobApplications() {
 }
 
 function renderJobApplications(applications) {
-    const tbody = document.getElementById('job-applications-tbody');
-    tbody.innerHTML = '';
-    applications.forEach(app => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${app.fullName || ''}</td>
-                <td>${app.dob || ''}</td>
-                <td>${app.nationality || ''}</td>
-                <td>${app.idNumber || ''}</td>
-                <td>${app.npcNumber || ''}</td>
-                <td>${app.phone || ''}</td>
-                <td>${app.email || ''}</td>
-                <td>${app.contactMode || ''}</td>
-                <td>${app.position || ''}</td>
-                <td>${app.otherPosition || ''}</td>
-                <td>${app.licenseStatus || ''}</td>
-                <td>${app.qualification || ''}</td>
-                <td>${app.institution || ''}</td>
-                <td>${app.graduationYear || ''}</td>
-                <td>${app.experience || ''}</td>
-                <td>${app.pharmacyType || ''}</td>
-                <td>${app.schedule || ''}</td>
-                <td>${app.locationPref || ''}</td>
-                <td>${app.relocate || ''}</td>
-                <td>${app.salaryFrom || ''}</td>
-                <td>${app.salaryTo || ''}</td>
-                <td>${app.startDate || ''}</td>
-                <td>${app.skills || ''}</td>
-                <td>${app.otherSkills || ''}</td>
-                <td>${app.employer1 || ''}</td>
-                <td>${app.position1 || ''}</td>
-                <td>${app.duration1 || ''}</td>
-                <td>${app.reason1 || ''}</td>
-                <td>${app.refName1 || ''}</td>
-                <td>${app.refRelation1 || ''}</td>
-                <td>${app.refPhone1 || ''}</td>
-                <td>${app.signature || ''}</td>
-                <td>${app.signatureDate || ''}</td>
-                <td>${app.createdAt ? new Date(app.createdAt).toLocaleString() : ''}</td>
-                <td><button class="delete-btn" onclick="confirmDelete('job-applications', ${app.id}, '${app.fullName || 'Unknown'}')">Delete</button></td>
-            </tr>
-        `;
-    });
+    const state = tableState.jobs;
+
+    const appsWithIds = (applications || []).map((app, index) => ({
+        ...app,
+        id: String(app.id || `temp-${index}`)
+    }));
+
+    state.data = appsWithIds;
+    state.filteredData = appsWithIds;
+
+    const search = document.getElementById('jobs-search');
+    if (search && !search.dataset.initialized) {
+        initializeTable('jobs');
+        search.dataset.initialized = 'true';
+    }
+
+    renderTable('jobs');
 }
 
 // Fetch and render recruitment requests
@@ -1133,64 +2343,26 @@ async function fetchRecruitmentRequests() {
 }
 
 function renderRecruitmentRequests(requests) {
-    const tbody = document.getElementById('recruitment-requests-tbody');
-    tbody.innerHTML = '';
-    requests.forEach(req => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${req.pharmacyName || ''}</td>
-                <td>${req.contactPerson || ''}</td>
-                <td>${req.phone || ''}</td>
-                <td>${req.email || ''}</td>
-                <td>${req.location || ''}</td>
-                <td>${req.type || ''}</td>
-                <td>${req.typeOther || ''}</td>
-                <td>${req.branches || ''}</td>
-                <td>${req.staffCount || ''}</td>
-                <td>${req.position || ''}</td>
-                <td>${req.positionsAvailable || ''}</td>
-                <td>${req.employmentType || ''}</td>
-                <td>${req.startDate || ''}</td>
-                <td>${req.workingHours || ''}</td>
-                <td>${req.salaryFrom || ''}</td>
-                <td>${req.salaryTo || ''}</td>
-                <td>${req.housingTransport || ''}</td>
-                <td>${req.bonus || ''}</td>
-                <td>${req.bonusDetails || ''}</td>
-                <td>${req.qualification || ''}</td>
-                <td>${req.license || ''}</td>
-                <td>${req.experience || ''}</td>
-                <td>${req.language || ''}</td>
-                <td>${req.otherLanguage || ''}</td>
-                <td>${req.additionalSkills || ''}</td>
-                <td>${req.responsibility1 || ''}</td>
-                <td>${req.responsibility2 || ''}</td>
-                <td>${req.responsibility3 || ''}</td>
-                <td>${req.responsibility4 || ''}</td>
-                <td>${req.responsibility5 || ''}</td>
-                <td>${req.reportingLine || ''}</td>
-                <td>${req.systemUsed || ''}</td>
-                <td>${req.teamStructure || ''}</td>
-                <td>${req.training || ''}</td>
-                <td>${req.challenges || ''}</td>
-                <td>${req.support || ''}</td>
-                <td>${req.signature || ''}</td>
-                <td>${req.signatureDate || ''}</td>
-                <td>${req.createdAt ? new Date(req.createdAt).toLocaleString() : ''}</td>
-                <td><button class="delete-btn" onclick="confirmDelete('recruitment-requests', ${req.id}, '${req.pharmacyName || 'Unknown'}')">Delete</button></td>
-            </tr>
-        `;
-    });
+    const state = tableState.recruitment;
+
+    const requestsWithIds = (requests || []).map((req, index) => ({
+        ...req,
+        id: String(req.id || `temp-${index}`)
+    }));
+
+    state.data = requestsWithIds;
+    state.filteredData = requestsWithIds;
+
+    const search = document.getElementById('recruitment-search');
+    if (search && !search.dataset.initialized) {
+        initializeTable('recruitment');
+        search.dataset.initialized = 'true';
+    }
+
+    renderTable('recruitment');
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Default: show client requests
-    document.getElementById('client-requests').style.display = '';
-    document.getElementById('pharmacy-purchase-requests').style.display = 'none';
-    document.getElementById('pharmacy-sale-requests').style.display = 'none';
-    document.getElementById('job-applications').style.display = 'none';
-    document.getElementById('recruitment-requests').style.display = 'none';
-    document.getElementById('announcements').style.display = 'none';
     // Fetch and render all tables
     const [clientRequests, pharmacyPurchaseRequests, pharmacySaleRequests, jobApplications, recruitmentRequests] = await Promise.all([
         fetchClientRequests(),
@@ -1245,29 +2417,23 @@ async function fetchAnnouncements() {
 }
 
 function renderAnnouncements(announcements) {
-    const tbody = document.getElementById('announcements-tbody');
-    tbody.innerHTML = '';
-    
-    if (announcements.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 2rem;">No announcements yet. Create one to get started!</td></tr>';
-        return;
+    const state = tableState.announcements;
+
+    const announcementsWithIds = (announcements || []).map((ann, index) => ({
+        ...ann,
+        id: String(ann.id || `temp-${index}`)
+    }));
+
+    state.data = announcementsWithIds;
+    state.filteredData = announcementsWithIds;
+
+    const search = document.getElementById('announcements-search');
+    if (search && !search.dataset.initialized) {
+        initializeTable('announcements');
+        search.dataset.initialized = 'true';
     }
 
-    announcements.forEach(ann => {
-        const created = ann.createdAt ? new Date(ann.createdAt).toLocaleString() : '';
-        
-        tbody.innerHTML += `
-            <tr>
-                <td><strong>${ann.title || ''}</strong></td>
-                <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis;">${ann.message || ''}</td>
-                <td>${created}</td>
-                <td>
-                    <button class="action-btn" onclick="editAnnouncement(${ann.id})" style="padding: 0.25rem 0.75rem; margin-right: 0.5rem;">Edit</button>
-                    <button class="delete-btn" onclick="confirmDeleteAnnouncement(${ann.id}, '${ann.title || 'Unknown'}')">Delete</button>
-                </td>
-            </tr>
-        `;
-    });
+    renderTable('announcements');
 }
 
 function getTypeColor(type) {
@@ -1397,6 +2563,35 @@ window.onclick = function(event) {
     }
 }
 </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./AdminLTE-4.0.0-rc4/AdminLTE-4.0.0-rc4/dist/js/adminlte.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+        if (sidebarWrapper && window.OverlayScrollbarsGlobal?.OverlayScrollbars) {
+          OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+            scrollbars: {
+              theme: 'os-theme-light',
+              autoHide: 'leave',
+            },
+          });
+        }
+      });
+    </script>
+
 </body>
 </html>
 
