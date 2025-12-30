@@ -253,6 +253,14 @@
             height: 48px;
         }
 
+        .cell-text {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
         /* Column width constraints */
         .data-table .col-checkbox { width: 40px; min-width: 40px; max-width: 40px; }
         .data-table .col-id { width: 80px; min-width: 60px; max-width: 100px; }
@@ -325,6 +333,7 @@
         .cell-tooltip {
             position: relative;
             cursor: help;
+            overflow: visible !important;
         }
 
         .cell-tooltip:hover::after {
@@ -975,18 +984,10 @@
         </aside>
 
         <main class="app-main">
-            <div class="app-content-header">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">Admin Dashboard</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="app-content">
                 <div class="container-fluid">
+                    <div class="row"></div>
+                </div>
 
             <!-- Client Requests Section -->
             <section class="section card mb-4" id="client-requests">
@@ -2112,7 +2113,7 @@
                 value = new Date(value).toLocaleString();
             }
 
-            return `<td class="${col.class}">${value}</td>`;
+            return `<td class="${col.class}"><span class="cell-text">${value}</span></td>`;
         }).join('');
     }
 
