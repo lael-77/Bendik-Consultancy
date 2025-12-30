@@ -930,11 +930,6 @@
         </nav>
 
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
-            <div class="sidebar-brand">
-                <a href="#" class="brand-link">
-                    <span class="brand-text fw-light">Bendik Pharmacy</span>
-                </a>
-            </div>
             <div class="sidebar-wrapper">
                 <nav class="mt-2">
                     <ul class="nav sidebar-menu flex-column" role="navigation" aria-label="Main navigation" id="navigation">
@@ -1037,49 +1032,20 @@
                     <table class="data-table" id="client-table">
                         <thead>
                             <tr>
-                                <th class="col-checkbox sortable" onclick="toggleSelectAll('client')">
+                                <th class="col-checkbox">
                                     <input type="checkbox" class="row-checkbox" id="client-select-all">
                                 </th>
-                                <th class="col-name sortable" onclick="sortTable('client', 'fullName')">
-                                    Full Name <span class="sort-indicator" data-column="fullName">↕</span>
-                                    <div class="filter-dropdown">
-                                        <button class="filter-btn" onclick="toggleFilter('client', 'fullName')">⚡</button>
-                                        <div class="filter-menu" id="client-filter-fullName">
-                                            <input type="text" class="filter-input" placeholder="Filter names..." onkeyup="filterColumn('client', 'fullName', this.value)">
-                                            <div class="filter-option" onclick="clearFilter('client', 'fullName')">Clear Filter</div>
-                                        </div>
-                                    </div>
-                                </th>
-                                <th class="col-name sortable" onclick="sortTable('client', 'organizationName')">
-                                    Organization <span class="sort-indicator" data-column="organizationName">↕</span>
-                                </th>
-                                <th class="col-type sortable" onclick="sortTable('client', 'businessType')">
-                                    Business Type <span class="sort-indicator" data-column="businessType">↕</span>
-                                </th>
-                                <th class="col-id sortable" onclick="sortTable('client', 'nationalId')">
-                                    National ID <span class="sort-indicator" data-column="nationalId">↕</span>
-                                </th>
-                                <th class="col-id sortable" onclick="sortTable('client', 'tinNumber')">
-                                    TIN <span class="sort-indicator" data-column="tinNumber">↕</span>
-                                </th>
-                                <th class="col-location sortable" onclick="sortTable('client', 'location')">
-                                    Location <span class="sort-indicator" data-column="location">↕</span>
-                                </th>
-                                <th class="col-contact sortable" onclick="sortTable('client', 'phoneNumber')">
-                                    Phone <span class="sort-indicator" data-column="phoneNumber">↕</span>
-                                </th>
-                                <th class="col-email sortable" onclick="sortTable('client', 'email')">
-                                    Email <span class="sort-indicator" data-column="email">↕</span>
-                                </th>
-                                <th class="col-type sortable" onclick="sortTable('client', 'contactMode')">
-                                    Contact Mode <span class="sort-indicator" data-column="contactMode">↕</span>
-                                </th>
-                                <th class="col-flex sortable" onclick="sortTable('client', 'services')">
-                                    Services <span class="sort-indicator" data-column="services">↕</span>
-                                </th>
-                                <th class="col-date sortable" onclick="sortTable('client', 'createdAt')">
-                                    Date Submitted <span class="sort-indicator" data-column="createdAt">↕</span>
-                                </th>
+                                <th class="col-name">Full Name</th>
+                                <th class="col-name">Organization</th>
+                                <th class="col-type">Business Type</th>
+                                <th class="col-id">National ID</th>
+                                <th class="col-id">TIN</th>
+                                <th class="col-location">Location</th>
+                                <th class="col-contact">Phone</th>
+                                <th class="col-email">Email</th>
+                                <th class="col-type">Contact Mode</th>
+                                <th class="col-flex">Services</th>
+                                <th class="col-date">Date Submitted</th>
                                 <th class="col-actions">Actions</th>
                             </tr>
                         </thead>
@@ -1970,8 +1936,8 @@
 
             if (col.key === 'checkbox') {
                 return `
-                    <th class="${col.class} sortable" onclick="toggleSelectAll('${tableType}')">
-                        <input type="checkbox" class="row-checkbox" id="${tableType}-select-all">
+                    <th class="${col.class}">
+                        <input type="checkbox" class="row-checkbox" id="${tableType}-select-all" onchange="toggleSelectAll('${tableType}')">
                     </th>
                 `;
             }
@@ -1980,21 +1946,8 @@
                 return `<th class="${col.class}">${col.label}</th>`;
             }
 
-            return `
-                <th class="${col.class} sortable" onclick="sortTable('${tableType}', '${col.key}')">
-                    ${col.label} <span class="sort-indicator" data-column="${col.key}">↕</span>
-                    <div class="filter-dropdown">
-                        <button class="filter-btn" onclick="event.stopPropagation(); toggleFilter('${tableType}', '${col.key}')">⚡</button>
-                        <div class="filter-menu" id="${tableType}-filter-${col.key}">
-                            <input type="text" class="filter-input" placeholder="Filter..." onkeyup="filterColumn('${tableType}', '${col.key}', this.value)">
-                            <div class="filter-option" onclick="clearFilter('${tableType}', '${col.key}')">Clear Filter</div>
-                        </div>
-                    </div>
-                </th>
-            `;
+            return `<th class="${col.class}">${col.label}</th>`;
         }).join('');
-
-        updateSortIndicators(tableType);
     }
 
     // Render table
@@ -2040,6 +1993,49 @@
                 </tr>
             `;
         }).join('');
+
+        requestAnimationFrame(() => applyOverflowTooltips(tableType));
+    }
+
+    function applyOverflowTooltips(tableType) {
+        const table = document.getElementById(`${tableType}-table`);
+        if (!table) return;
+
+        const cells = table.querySelectorAll('tbody td');
+        cells.forEach(cell => {
+            if (cell.classList.contains('col-checkbox') || cell.classList.contains('col-actions')) {
+                cell.classList.remove('cell-tooltip');
+                cell.removeAttribute('data-tooltip');
+                cell.removeAttribute('title');
+                return;
+            }
+
+            if (cell.querySelector('button, input, select, textarea')) {
+                cell.classList.remove('cell-tooltip');
+                cell.removeAttribute('data-tooltip');
+                cell.removeAttribute('title');
+                return;
+            }
+
+            const text = (cell.textContent || '').trim();
+            if (!text) {
+                cell.classList.remove('cell-tooltip');
+                cell.removeAttribute('data-tooltip');
+                cell.removeAttribute('title');
+                return;
+            }
+
+            const isOverflowing = cell.scrollWidth > cell.clientWidth + 1;
+            if (isOverflowing) {
+                cell.classList.add('cell-tooltip');
+                cell.setAttribute('data-tooltip', text);
+                cell.setAttribute('title', text);
+            } else {
+                cell.classList.remove('cell-tooltip');
+                cell.removeAttribute('data-tooltip');
+                cell.removeAttribute('title');
+            }
+        });
     }
 
     // Render columns for a row
@@ -2116,11 +2112,7 @@
                 value = new Date(value).toLocaleString();
             }
 
-            const needsTooltip = String(value).length > 20;
-            const tooltipAttr = needsTooltip ? `data-tooltip="${String(value).replace(/"/g, '&quot;')}"` : '';
-            const tooltipClass = needsTooltip ? 'cell-tooltip' : '';
-
-            return `<td class="${col.class} ${tooltipClass}" ${tooltipAttr}>${value}</td>`;
+            return `<td class="${col.class}">${value}</td>`;
         }).join('');
     }
 
