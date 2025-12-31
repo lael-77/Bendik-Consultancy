@@ -2462,7 +2462,7 @@ function renderAnnouncements(announcements) {
 
     const announcementsWithIds = (announcements || []).map((ann, index) => ({
         ...ann,
-        id: String(ann.id || `temp-${index}`)
+        id: String(ann.id || ann._id || `temp-${index}`)
     }));
 
     state.data = announcementsWithIds;
@@ -2554,8 +2554,27 @@ async function saveAnnouncement(event) {
 
 async function editAnnouncement(id) {
     try {
+        const normalizedId = normalizeRowId(id);
+        const localAnnouncement = (tableState.announcements?.data || []).find(a => (
+            normalizeRowId(a.id) === normalizedId
+        ));
+
+        if (localAnnouncement) {
+            if (String(localAnnouncement.id || '').startsWith('temp-')) {
+                alert('Cannot edit this announcement because it has no server ID.');
+                return;
+            }
+            openAnnouncementModal(localAnnouncement);
+            return;
+        }
+
+        if (String(normalizedId || '').startsWith('temp-')) {
+            alert('Cannot edit this announcement because it has no server ID.');
+            return;
+        }
+
         const token = localStorage.getItem('token');
-        const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${id}`, {
+        const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${normalizedId}`, {
             headers: { 'Authorization': 'Bearer ' + token }
         });
         if (res.ok) {
