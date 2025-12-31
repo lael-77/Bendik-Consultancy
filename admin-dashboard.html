@@ -2018,7 +2018,8 @@
                 return;
             }
 
-            const text = (cell.textContent || '').trim();
+            const textEl = cell.querySelector('.cell-text') || cell;
+            const text = (textEl.textContent || '').trim();
             if (!text) {
                 cell.classList.remove('cell-tooltip');
                 cell.removeAttribute('data-tooltip');
@@ -2026,7 +2027,7 @@
                 return;
             }
 
-            const isOverflowing = cell.scrollWidth > cell.clientWidth + 1;
+            const isOverflowing = (textEl.scrollWidth > textEl.clientWidth + 1) || text.length > 30;
             if (isOverflowing) {
                 cell.classList.add('cell-tooltip');
                 cell.setAttribute('data-tooltip', text);
