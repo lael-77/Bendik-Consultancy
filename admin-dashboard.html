@@ -945,9 +945,6 @@
                 </ul>
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <button type="button" onclick="window.print()" class="btn btn-outline-secondary btn-sm me-2">Print</button>
-                    </li>
-                    <li class="nav-item">
                         <button type="button" onclick="logout()" class="btn btn-danger btn-sm">Logout</button>
                     </li>
                 </ul>
@@ -1017,11 +1014,6 @@
                     <div class="search-box">
                         <input type="text" class="search-input" id="client-search" placeholder="Search requests...">
                     </div>
-                    <div class="pagination">
-                        <button class="pagination-btn" id="client-prev" onclick="changePage('client', -1)">Previous</button>
-                        <span class="pagination-info" id="client-info">Page 1 of 1</span>
-                        <button class="pagination-btn" id="client-next" onclick="changePage('client', 1)">Next</button>
-                    </div>
                 </div>
 
                 <!-- Column Controls -->
@@ -1035,13 +1027,6 @@
                     </div>
                 </div>
 
-                <!-- Bulk Actions -->
-                <div class="bulk-actions" id="client-bulk-actions">
-                    <span class="selected-count"><span id="client-selected-count">0</span> selected</span>
-                    <button class="action-btn" onclick="bulkDelete('client')">Delete Selected</button>
-                    <button class="action-btn1" onclick="bulkExport('client')">Export Selected</button>
-                </div>
-
                 <div class="table-container">
                     <div class="loading-overlay" id="client-loading" style="display: none;">
                         <div class="loading-spinner"></div>
@@ -1049,9 +1034,6 @@
                     <table class="data-table" id="client-table">
                         <thead>
                             <tr>
-                                <th class="col-checkbox">
-                                    <input type="checkbox" class="row-checkbox" id="client-select-all">
-                                </th>
                                 <th class="col-name">Full Name</th>
                                 <th class="col-name">Organization</th>
                                 <th class="col-type">Business Type</th>
@@ -1084,11 +1066,6 @@
                         <div class="search-box">
                             <input type="text" class="search-input" id="purchase-search" placeholder="Search purchase requests...">
                         </div>
-                        <div class="pagination">
-                            <button class="pagination-btn" id="purchase-prev" onclick="changePage('purchase', -1)">Previous</button>
-                            <span class="pagination-info" id="purchase-info">Page 1 of 1</span>
-                            <button class="pagination-btn" id="purchase-next" onclick="changePage('purchase', 1)">Next</button>
-                        </div>
                     </div>
 
                     <div class="column-controls">
@@ -1097,12 +1074,6 @@
                             <button class="column-toggle-btn" onclick="toggleColumnMenu('purchase')">☰ Columns</button>
                             <div class="column-menu" id="purchase-column-menu"></div>
                         </div>
-                    </div>
-
-                    <div class="bulk-actions" id="purchase-bulk-actions">
-                        <span class="selected-count"><span id="purchase-selected-count">0</span> selected</span>
-                        <button class="action-btn" onclick="bulkDelete('purchase')">Delete Selected</button>
-                        <button class="action-btn1" onclick="bulkExport('purchase')">Export Selected</button>
                     </div>
 
                     <div class="table-container">
@@ -1129,11 +1100,6 @@
                         <div class="search-box">
                             <input type="text" class="search-input" id="sale-search" placeholder="Search sale requests...">
                         </div>
-                        <div class="pagination">
-                            <button class="pagination-btn" id="sale-prev" onclick="changePage('sale', -1)">Previous</button>
-                            <span class="pagination-info" id="sale-info">Page 1 of 1</span>
-                            <button class="pagination-btn" id="sale-next" onclick="changePage('sale', 1)">Next</button>
-                        </div>
                     </div>
 
                     <div class="column-controls">
@@ -1142,12 +1108,6 @@
                             <button class="column-toggle-btn" onclick="toggleColumnMenu('sale')">☰ Columns</button>
                             <div class="column-menu" id="sale-column-menu"></div>
                         </div>
-                    </div>
-
-                    <div class="bulk-actions" id="sale-bulk-actions">
-                        <span class="selected-count"><span id="sale-selected-count">0</span> selected</span>
-                        <button class="action-btn" onclick="bulkDelete('sale')">Delete Selected</button>
-                        <button class="action-btn1" onclick="bulkExport('sale')">Export Selected</button>
                     </div>
 
                     <div class="table-container">
@@ -1174,11 +1134,6 @@
                         <div class="search-box">
                             <input type="text" class="search-input" id="jobs-search" placeholder="Search job applications...">
                         </div>
-                        <div class="pagination">
-                            <button class="pagination-btn" id="jobs-prev" onclick="changePage('jobs', -1)">Previous</button>
-                            <span class="pagination-info" id="jobs-info">Page 1 of 1</span>
-                            <button class="pagination-btn" id="jobs-next" onclick="changePage('jobs', 1)">Next</button>
-                        </div>
                     </div>
 
                     <div class="column-controls">
@@ -1187,12 +1142,6 @@
                             <button class="column-toggle-btn" onclick="toggleColumnMenu('jobs')">☰ Columns</button>
                             <div class="column-menu" id="jobs-column-menu"></div>
                         </div>
-                    </div>
-
-                    <div class="bulk-actions" id="jobs-bulk-actions">
-                        <span class="selected-count"><span id="jobs-selected-count">0</span> selected</span>
-                        <button class="action-btn" onclick="bulkDelete('jobs')">Delete Selected</button>
-                        <button class="action-btn1" onclick="bulkExport('jobs')">Export Selected</button>
                     </div>
 
                     <div class="table-container">
@@ -1219,11 +1168,6 @@
                         <div class="search-box">
                             <input type="text" class="search-input" id="recruitment-search" placeholder="Search recruitment requests...">
                         </div>
-                        <div class="pagination">
-                            <button class="pagination-btn" id="recruitment-prev" onclick="changePage('recruitment', -1)">Previous</button>
-                            <span class="pagination-info" id="recruitment-info">Page 1 of 1</span>
-                            <button class="pagination-btn" id="recruitment-next" onclick="changePage('recruitment', 1)">Next</button>
-                        </div>
                     </div>
 
                     <div class="column-controls">
@@ -1232,12 +1176,6 @@
                             <button class="column-toggle-btn" onclick="toggleColumnMenu('recruitment')">☰ Columns</button>
                             <div class="column-menu" id="recruitment-column-menu"></div>
                         </div>
-                    </div>
-
-                    <div class="bulk-actions" id="recruitment-bulk-actions">
-                        <span class="selected-count"><span id="recruitment-selected-count">0</span> selected</span>
-                        <button class="action-btn" onclick="bulkDelete('recruitment')">Delete Selected</button>
-                        <button class="action-btn1" onclick="bulkExport('recruitment')">Export Selected</button>
                     </div>
 
                     <div class="table-container">
@@ -1268,11 +1206,6 @@
                         <div class="search-box">
                             <input type="text" class="search-input" id="announcements-search" placeholder="Search announcements...">
                         </div>
-                        <div class="pagination">
-                            <button class="pagination-btn" id="announcements-prev" onclick="changePage('announcements', -1)">Previous</button>
-                            <span class="pagination-info" id="announcements-info">Page 1 of 1</span>
-                            <button class="pagination-btn" id="announcements-next" onclick="changePage('announcements', 1)">Next</button>
-                        </div>
                     </div>
 
                     <div class="column-controls">
@@ -1281,12 +1214,6 @@
                             <button class="column-toggle-btn" onclick="toggleColumnMenu('announcements')">☰ Columns</button>
                             <div class="column-menu" id="announcements-column-menu"></div>
                         </div>
-                    </div>
-
-                    <div class="bulk-actions" id="announcements-bulk-actions">
-                        <span class="selected-count"><span id="announcements-selected-count">0</span> selected</span>
-                        <button class="action-btn" onclick="bulkDelete('announcements')">Delete Selected</button>
-                        <button class="action-btn1" onclick="bulkExport('announcements')">Export Selected</button>
                     </div>
 
                     <div class="table-container">
@@ -1471,7 +1398,6 @@
             selectedRows: new Set(),
             searchQuery: '',
             columns: [
-                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
                 { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
                 { key: 'organizationName', label: 'Organization', visible: true, class: 'col-name' },
                 { key: 'businessType', label: 'Business Type', visible: true, class: 'col-type' },
@@ -1498,7 +1424,6 @@
             selectedRows: new Set(),
             searchQuery: '',
             columns: [
-                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
                 { key: 'buyerName', label: 'Buyer Name', visible: true, class: 'col-name' },
                 { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
                 { key: 'email', label: 'Email', visible: true, class: 'col-email' },
@@ -1537,7 +1462,6 @@
             selectedRows: new Set(),
             searchQuery: '',
             columns: [
-                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
                 { key: 'ownerName', label: 'Owner Name', visible: true, class: 'col-name' },
                 { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
                 { key: 'email', label: 'Email', visible: true, class: 'col-email' },
@@ -1581,7 +1505,6 @@
             selectedRows: new Set(),
             searchQuery: '',
             columns: [
-                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
                 { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
                 { key: 'dob', label: 'Date of Birth', visible: true, class: 'col-date' },
                 { key: 'nationality', label: 'Nationality', visible: true, class: 'col-type' },
@@ -1631,7 +1554,6 @@
             selectedRows: new Set(),
             searchQuery: '',
             columns: [
-                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
                 { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
                 { key: 'contactPerson', label: 'Contact Person', visible: true, class: 'col-name' },
                 { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
@@ -1686,7 +1608,6 @@
             selectedRows: new Set(),
             searchQuery: '',
             columns: [
-                { key: 'checkbox', label: '', visible: true, class: 'col-checkbox' },
                 { key: 'title', label: 'Title', visible: true, class: 'col-name' },
                 { key: 'message', label: 'Message', visible: true, class: 'col-flex' },
                 { key: 'createdAt', label: 'Created', visible: true, class: 'col-date' },
@@ -1982,9 +1903,6 @@
         if (countElement) {
             countElement.textContent = (state.filteredData || []).length;
         }
-
-        // Update pagination
-        updatePagination(tableType);
 
         // Update select all checkbox
         const selectAllCheckbox = document.getElementById(`${tableType}-select-all`);
