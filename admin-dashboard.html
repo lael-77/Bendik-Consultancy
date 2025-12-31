@@ -2077,43 +2077,43 @@
                 if (tableType === 'client') {
                     return `
                         <td class="${col.class}">
-                            <button class="delete-btn" onclick="confirmDelete('client-requests', ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})">Delete</button>
+                            <button class="delete-btn" onclick='confirmDelete("client-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
                 }
                 if (tableType === 'purchase') {
                     return `
                         <td class="${col.class}">
-                            <button class="delete-btn" onclick="confirmDelete('pharmacy-purchase-requests', ${JSON.stringify(rowId)}, ${JSON.stringify(row.buyerName || 'Unknown')})">Delete</button>
+                            <button class="delete-btn" onclick='confirmDelete("pharmacy-purchase-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.buyerName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
                 }
                 if (tableType === 'sale') {
                     return `
                         <td class="${col.class}">
-                            <button class="delete-btn" onclick="confirmDelete('pharmacy-sale-requests', ${JSON.stringify(rowId)}, ${JSON.stringify(row.ownerName || 'Unknown')})">Delete</button>
+                            <button class="delete-btn" onclick='confirmDelete("pharmacy-sale-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.ownerName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
                 }
                 if (tableType === 'jobs') {
                     return `
                         <td class="${col.class}">
-                            <button class="delete-btn" onclick="confirmDelete('job-applications', ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})">Delete</button>
+                            <button class="delete-btn" onclick='confirmDelete("job-applications", ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
                 }
                 if (tableType === 'recruitment') {
                     return `
                         <td class="${col.class}">
-                            <button class="delete-btn" onclick="confirmDelete('recruitment-requests', ${JSON.stringify(rowId)}, ${JSON.stringify(row.pharmacyName || 'Unknown')})">Delete</button>
+                            <button class="delete-btn" onclick='confirmDelete("recruitment-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.pharmacyName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
                 }
                 if (tableType === 'announcements') {
                     return `
                         <td class="${col.class}">
-                            <button class="action-btn" onclick="editAnnouncement(${JSON.stringify(rowId)})" style="padding: 0.25rem 0.75rem; margin-right: 0.5rem;">Edit</button>
-                            <button class="delete-btn" onclick="confirmDeleteAnnouncement(${JSON.stringify(rowId)}, ${JSON.stringify(row.title || 'Unknown')})">Delete</button>
+                            <button class="action-btn" onclick='editAnnouncement(${JSON.stringify(rowId)})' style="padding: 0.25rem 0.75rem; margin-right: 0.5rem;">Edit</button>
+                            <button class="delete-btn" onclick='confirmDeleteAnnouncement(${JSON.stringify(rowId)}, ${JSON.stringify(row.title || 'Unknown')})'>Delete</button>
                         </td>
                     `;
                 }
