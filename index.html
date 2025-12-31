@@ -572,7 +572,7 @@
             display: none; /* only show the current slide on mobile */
         }
       .services-list-column {
-        padding: 20px 20px 36px;
+        padding: 20px;
         border-radius: 6px;
       }
 
@@ -1401,12 +1401,7 @@
                     <li><a href="index.html" data-translate="nav_home">Home</a></li>
                     <li class="nav-item-about">
                         <a href="aboutus.html" data-translate="nav_about">About Us</a>
-                        <ul class="about-dropdown">
-                            <li><a href="aboutus.html#introduction">About (Introduction)</a></li>
-                            <li><a href="aboutus.html#vision-mission">Vision &amp; Mission</a></li>
-                            <li><a href="aboutus.html#values">Values</a></li>
-                            <li><a href="aboutus.html#leadership">Leadership</a></li>
-                        </ul>
+                      
                     </li>
                     <li><a href="mission.html" data-translate="nav_mission">Mission</a></li>
                     <li><a href="corevalue.html" data-translate="nav_core_values">Core Values</a></li>
@@ -2011,7 +2006,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // WhatsApp Function
         function openWhatsApp() {
-            const phoneNumber = '+250796690160'; 
+            const phoneNumber = '+250796690160'; // Replace with your actual WhatsApp number
             const message = 'Hello! I would like to get more information about your services.';
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
@@ -2020,7 +2015,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 // Redirect /Admin or /admin (case-insensitive) to login
 const path = window.location.pathname.toLowerCase();
-if (path === '/admin' || path === '/admin/') {
+if (path === '/Admin' || path === '/Admin/') {
     window.location.replace('/LoginForm.html');
 }
 </script>
