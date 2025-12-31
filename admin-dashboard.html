@@ -336,6 +336,22 @@
             overflow: visible !important;
         }
 
+        #global-tooltip {
+            position: fixed;
+            z-index: 99999;
+            max-width: min(480px, calc(100vw - 24px));
+            background-color: #1e293b;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 12px;
+            line-height: 1.3;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            pointer-events: none;
+            word-break: break-word;
+        }
+
         .cell-tooltip:hover::after {
             content: attr(data-tooltip);
             position: absolute;
@@ -1998,9 +2014,67 @@
         requestAnimationFrame(() => applyOverflowTooltips(tableType));
     }
 
+    let globalTooltipEl = null;
+    function ensureGlobalTooltip() {
+        if (globalTooltipEl) return globalTooltipEl;
+        const el = document.createElement('div');
+        el.id = 'global-tooltip';
+        document.body.appendChild(el);
+        globalTooltipEl = el;
+
+        window.addEventListener('scroll', hideGlobalTooltip, true);
+        window.addEventListener('resize', hideGlobalTooltip);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideGlobalTooltip();
+        });
+
+        return el;
+    }
+
+    function positionGlobalTooltip(x, y) {
+        const el = globalTooltipEl;
+        if (!el || el.style.display === 'none') return;
+
+        const offset = 12;
+        const margin = 8;
+
+        let left = x + offset;
+        let top = y + offset;
+
+        const rect = el.getBoundingClientRect();
+
+        if (left + rect.width > window.innerWidth - margin) {
+            left = window.innerWidth - rect.width - margin;
+        }
+        if (top + rect.height > window.innerHeight - margin) {
+            top = y - rect.height - offset;
+        }
+
+        left = Math.max(margin, left);
+        top = Math.max(margin, top);
+
+        el.style.left = `${left}px`;
+        el.style.top = `${top}px`;
+    }
+
+    function showGlobalTooltip(text, x, y) {
+        const el = ensureGlobalTooltip();
+        el.textContent = text;
+        el.style.display = 'block';
+        positionGlobalTooltip(x, y);
+    }
+
+    function hideGlobalTooltip() {
+        if (!globalTooltipEl) return;
+        globalTooltipEl.style.display = 'none';
+        globalTooltipEl.textContent = '';
+    }
+
     function applyOverflowTooltips(tableType) {
         const table = document.getElementById(`${tableType}-table`);
         if (!table) return;
+
+        ensureGlobalTooltip();
 
         const cells = table.querySelectorAll('tbody td');
         cells.forEach(cell => {
@@ -2008,6 +2082,10 @@
                 cell.classList.remove('cell-tooltip');
                 cell.removeAttribute('data-tooltip');
                 cell.removeAttribute('title');
+                cell.removeAttribute('data-full-tooltip');
+                cell.onmouseenter = null;
+                cell.onmousemove = null;
+                cell.onmouseleave = null;
                 return;
             }
 
@@ -2015,6 +2093,10 @@
                 cell.classList.remove('cell-tooltip');
                 cell.removeAttribute('data-tooltip');
                 cell.removeAttribute('title');
+                cell.removeAttribute('data-full-tooltip');
+                cell.onmouseenter = null;
+                cell.onmousemove = null;
+                cell.onmouseleave = null;
                 return;
             }
 
@@ -2024,18 +2106,28 @@
                 cell.classList.remove('cell-tooltip');
                 cell.removeAttribute('data-tooltip');
                 cell.removeAttribute('title');
+                cell.removeAttribute('data-full-tooltip');
+                cell.onmouseenter = null;
+                cell.onmousemove = null;
+                cell.onmouseleave = null;
                 return;
             }
 
-            const isOverflowing = (textEl.scrollWidth > textEl.clientWidth + 1) || text.length > 30;
+            const isOverflowing = (textEl.scrollWidth > textEl.clientWidth + 1);
             if (isOverflowing) {
-                cell.classList.add('cell-tooltip');
-                cell.setAttribute('data-tooltip', text);
                 cell.setAttribute('title', text);
+                cell.setAttribute('data-full-tooltip', text);
+                cell.onmouseenter = (e) => showGlobalTooltip(text, e.clientX, e.clientY);
+                cell.onmousemove = (e) => positionGlobalTooltip(e.clientX, e.clientY);
+                cell.onmouseleave = hideGlobalTooltip;
             } else {
                 cell.classList.remove('cell-tooltip');
                 cell.removeAttribute('data-tooltip');
                 cell.removeAttribute('title');
+                cell.removeAttribute('data-full-tooltip');
+                cell.onmouseenter = null;
+                cell.onmousemove = null;
+                cell.onmouseleave = null;
             }
         });
     }
