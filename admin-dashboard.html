@@ -1265,7 +1265,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 20000;
             left: 0;
             top: 0;
             width: 100%;
@@ -2555,34 +2555,28 @@ async function saveAnnouncement(event) {
 async function editAnnouncement(id) {
     try {
         const normalizedId = normalizeRowId(id);
-        const localAnnouncement = (tableState.announcements?.data || []).find(a => (
+
+        const getLocal = () => (tableState.announcements?.data || []).find(a => (
             normalizeRowId(a.id) === normalizedId
         ));
 
-        if (localAnnouncement) {
-            if (String(localAnnouncement.id || '').startsWith('temp-')) {
-                alert('Cannot edit this announcement because it has no server ID.');
-                return;
-            }
-            openAnnouncementModal(localAnnouncement);
+        let announcement = getLocal();
+        if (!announcement) {
+            await fetchAnnouncements();
+            announcement = getLocal();
+        }
+
+        if (!announcement) {
+            alert('Announcement not found. Please refresh and try again.');
             return;
         }
 
-        if (String(normalizedId || '').startsWith('temp-')) {
+        if (String(announcement.id || '').startsWith('temp-')) {
             alert('Cannot edit this announcement because it has no server ID.');
             return;
         }
 
-        const token = localStorage.getItem('token');
-        const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${normalizedId}`, {
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-        if (res.ok) {
-            const announcement = await res.json();
-            openAnnouncementModal(announcement);
-        } else {
-            alert('Failed to load announcement for editing.');
-        }
+        openAnnouncementModal(announcement);
     } catch (error) {
         console.error('Error fetching announcement:', error);
         alert('An error occurred while loading the announcement.');
@@ -2597,8 +2591,18 @@ function confirmDeleteAnnouncement(id, title) {
 
 async function deleteAnnouncement(id) {
     try {
+        const normalizedId = normalizeRowId(id);
+        const state = tableState.announcements;
+        const prevData = (state?.data || []).slice();
+
+        if (state && Array.isArray(state.data)) {
+            state.data = state.data.filter(a => normalizeRowId(a.id) !== normalizedId);
+            state.filteredData = state.data;
+            renderTable('announcements');
+        }
+
         const token = localStorage.getItem('token');
-        const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${id}`, {
+        const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${normalizedId}`, {
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + token }
         });
@@ -2607,10 +2611,19 @@ async function deleteAnnouncement(id) {
             alert('Announcement deleted successfully!');
             await fetchAnnouncements();
         } else {
+            if (state) {
+                state.data = prevData;
+                state.filteredData = prevData;
+                renderTable('announcements');
+            }
             alert('Failed to delete announcement.');
         }
     } catch (error) {
         console.error('Error deleting announcement:', error);
+        const state = tableState.announcements;
+        if (state && Array.isArray(state.data)) {
+            await fetchAnnouncements();
+        }
         alert('An error occurred while deleting the announcement.');
     }
 }
