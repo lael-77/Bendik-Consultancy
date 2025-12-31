@@ -220,8 +220,8 @@
         /* High-Performance Table Styles */
         .table-container {
             overflow-x: auto;
-            overflow-y: auto;
-            max-height: 70vh;
+            overflow-y: visible;
+            max-height: none;
             position: relative;
             border: 1px solid #e2e8f0;
             border-radius: 0.5rem;
@@ -230,7 +230,8 @@
         .section .table-container {
             border: none;
             border-radius: 0;
-            max-height: 70vh;
+            max-height: none;
+            overflow-y: visible;
         }
 
         .data-table {
@@ -2200,15 +2201,21 @@ if (!token) {
 
 // Fetch and render client requests
 async function fetchClientRequests() {
-    const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/client-requests', {
-        headers: { 'Authorization': 'Bearer ' + token }
-    });
-    if (res.status === 401) {
-        localStorage.removeItem('token');
-        window.location.href = '/LoginForm.html';
+    try {
+        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/client-requests', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (res.status === 401) {
+            localStorage.removeItem('token');
+            window.location.href = '/LoginForm.html';
+            return [];
+        }
+        if (!res.ok) return [];
+        return await res.json();
+    } catch (e) {
+        console.error(e);
         return [];
     }
-    return await res.json();
 }
 
 function renderClientRequests(requests) {
@@ -2236,15 +2243,21 @@ function renderClientRequests(requests) {
 
 // Fetch and render pharmacy purchase requests
 async function fetchPharmacyPurchaseRequests() {
-    const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/pharmacy-purchase-requests', {
-        headers: { 'Authorization': 'Bearer ' + token }
-    });
-    if (res.status === 401) {
-        localStorage.removeItem('token');
-        window.location.href = '/LoginForm.html';
+    try {
+        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/pharmacy-purchase-requests', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (res.status === 401) {
+            localStorage.removeItem('token');
+            window.location.href = '/LoginForm.html';
+            return [];
+        }
+        if (!res.ok) return [];
+        return await res.json();
+    } catch (e) {
+        console.error(e);
         return [];
     }
-    return await res.json();
 }
 
 function renderPharmacyPurchaseRequests(requests) {
@@ -2269,15 +2282,21 @@ function renderPharmacyPurchaseRequests(requests) {
 
 // Fetch and render pharmacy sale requests
 async function fetchPharmacySaleRequests() {
-    const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/pharmacy-sale-requests', {
-        headers: { 'Authorization': 'Bearer ' + token }
-    });
-    if (res.status === 401) {
-        localStorage.removeItem('token');
-        window.location.href = '/LoginForm.html';
+    try {
+        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/pharmacy-sale-requests', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (res.status === 401) {
+            localStorage.removeItem('token');
+            window.location.href = '/LoginForm.html';
+            return [];
+        }
+        if (!res.ok) return [];
+        return await res.json();
+    } catch (e) {
+        console.error(e);
         return [];
     }
-    return await res.json();
 }
 
 function renderPharmacySaleRequests(requests) {
@@ -2302,15 +2321,21 @@ function renderPharmacySaleRequests(requests) {
 
 // Fetch and render job applications
 async function fetchJobApplications() {
-    const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/job-applications', {
-        headers: { 'Authorization': 'Bearer ' + token }
-    });
-    if (res.status === 401) {
-        localStorage.removeItem('token');
-        window.location.href = '/LoginForm.html';
+    try {
+        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/job-applications', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (res.status === 401) {
+            localStorage.removeItem('token');
+            window.location.href = '/LoginForm.html';
+            return [];
+        }
+        if (!res.ok) return [];
+        return await res.json();
+    } catch (e) {
+        console.error(e);
         return [];
     }
-    return await res.json();
 }
 
 function renderJobApplications(applications) {
@@ -2335,15 +2360,21 @@ function renderJobApplications(applications) {
 
 // Fetch and render recruitment requests
 async function fetchRecruitmentRequests() {
-    const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/recruitment-requests', {
-        headers: { 'Authorization': 'Bearer ' + token }
-    });
-    if (res.status === 401) {
-        localStorage.removeItem('token');
-        window.location.href = '/LoginForm.html';
+    try {
+        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/recruitment-requests', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (res.status === 401) {
+            localStorage.removeItem('token');
+            window.location.href = '/LoginForm.html';
+            return [];
+        }
+        if (!res.ok) return [];
+        return await res.json();
+    } catch (e) {
+        console.error(e);
         return [];
     }
-    return await res.json();
 }
 
 function renderRecruitmentRequests(requests) {
@@ -2368,18 +2399,20 @@ function renderRecruitmentRequests(requests) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Fetch and render all tables
-    const [clientRequests, pharmacyPurchaseRequests, pharmacySaleRequests, jobApplications, recruitmentRequests] = await Promise.all([
+    const results = await Promise.allSettled([
         fetchClientRequests(),
         fetchPharmacyPurchaseRequests(),
         fetchPharmacySaleRequests(),
         fetchJobApplications(),
         fetchRecruitmentRequests()
     ]);
-    renderClientRequests(clientRequests);
-    renderPharmacyPurchaseRequests(pharmacyPurchaseRequests);
-    renderPharmacySaleRequests(pharmacySaleRequests);
-    renderJobApplications(jobApplications);
-    renderRecruitmentRequests(recruitmentRequests);
+
+    const data = results.map(r => (r.status === 'fulfilled' ? r.value : []));
+    renderClientRequests(data[0] || []);
+    renderPharmacyPurchaseRequests(data[1] || []);
+    renderPharmacySaleRequests(data[2] || []);
+    renderJobApplications(data[3] || []);
+    renderRecruitmentRequests(data[4] || []);
 });
 
 // ========== ANNOUNCEMENTS MANAGEMENT ==========
