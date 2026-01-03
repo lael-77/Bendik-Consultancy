@@ -107,7 +107,7 @@ const translations = {
         "newsletter_error": "❌ Something went wrong. Please try again.",
         
         // Footer
-        "footer_copyright": "© 2025 Bendik Pharmacy Consultancy Ltd. All Rights Reserved.",
+        "footer_copyright": "© 2026 Bendik Pharmacy Consultancy Ltd. All Rights Reserved.",
         
         // Form Elements - Common
         "form_required": "*",
@@ -662,7 +662,7 @@ const translations = {
         "newsletter_error": "// TODO: paste translation here",
         
         // Footer
-        "footer_copyright": "2025 Bendik Pharmacy Consultancy Ltd. All Rights Reserved.",
+        "footer_copyright": "2026 Bendik Pharmacy Consultancy Ltd. All Rights Reserved.",
         
         // Form Elements - Common
         "form_required": "*",
