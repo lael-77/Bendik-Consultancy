@@ -2201,6 +2201,81 @@
         window.URL.revokeObjectURL(url);
     }
 
+    function confirmDelete(sectionKey, id, label) {
+        const deleteMap = {
+            'client-requests': { tableType: 'client', endpoint: 'client-requests', refetch: fetchClientRequests, render: renderClientRequests },
+            'pharmacy-purchase-requests': { tableType: 'purchase', endpoint: 'pharmacy-purchase-requests', refetch: fetchPharmacyPurchaseRequests, render: renderPharmacyPurchaseRequests },
+            'pharmacy-sale-requests': { tableType: 'sale', endpoint: 'pharmacy-sale-requests', refetch: fetchPharmacySaleRequests, render: renderPharmacySaleRequests },
+            'job-applications': { tableType: 'jobs', endpoint: 'job-applications', refetch: fetchJobApplications, render: renderJobApplications },
+            'recruitment-requests': { tableType: 'recruitment', endpoint: 'recruitment-requests', refetch: fetchRecruitmentRequests, render: renderRecruitmentRequests }
+        };
+
+        const cfg = deleteMap[sectionKey];
+        if (!cfg) {
+            alert('Delete is not configured for this section.');
+            return;
+        }
+
+        if (confirm(`Are you sure you want to delete "${label}"?`)) {
+            deleteRequest(cfg, id);
+        }
+    }
+
+    async function deleteRequest(cfg, id) {
+        const normalizedId = normalizeRowId(id);
+        if (String(normalizedId || '').startsWith('temp-')) {
+            alert('Cannot delete this item because it has no server ID.');
+            return;
+        }
+
+        const state = tableState[cfg.tableType];
+        const prevData = (state?.data || []).slice();
+
+        if (state && Array.isArray(state.data)) {
+            state.data = state.data.filter(r => normalizeRowId(r.id) !== normalizedId);
+            state.filteredData = state.data;
+            renderTable(cfg.tableType);
+        }
+
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/${cfg.endpoint}/${normalizedId}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+
+            if (res.status === 401) {
+                localStorage.removeItem('token');
+                window.location.href = '/LoginForm.html';
+                return;
+            }
+
+            if (res.ok) {
+                alert('Deleted successfully!');
+                const data = await cfg.refetch();
+                cfg.render(data || []);
+            } else {
+                if (state) {
+                    state.data = prevData;
+                    state.filteredData = prevData;
+                    renderTable(cfg.tableType);
+                }
+                alert('Failed to delete.');
+            }
+        } catch (error) {
+            console.error('Error deleting item:', error);
+            if (state) {
+                state.data = prevData;
+                state.filteredData = prevData;
+                renderTable(cfg.tableType);
+            }
+            alert('An error occurred while deleting.');
+        }
+    }
+
+    window.confirmDelete = confirmDelete;
+    window.deleteRequest = deleteRequest;
+
     // Show loading
     function showLoading(tableType) {
         const loading = document.getElementById(`${tableType}-loading`);
@@ -2244,7 +2319,7 @@ function renderClientRequests(requests) {
     // Add unique IDs to requests if they don't have them
     const requestsWithIds = requests.map((req, index) => ({
         ...req,
-        id: String(req.id || `temp-${index}`)
+        id: String(req.id || req._id || `temp-${index}`)
     }));
     
     // Update state
@@ -2285,7 +2360,7 @@ function renderPharmacyPurchaseRequests(requests) {
 
     const requestsWithIds = (requests || []).map((req, index) => ({
         ...req,
-        id: String(req.id || `temp-${index}`)
+        id: String(req.id || req._id || `temp-${index}`)
     }));
 
     state.data = requestsWithIds;
@@ -2324,7 +2399,7 @@ function renderPharmacySaleRequests(requests) {
 
     const requestsWithIds = (requests || []).map((req, index) => ({
         ...req,
-        id: String(req.id || `temp-${index}`)
+        id: String(req.id || req._id || `temp-${index}`)
     }));
 
     state.data = requestsWithIds;
@@ -2363,7 +2438,7 @@ function renderJobApplications(applications) {
 
     const appsWithIds = (applications || []).map((app, index) => ({
         ...app,
-        id: String(app.id || `temp-${index}`)
+        id: String(app.id || app._id || `temp-${index}`)
     }));
 
     state.data = appsWithIds;
