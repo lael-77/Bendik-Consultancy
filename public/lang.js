@@ -1222,6 +1222,13 @@ function updateLanguageSwitcher(activeLang) {
 // Function to load saved language on page load
 function loadSavedLanguage() {
     const savedLang = localStorage.getItem('selectedLanguage');
+    const migratedToRwDefault = localStorage.getItem('langDefaultMigratedToRw');
+
+    if (!migratedToRwDefault && savedLang === 'en') {
+        localStorage.setItem('langDefaultMigratedToRw', '1');
+        setLanguage('rw');
+        return;
+    }
     if (savedLang && translations[savedLang]) {
         setLanguage(savedLang);
     } else {
