@@ -17,6 +17,8 @@ const translations = {
         "service_sell_pharmacy": "Sell a Pharmacy",
         "service_job_application": "Pharmacist Job Application",
         "service_recruitment_request": "Pharmacist Recruitment Request",
+        "service_fda_applications": "Preparation and submitting applications to FDA",
+        "service_fda_applications_desc": "Preparation and submission support for Rwanda FDA applications.",
         "service_pharmacy_auditors": "Independent Pharmacy Auditors",
         "service_startup_guidance": "Pharmacy Startup Guidance",
         "service_staff_training": "Staff Training",
@@ -572,6 +574,8 @@ const translations = {
         "service_sell_pharmacy": "Kugurisha Farumasi",
         "service_job_application": "Gusaba Akazi k’ubufarumasiye (Pharmacist)",
         "service_recruitment_request": "Gusaba Guhabwa Umufarumasiye",
+        "service_fda_applications": "Gutegura no kohereza dosiye zo gusaba kuri FDA",
+        "service_fda_applications_desc": "Ubufasha mu gutegura no kohereza ubusabe kuri Rwanda FDA.",
         "service_pharmacy_auditors": "Abagenzuzi Bigenga ba Farumasi",
         "service_startup_guidance": "Inama mu Gutangiza Farumasi",
         "service_staff_training": "Amahugurwa y’Abakozi",
@@ -1171,6 +1175,8 @@ const translations = {
 function setLanguage(lang) {
     // Save language preference to localStorage
     localStorage.setItem('selectedLanguage', lang);
+
+    document.documentElement.lang = lang;
     
     // Update all elements with data-translate attribute
     const elements = document.querySelectorAll('[data-translate]');
@@ -1220,7 +1226,7 @@ function loadSavedLanguage() {
         setLanguage(savedLang);
     } else {
         // Default to English if no saved language
-        setLanguage('en');
+        setLanguage('rw');
     }
 }
 
@@ -1231,6 +1237,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Reapply translation after short delay to catch any dynamically loaded content
 setTimeout(() => {
-  setLanguage(localStorage.getItem('selectedLanguage') || 'en');
+  setLanguage(localStorage.getItem('selectedLanguage') || 'rw');
 }, 1000);
 
