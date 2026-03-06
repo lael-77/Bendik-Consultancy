@@ -951,7 +951,7 @@ const translations = {
         "purchase_buyer_name": "a) Amazina y'Umuguzi",
         "purchase_phone_number": "b) Numero ya Telefoni",
         "purchase_email_address": "c) Aderesi ya Imeli",
-        "purchase_contact_method": "d) Uburyo buhpreferwa bwo kuvugana",
+        "purchase_contact_method": "d) Uburyo buboroheye bwo kuvugana",
         "purchase_national_id": "e) Indangamuntu (si ngombwa)",
         "purchase_tin_number": "f) Numero ya TIN (niba ihari)",
         "purchase_pharmacy_type_retail": "Farumasi icuruza (Retail Pharmacy – Community-based)",
