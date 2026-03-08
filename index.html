@@ -461,10 +461,16 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center 70%;
   opacity: 0;
   transition: opacity 1s ease-in-out;
   pointer-events: none; /* disable mouse for hidden slides */
+}
+
+@media (min-width: 769px) {
+  .slide {
+    background-size: 115%;
+  }
 }
 
 .slide.active {
@@ -541,9 +547,39 @@
     }
 
     .services-menu li {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-size: 1rem;
       position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .services-menu li .service-label {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .services-menu li .request-btn {
+      margin-left: auto;
+      background: #4CAF50;
+      color: #ffffff;
+      padding: 4px 10px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+      box-shadow: 0 6px 14px rgba(76, 175, 80, 0.24);
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .services-menu li .request-btn:hover {
+      background: #2e7d32;
+      box-shadow: 0 12px 24px rgba(46, 125, 50, 0.32);
+      transform: translateY(-1px);
     }
 
     .services-menu li::before {
@@ -583,6 +619,39 @@
       .services-menu li {
         font-size: 0.95rem;
       }
+
+      .hero .services-menu {
+        columns: 1;
+        list-style: disc;
+        padding-left: 22px;
+      }
+
+      .hero .services-menu li {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+
+      .hero .services-menu li::before {
+        content: none;
+      }
+
+      .hero .services-menu li .service-label {
+        width: 100%;
+        padding-top: 0;
+      }
+
+      .hero .services-menu li .request-btn {
+        margin-left: 0;
+        align-self: flex-start;
+      }
+
+      .services-menu li .request-btn {
+        padding: 3px 9px;
+        font-size: 10.5px;
+      }
     }
 
 
@@ -615,7 +684,13 @@
     padding-top: 10px;
   transition: all 0.3s ease-in-out;
 }
-.services-menu li a:hover {
+.services-menu li .service-label {
+    color: white;
+    text-decoration: none;
+    padding-top: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.services-menu li .service-label:hover {
     color: var(--light-green);
     transform: translateX(5px);
 }
@@ -1460,21 +1535,21 @@
                 <div class="services-list-column">
                     <h3 data-translate="hero_services_title">Our Services</h3>
                     <ul class="services-menu">
-                        <li><a href="purchase-pharmacy.html#startup" data-translate="service_buy_pharmacy">Buy a Pharmacy</a></li>
-                        <li><a href="sell-pharmacy.html#connections" data-translate="service_sell_pharmacy">Sell a Pharmacy</a></li>
-                        <li><a href="job-application.html#jobs" data-translate="service_job_application">Pharmacist Job Application</a></li>
-                        <li><a href="applications-fda.html" data-translate="service_fda_applications">Preparation and submitting applications to FDA</a></li>
-                        <li><a href="recruitment-request.html#recruitment" data-translate="service_recruitment_request">Pharmacist Recruitment Request</a></li>
-                         <li><a href="pharmacy-auditors.html#auditors" data-translate="service_pharmacy_auditors">Independent Pharmacy Auditors</a></li>
-                        <li><a href="client-form.html#startup" data-translate="service_startup_guidance"> Pharmacy Startup Guidance</a></li>
-                        <li><a href="client-form.html#training" data-translate="service_staff_training"> Staff Training</a></li>
-                        <li><a href="client-form.html#contracts" data-translate="service_contract_design"> Contract Design</a></li>
-                        <li><a href="client-form.html#sop" data-translate="service_sop_development"> SOP Development</a></li>
-                        <li><a href="client-form.html#tax" data-translate="service_accounting"> Accounting Services</a></li>
-                        <li><a href="client-form.html#valuation" data-translate="service_pharmacy_valuation"> Pharmacy Valuation</a></li>
-                        <li><a href="client-form.html#compliance" data-translate="service_regulatory_compliance"> Regulatory Compliance</a></li>
-                        <li><a href="client-form.html#inventory" data-translate="service_inventory_management"> Inventory Management</a></li>
-                        <li><a href="client-form.html#strategy" data-translate="service_strategic_planning"> Strategic Planning</a></li>
+                        <li><a href="purchase-pharmacy.html#startup" class="service-label" data-translate="service_buy_pharmacy">Buy a Pharmacy</a><a href="purchase-pharmacy.html#startup" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="sell-pharmacy.html#connections" class="service-label" data-translate="service_sell_pharmacy">Sell a Pharmacy</a><a href="sell-pharmacy.html#connections" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="job-application.html#jobs" class="service-label" data-translate="service_job_application">Pharmacist Job Application</a><a href="job-application.html#jobs" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="applications-fda.html" class="service-label" data-translate="service_fda_applications">Preparation and submitting applications to FDA</a><a href="applications-fda.html" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="recruitment-request.html#recruitment" class="service-label" data-translate="service_recruitment_request">Pharmacist Recruitment Request</a><a href="recruitment-request.html#recruitment" class="request-btn" data-translate="request_service">Request Service</a></li>
+                         <li><a href="pharmacy-auditors.html#auditors" class="service-label" data-translate="service_pharmacy_auditors">Independent Pharmacy Auditors</a><a href="pharmacy-auditors.html#auditors" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#startup" class="service-label" data-translate="service_startup_guidance"> Pharmacy Startup Guidance</a><a href="client-form.html#startup" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#training" class="service-label" data-translate="service_staff_training"> Staff Training</a><a href="client-form.html#training" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#contracts" class="service-label" data-translate="service_contract_design"> Contract Design</a><a href="client-form.html#contracts" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#sop" class="service-label" data-translate="service_sop_development"> SOP Development</a><a href="client-form.html#sop" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#tax" class="service-label" data-translate="service_accounting"> Accounting Services</a><a href="client-form.html#tax" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#valuation" class="service-label" data-translate="service_pharmacy_valuation"> Pharmacy Valuation</a><a href="client-form.html#valuation" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#compliance" class="service-label" data-translate="service_regulatory_compliance"> Regulatory Compliance</a><a href="client-form.html#compliance" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#inventory" class="service-label" data-translate="service_inventory_management"> Inventory Management</a><a href="client-form.html#inventory" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#strategy" class="service-label" data-translate="service_strategic_planning"> Strategic Planning</a><a href="client-form.html#strategy" class="request-btn" data-translate="request_service">Request Service</a></li>
                     </ul>
                 </div>
                 
@@ -1497,21 +1572,21 @@
                 <div class="services-list-column">
                     <h3 data-translate="hero_services_title">Our Services</h3>
                     <ul class="services-menu">
-                        <li><a href="purchase-pharmacy.html#startup" data-translate="service_buy_pharmacy">Buy a Pharmacy</a></li>
-                        <li><a href="sell-pharmacy.html#connections" data-translate="service_sell_pharmacy">Sell a Pharmacy</a></li>
-                        <li><a href="job-application.html#jobs" data-translate="service_job_application">Pharmacist Job Application</a></li>
-                        <li><a href="applications-fda.html" data-translate="service_fda_applications">Preparation and submitting applications to FDA</a></li>
-                        <li><a href="recruitment-request.html#recruitment" data-translate="service_recruitment_request">Pharmacist Recruitment Request</a></li>
-                         <li><a href="pharmacy-auditors.html#auditors" data-translate="service_pharmacy_auditors">Independent Pharmacy Auditors</a></li>
-                        <li><a href="client-form.html#startup" data-translate="service_startup_guidance"> Pharmacy Startup Guidance</a></li>
-                        <li><a href="client-form.html#training" data-translate="service_staff_training"> Staff Training</a></li>
-                        <li><a href="client-form.html#contracts" data-translate="service_contract_design"> Contract Design</a></li>
-                        <li><a href="client-form.html#sop" data-translate="service_sop_development"> SOP Development</a></li>
-                        <li><a href="client-form.html#tax" data-translate="service_accounting"> Accounting Services</a></li>
-                        <li><a href="client-form.html#valuation" data-translate="service_pharmacy_valuation"> Pharmacy Valuation</a></li>
-                        <li><a href="client-form.html#compliance" data-translate="service_regulatory_compliance"> Regulatory Compliance</a></li>
-                        <li><a href="client-form.html#inventory" data-translate="service_inventory_management"> Inventory Management</a></li>
-                        <li><a href="client-form.html#strategy" data-translate="service_strategic_planning"> Strategic Planning</a></li>
+                        <li><a href="purchase-pharmacy.html#startup" class="service-label" data-translate="service_buy_pharmacy">Buy a Pharmacy</a><a href="purchase-pharmacy.html#startup" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="sell-pharmacy.html#connections" class="service-label" data-translate="service_sell_pharmacy">Sell a Pharmacy</a><a href="sell-pharmacy.html#connections" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="job-application.html#jobs" class="service-label" data-translate="service_job_application">Pharmacist Job Application</a><a href="job-application.html#jobs" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="applications-fda.html" class="service-label" data-translate="service_fda_applications">Preparation and submitting applications to FDA</a><a href="applications-fda.html" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="recruitment-request.html#recruitment" class="service-label" data-translate="service_recruitment_request">Pharmacist Recruitment Request</a><a href="recruitment-request.html#recruitment" class="request-btn" data-translate="request_service">Request Service</a></li>
+                         <li><a href="pharmacy-auditors.html#auditors" class="service-label" data-translate="service_pharmacy_auditors">Independent Pharmacy Auditors</a><a href="pharmacy-auditors.html#auditors" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#startup" class="service-label" data-translate="service_startup_guidance"> Pharmacy Startup Guidance</a><a href="client-form.html#startup" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#training" class="service-label" data-translate="service_staff_training"> Staff Training</a><a href="client-form.html#training" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#contracts" class="service-label" data-translate="service_contract_design"> Contract Design</a><a href="client-form.html#contracts" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#sop" class="service-label" data-translate="service_sop_development"> SOP Development</a><a href="client-form.html#sop" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#tax" class="service-label" data-translate="service_accounting"> Accounting Services</a><a href="client-form.html#tax" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#valuation" class="service-label" data-translate="service_pharmacy_valuation"> Pharmacy Valuation</a><a href="client-form.html#valuation" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#compliance" class="service-label" data-translate="service_regulatory_compliance"> Regulatory Compliance</a><a href="client-form.html#compliance" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#inventory" class="service-label" data-translate="service_inventory_management"> Inventory Management</a><a href="client-form.html#inventory" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#strategy" class="service-label" data-translate="service_strategic_planning"> Strategic Planning</a><a href="client-form.html#strategy" class="request-btn" data-translate="request_service">Request Service</a></li>
                     </ul>
                 </div>
                 
@@ -1534,21 +1609,21 @@
                 <div class="services-list-column">
                     <h3 data-translate="hero_services_title">Our Services</h3>
                     <ul class="services-menu">
-                        <li><a href="purchase-pharmacy.html#startup" data-translate="service_buy_pharmacy">Buy a Pharmacy</a></li>
-                        <li><a href="sell-pharmacy.html#connections" data-translate="service_sell_pharmacy">Sell a Pharmacy</a></li>
-                        <li><a href="job-application.html#jobs" data-translate="service_job_application">Pharmacist Job Application</a></li>
-                        <li><a href="applications-fda.html" data-translate="service_fda_applications">Preparation and submitting applications to FDA</a></li>
-                        <li><a href="recruitment-request.html#recruitment" data-translate="service_recruitment_request">Pharmacist Recruitment Request</a></li>
-                         <li><a href="pharmacy-auditors.html#auditors" data-translate="service_pharmacy_auditors">Independent Pharmacy Auditors</a></li>
-                        <li><a href="client-form.html#startup" data-translate="service_startup_guidance"> Pharmacy Startup Guidance</a></li>
-                        <li><a href="client-form.html#training" data-translate="service_staff_training"> Staff Training</a></li>
-                        <li><a href="client-form.html#contracts" data-translate="service_contract_design"> Contract Design</a></li>
-                        <li><a href="client-form.html#sop" data-translate="service_sop_development"> SOP Development</a></li>
-                        <li><a href="client-form.html#tax" data-translate="service_accounting"> Accounting Services</a></li>
-                        <li><a href="client-form.html#valuation" data-translate="service_pharmacy_valuation"> Pharmacy Valuation</a></li>
-                        <li><a href="client-form.html#compliance" data-translate="service_regulatory_compliance"> Regulatory Compliance</a></li>
-                        <li><a href="client-form.html#inventory" data-translate="service_inventory_management"> Inventory Management</a></li>
-                        <li><a href="client-form.html#strategy" data-translate="service_strategic_planning"> Strategic Planning</a></li>
+                        <li><a href="purchase-pharmacy.html#startup" class="service-label" data-translate="service_buy_pharmacy">Buy a Pharmacy</a><a href="purchase-pharmacy.html#startup" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="sell-pharmacy.html#connections" class="service-label" data-translate="service_sell_pharmacy">Sell a Pharmacy</a><a href="sell-pharmacy.html#connections" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="job-application.html#jobs" class="service-label" data-translate="service_job_application">Pharmacist Job Application</a><a href="job-application.html#jobs" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="applications-fda.html" class="service-label" data-translate="service_fda_applications">Preparation and submitting applications to FDA</a><a href="applications-fda.html" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="recruitment-request.html#recruitment" class="service-label" data-translate="service_recruitment_request">Pharmacist Recruitment Request</a><a href="recruitment-request.html#recruitment" class="request-btn" data-translate="request_service">Request Service</a></li>
+                         <li><a href="pharmacy-auditors.html#auditors" class="service-label" data-translate="service_pharmacy_auditors">Independent Pharmacy Auditors</a><a href="pharmacy-auditors.html#auditors" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#startup" class="service-label" data-translate="service_startup_guidance"> Pharmacy Startup Guidance</a><a href="client-form.html#startup" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#training" class="service-label" data-translate="service_staff_training"> Staff Training</a><a href="client-form.html#training" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#contracts" class="service-label" data-translate="service_contract_design"> Contract Design</a><a href="client-form.html#contracts" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#sop" class="service-label" data-translate="service_sop_development"> SOP Development</a><a href="client-form.html#sop" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#tax" class="service-label" data-translate="service_accounting"> Accounting Services</a><a href="client-form.html#tax" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#valuation" class="service-label" data-translate="service_pharmacy_valuation"> Pharmacy Valuation</a><a href="client-form.html#valuation" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#compliance" class="service-label" data-translate="service_regulatory_compliance"> Regulatory Compliance</a><a href="client-form.html#compliance" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#inventory" class="service-label" data-translate="service_inventory_management"> Inventory Management</a><a href="client-form.html#inventory" class="request-btn" data-translate="request_service">Request Service</a></li>
+                        <li><a href="client-form.html#strategy" class="service-label" data-translate="service_strategic_planning"> Strategic Planning</a><a href="client-form.html#strategy" class="request-btn" data-translate="request_service">Request Service</a></li>
                     </ul>
                 </div>
                 
