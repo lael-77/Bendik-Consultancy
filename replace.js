@@ -1,5 +1,36 @@
-// Language translations object
-const translations = {
+const fs = require('fs');
+
+function replaceFile(path) {
+    let content = fs.readFileSync(path, 'utf8');
+
+    // Temporarily save "Bendik Pharmacy"
+    content = content.replace(/Bendik Pharmacy/g, 'BENDIK_TEMP_PLACEHOLDER');
+    content = content.replace(/bendikpharmacy/gi, 'BENDIK_EMAIL_PLACEHOLDER');
+    content = content.replace(/bendikpharmacyconsult/gi, 'BENDIK_WEBSITE_PLACEHOLDER');
+
+    content = content.replace(/Pharmacy/g, 'Clinic');
+    content = content.replace(/pharmacy/g, 'clinic');
+    content = content.replace(/PHARMACY/g, 'CLINIC');
+
+    content = content.replace(/Pharmacists/g, 'Nurses');
+    content = content.replace(/pharmacists/g, 'nurses');
+    content = content.replace(/Pharmacist/g, 'Nurse');
+    content = content.replace(/pharmacist/g, 'nurse');
+    content = content.replace(/PHARMACIST/g, 'NURSE');
+    content = content.replace(/pharmaceutical/g, 'clinical');
+    content = content.replace(/Pharmaceutical/g, 'Clinical');
+
+    // Restore
+    content = content.replace(/BENDIK_TEMP_PLACEHOLDER/g, 'Bendik Pharmacy');
+    content = content.replace(/BENDIK_EMAIL_PLACEHOLDER/g, 'bendikpharmacy');
+    content = content.replace(/BENDIK_WEBSITE_PLACEHOLDER/g, 'bendikpharmacyconsult');
+
+    fs.writeFileSync(path, content, 'utf8');
+    console.log("Updated: " + path);
+}
+
+['nurse-job-application.html', 'nurse-recruitment-request.html', 'sell-clinic.html', 'purchase-clinic.html'].forEach(replaceFile);// Language translations object
+export const translations = {
     en: {
         // Navigation
         "nav_home": "Home",
@@ -1797,80 +1828,4 @@ const translations = {
         "form_error_save": "Ikosa mu kubika Ifishi. Nyamuneka gerageza nanone."
     }
 };
-
-// Function to set language and update all elements with data-translate attribute
-function setLanguage(lang) {
-    // Save language preference to localStorage
-    localStorage.setItem('selectedLanguage', lang);
-
-    document.documentElement.lang = lang;
-
-    // Update all elements with data-translate attribute
-    const elements = document.querySelectorAll('[data-translate]');
-    elements.forEach(element => {
-        const key = element.getAttribute('data-translate');
-        if (translations[lang] && translations[lang][key]) {
-            // Only update if translation exists and is not a placeholder
-            const translation = translations[lang][key];
-            if (!translation.includes('// TODO: paste translation here')) {
-                element.textContent = translation;
-            }
-        }
-    });
-
-    // Update all elements with data-translate-placeholder attribute
-    const placeholderElements = document.querySelectorAll('[data-translate-placeholder]');
-    placeholderElements.forEach(element => {
-        const key = element.getAttribute('data-translate-placeholder');
-        if (translations[lang] && translations[lang][key]) {
-            // Only update if translation exists and is not a placeholder
-            const translation = translations[lang][key];
-            if (!translation.includes('// TODO: paste translation here')) {
-                element.placeholder = translation;
-            }
-        }
-    });
-
-    // Update language switcher button states
-    updateLanguageSwitcher(lang);
-}
-
-// Function to update language switcher button states
-function updateLanguageSwitcher(activeLang) {
-    const buttons = document.querySelectorAll('.language-switcher-overlay button');
-    buttons.forEach(button => {
-        button.classList.remove('active');
-        if (button.getAttribute('onclick').includes(activeLang)) {
-            button.classList.add('active');
-        }
-    });
-}
-
-// Function to load saved language on page load
-function loadSavedLanguage() {
-    const savedLang = localStorage.getItem('selectedLanguage');
-    const migratedToRwDefault = localStorage.getItem('langDefaultMigratedToRw');
-
-    if (!migratedToRwDefault && savedLang === 'en') {
-        localStorage.setItem('langDefaultMigratedToRw', '1');
-        setLanguage('rw');
-        return;
-    }
-    if (savedLang && translations[savedLang]) {
-        setLanguage(savedLang);
-    } else {
-        // Default to English if no saved language
-        setLanguage('rw');
-    }
-}
-
-// Initialize language system when DOM is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    loadSavedLanguage();
-});
-
-// Reapply translation after short delay to catch any dynamically loaded content
-setTimeout(() => {
-    setLanguage(localStorage.getItem('selectedLanguage') || 'rw');
-}, 1000);
 
