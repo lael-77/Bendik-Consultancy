@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bendik Pharmacy Consultancy Admin Dashboard</title>
     <link rel="icon" type="image/x-icon" href="logo.jpg">
     <link rel="stylesheet" href="./AdminLTE-4.0.0-rc4/AdminLTE-4.0.0-rc4/dist/css/adminlte.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"
+        crossorigin="anonymous" />
     <style>
         * {
             margin: 0;
@@ -56,17 +51,20 @@
             top: 0;
             z-index: 100;
         }
+
         .topnav .nav-brand {
             font-size: 1.25rem;
             font-weight: 700;
             color: #1e293b;
             letter-spacing: 1px;
         }
+
         .topnav .nav-links {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
+
         .topnav .nav-item {
             color: #64748b;
             text-decoration: none;
@@ -76,11 +74,13 @@
             border-radius: 4px;
             transition: background 0.2s, color 0.2s;
         }
+
         .topnav .nav-item:hover,
         .topnav .nav-item.active {
             background-color: #e0e7ef;
             color: #2563eb;
         }
+
         .topnav .menu-toggle {
             display: none;
             flex-direction: column;
@@ -94,6 +94,7 @@
             background: #ffffff;
             cursor: pointer;
         }
+
         .topnav .menu-toggle span {
             display: block;
             width: 18px;
@@ -103,12 +104,15 @@
             margin: 2px 0;
             transition: transform 0.2s ease, opacity 0.2s ease;
         }
+
         .topnav .menu-toggle.open span:nth-child(1) {
             transform: translateY(4px) rotate(45deg);
         }
+
         .topnav .menu-toggle.open span:nth-child(2) {
             opacity: 0;
         }
+
         .topnav .menu-toggle.open span:nth-child(3) {
             transform: translateY(-4px) rotate(-45deg);
         }
@@ -125,6 +129,7 @@
             margin-left: 1.5rem;
             transition: background 0.2s;
         }
+
         .logout-btn:hover {
             background: #dc2626;
         }
@@ -138,12 +143,15 @@
                 padding: 0.75rem 1rem;
                 gap: 0.5rem;
             }
+
             .topnav .nav-brand {
                 font-size: 1.1rem;
             }
+
             .topnav .menu-toggle {
                 display: flex;
             }
+
             .topnav .nav-links {
                 position: absolute;
                 top: 64px;
@@ -157,9 +165,11 @@
                 padding: 0.5rem 1rem 0.75rem;
                 display: none;
             }
+
             .topnav .nav-links.open {
                 display: flex;
             }
+
             .topnav .nav-item {
                 padding: 0.4rem 0.75rem;
                 font-size: 0.95rem;
@@ -281,18 +291,76 @@
         }
 
         /* Column width constraints */
-        .data-table .col-checkbox { width: 40px; min-width: 40px; max-width: 40px; }
-        .data-table .col-id { width: 80px; min-width: 60px; max-width: 100px; }
-        .data-table .col-name { width: 200px; min-width: 150px; max-width: 300px; }
-        .data-table .col-contact { width: 150px; min-width: 120px; max-width: 200px; }
-        .data-table .col-email { width: 180px; min-width: 150px; max-width: 250px; }
-        .data-table .col-phone { width: 130px; min-width: 110px; max-width: 150px; }
-        .data-table .col-status { width: 100px; min-width: 80px; max-width: 120px; }
-        .data-table .col-type { width: 120px; min-width: 100px; max-width: 150px; }
-        .data-table .col-location { width: 140px; min-width: 120px; max-width: 180px; }
-        .data-table .col-date { width: 140px; min-width: 120px; max-width: 160px; }
-        .data-table .col-actions { width: 180px; min-width: 160px; max-width: 220px; }
-        .data-table .col-flex { width: auto; min-width: 100px; }
+        .data-table .col-checkbox {
+            width: 40px;
+            min-width: 40px;
+            max-width: 40px;
+        }
+
+        .data-table .col-id {
+            width: 80px;
+            min-width: 60px;
+            max-width: 100px;
+        }
+
+        .data-table .col-name {
+            width: 200px;
+            min-width: 150px;
+            max-width: 300px;
+        }
+
+        .data-table .col-contact {
+            width: 150px;
+            min-width: 120px;
+            max-width: 200px;
+        }
+
+        .data-table .col-email {
+            width: 180px;
+            min-width: 150px;
+            max-width: 250px;
+        }
+
+        .data-table .col-phone {
+            width: 130px;
+            min-width: 110px;
+            max-width: 150px;
+        }
+
+        .data-table .col-status {
+            width: 100px;
+            min-width: 80px;
+            max-width: 120px;
+        }
+
+        .data-table .col-type {
+            width: 120px;
+            min-width: 100px;
+            max-width: 150px;
+        }
+
+        .data-table .col-location {
+            width: 140px;
+            min-width: 120px;
+            max-width: 180px;
+        }
+
+        .data-table .col-date {
+            width: 140px;
+            min-width: 120px;
+            max-width: 160px;
+        }
+
+        .data-table .col-actions {
+            width: 180px;
+            min-width: 160px;
+            max-width: 220px;
+        }
+
+        .data-table .col-flex {
+            width: auto;
+            min-width: 100px;
+        }
 
         /* Sticky header and first column */
         .data-table thead th {
@@ -569,8 +637,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Search and pagination */
@@ -654,28 +727,29 @@
         /* Action buttons */
         .action-btn {
             padding: 0.375rem 0.75rem;
-            border:none;
+            border: none;
             background: red;
-            border-radius:4px;
-            cursor:pointer;
-            font-size:0.875rem;
-            font-family:sans-serif;
-            color:white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-family: sans-serif;
+            color: white;
         }
-        .action-btn1{
-            background:green;
+
+        .action-btn1 {
+            background: green;
             padding: 0.375rem 0.75rem;
-            border:none;
+            border: none;
             border-radius: 0.375rem;
             font-size: 0.875rem;
             cursor: pointer;
             margin-right: 0.5rem;
             transition: all 0.2s;
-            font-family:sans-serif;
-            color:white;
-            margin-top:20px;
+            font-family: sans-serif;
+            color: white;
+            margin-top: 20px;
         }
-        
+
 
         .action-btn:hover {
             background-color: red;
@@ -709,6 +783,7 @@
 
         /* Print-friendly styles */
         @media print {
+
             .app-header,
             .app-sidebar,
             .bulk-actions,
@@ -944,13 +1019,15 @@
         }
     </style>
 </head>
+
 <body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
     <div class="app-wrapper">
         <nav class="app-header navbar navbar-expand bg-body">
             <div class="container-fluid">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button" aria-label="Toggle sidebar">
+                        <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"
+                            aria-label="Toggle sidebar">
                             <i class="bi bi-list"></i>
                         </a>
                     </li>
@@ -969,41 +1046,77 @@
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
             <div class="sidebar-wrapper">
                 <nav class="mt-2">
-                    <ul class="nav sidebar-menu flex-column" role="navigation" aria-label="Main navigation" id="navigation">
+                    <ul class="nav sidebar-menu flex-column" role="navigation" aria-label="Main navigation"
+                        id="navigation">
                         <li class="nav-item">
-                            <a href="#client-requests" class="nav-link active" id="client-requests-link" data-section="client-requests">
+                            <a href="#client-requests" class="nav-link active" id="client-requests-link"
+                                data-section="client-requests">
                                 <i class="nav-icon bi bi-people"></i>
                                 <p>Client Requests</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#pharmacy-purchase-requests" class="nav-link" id="pharmacy-purchase-requests-link" data-section="pharmacy-purchase-requests">
+                            <a href="#pharmacy-purchase-requests" class="nav-link" id="pharmacy-purchase-requests-link"
+                                data-section="pharmacy-purchase-requests">
                                 <i class="nav-icon bi bi-bag"></i>
                                 <p>Pharmacy Purchase Requests</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#pharmacy-sale-requests" class="nav-link" id="pharmacy-sale-requests-link" data-section="pharmacy-sale-requests">
+                            <a href="#pharmacy-sale-requests" class="nav-link" id="pharmacy-sale-requests-link"
+                                data-section="pharmacy-sale-requests">
                                 <i class="nav-icon bi bi-cart"></i>
                                 <p>Pharmacy Sale Requests</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#job-applications" class="nav-link" id="job-applications-link" data-section="job-applications">
+                            <a href="#job-applications" class="nav-link" id="job-applications-link"
+                                data-section="job-applications">
                                 <i class="nav-icon bi bi-person-badge"></i>
                                 <p>Job Applications</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#recruitment-requests" class="nav-link" id="recruitment-requests-link" data-section="recruitment-requests">
+                            <a href="#recruitment-requests" class="nav-link" id="recruitment-requests-link"
+                                data-section="recruitment-requests">
                                 <i class="nav-icon bi bi-briefcase"></i>
                                 <p>Recruitment Requests</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#announcements" class="nav-link" id="announcements-link" data-section="announcements">
+                            <a href="#announcements" class="nav-link" id="announcements-link"
+                                data-section="announcements">
                                 <i class="nav-icon bi bi-megaphone"></i>
                                 <p>Announcements</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#nurse-job-applications" class="nav-link" id="nurse-job-applications-link"
+                                data-section="nurse-job-applications">
+                                <i class="nav-icon bi bi-person-badge"></i>
+                                <p>Nurse Job Applications</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#nurse-recruitment-requests" class="nav-link" id="nurse-recruitment-requests-link"
+                                data-section="nurse-recruitment-requests">
+                                <i class="nav-icon bi bi-briefcase"></i>
+                                <p>Nurse Recruitment Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#clinic-purchase-requests" class="nav-link" id="clinic-purchase-requests-link"
+                                data-section="clinic-purchase-requests">
+                                <i class="nav-icon bi bi-bag"></i>
+                                <p>Clinic Purchase Requests</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#clinic-sale-requests" class="nav-link" id="clinic-sale-requests-link"
+                                data-section="clinic-sale-requests">
+                                <i class="nav-icon bi bi-cart"></i>
+                                <p>Clinic Sale Requests</p>
                             </a>
                         </li>
                     </ul>
@@ -1017,236 +1130,400 @@
                     <div class="row"></div>
                 </div>
 
-            <!-- Client Requests Section -->
-            <section class="section card mb-4" id="client-requests">
-                <div class="card-header">
-                    <h3 class="card-title">Client Service Requests Dashboard</h3>
-                </div>
-                <div class="card-body p-0">
-                
-                <!-- Table Controls -->
-                <div class="table-controls">
-                    <div class="search-box">
-                        <input type="text" class="search-input" id="client-search" placeholder="Search requests...">
+                <!-- Client Requests Section -->
+                <section class="section card mb-4" id="client-requests">
+                    <div class="card-header">
+                        <h3 class="card-title">Client Service Requests Dashboard</h3>
                     </div>
-                </div>
+                    <div class="card-body p-0">
 
-                <!-- Column Controls -->
-                <div class="column-controls">
-                    <span style="font-size: 13px; color: #64748b;">Showing <span id="client-count">0</span> requests</span>
-                    <div style="position: relative;">
-                        <button class="column-toggle-btn" onclick="toggleColumnMenu('client')">
-                            ☰ Columns
-                        </button>
-                        <div class="column-menu" id="client-column-menu"></div>
+                        <!-- Table Controls -->
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="client-search"
+                                    placeholder="Search requests...">
+                            </div>
+                        </div>
+
+                        <!-- Column Controls -->
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span id="client-count">0</span>
+                                requests</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('client')">
+                                    ☰ Columns
+                                </button>
+                                <div class="column-menu" id="client-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="client-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="client-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-name">Full Name</th>
+                                        <th class="col-name">Organization</th>
+                                        <th class="col-type">Business Type</th>
+                                        <th class="col-id">National ID</th>
+                                        <th class="col-id">TIN</th>
+                                        <th class="col-location">Location</th>
+                                        <th class="col-contact">Phone</th>
+                                        <th class="col-email">Email</th>
+                                        <th class="col-type">Contact Mode</th>
+                                        <th class="col-flex">Services</th>
+                                        <th class="col-date">Date Submitted</th>
+                                        <th class="col-actions">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="client-requests-tbody">
+                                    <!-- Dynamic content will be inserted here by JS -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                <div class="table-container">
-                    <div class="loading-overlay" id="client-loading" style="display: none;">
-                        <div class="loading-spinner"></div>
+                <!-- Pharmacy Purchase Requests Section -->
+                <section class="section card mb-4" id="pharmacy-purchase-requests" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Pharmacy Purchase Requests</h3>
                     </div>
-                    <table class="data-table" id="client-table">
-                        <thead>
-                            <tr>
-                                <th class="col-name">Full Name</th>
-                                <th class="col-name">Organization</th>
-                                <th class="col-type">Business Type</th>
-                                <th class="col-id">National ID</th>
-                                <th class="col-id">TIN</th>
-                                <th class="col-location">Location</th>
-                                <th class="col-contact">Phone</th>
-                                <th class="col-email">Email</th>
-                                <th class="col-type">Contact Mode</th>
-                                <th class="col-flex">Services</th>
-                                <th class="col-date">Date Submitted</th>
-                                <th class="col-actions">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="client-requests-tbody">
-                            <!-- Dynamic content will be inserted here by JS -->
-                        </tbody>
-                    </table>
-                </div>
-                </div>
-            </section>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="purchase-search"
+                                    placeholder="Search purchase requests...">
+                            </div>
+                        </div>
 
-            <!-- Pharmacy Purchase Requests Section -->
-            <section class="section card mb-4" id="pharmacy-purchase-requests" style="display:none;">
-                <div class="card-header">
-                    <h3 class="card-title">Pharmacy Purchase Requests</h3>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-controls">
-                        <div class="search-box">
-                            <input type="text" class="search-input" id="purchase-search" placeholder="Search purchase requests...">
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span id="purchase-count">0</span>
+                                requests</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('purchase')">☰
+                                    Columns</button>
+                                <div class="column-menu" id="purchase-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="purchase-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="purchase-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="purchase-requests-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pharmacy Sale Requests Section -->
+                <section class="section card mb-4" id="pharmacy-sale-requests" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Pharmacy Sale Requests</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="sale-search"
+                                    placeholder="Search sale requests...">
+                            </div>
+                        </div>
+
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span id="sale-count">0</span>
+                                requests</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('sale')">☰ Columns</button>
+                                <div class="column-menu" id="sale-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="sale-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="sale-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="sale-requests-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Job Applications Section -->
+                <section class="section card mb-4" id="job-applications" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Job Applications</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="jobs-search"
+                                    placeholder="Search job applications...">
+                            </div>
+                        </div>
+
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span id="jobs-count">0</span>
+                                applications</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('jobs')">☰ Columns</button>
+                                <div class="column-menu" id="jobs-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="jobs-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="jobs-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="jobs-requests-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recruitment Requests Section -->
+                <section class="section card mb-4" id="recruitment-requests" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Recruitment Requests</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="recruitment-search"
+                                    placeholder="Search recruitment requests...">
+                            </div>
+                        </div>
+
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span id="recruitment-count">0</span>
+                                requests</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('recruitment')">☰
+                                    Columns</button>
+                                <div class="column-menu" id="recruitment-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="recruitment-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="recruitment-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="recruitment-requests-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Nurse Job Applications Section -->
+                <section class="section card mb-4" id="nurse-job-applications" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Nurse Job Applications</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="nurse-jobs-search"
+                                    placeholder="Search job applications...">
+                            </div>
+                        </div>
+
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span id="nurse-jobs-count">0</span>
+                                applications</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('nurseJobs')">☰
+                                    Columns</button>
+                                <div class="column-menu" id="nurse-jobs-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="nurse-jobs-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="nurse-jobs-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="nurse-jobs-requests-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Nurse Recruitment Requests Section -->
+                <section class="section card mb-4" id="nurse-recruitment-requests" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Nurse Recruitment Requests</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="nurse-recruitment-search"
+                                    placeholder="Search recruitment requests...">
+                            </div>
+                        </div>
+
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span
+                                    id="nurse-recruitment-count">0</span> requests</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('nurseRecruitment')">☰
+                                    Columns</button>
+                                <div class="column-menu" id="nurse-recruitment-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="nurse-recruitment-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="nurse-recruitment-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="nurse-recruitment-requests-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Clinic Purchase Requests Section -->
+                <section class="section card mb-4" id="clinic-purchase-requests" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Clinic Purchase Requests</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="clinic-purchase-search"
+                                    placeholder="Search purchase requests...">
+                            </div>
+                        </div>
+
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span
+                                    id="clinic-purchase-count">0</span> requests</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('clinicPurchase')">☰
+                                    Columns</button>
+                                <div class="column-menu" id="clinic-purchase-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="clinic-purchase-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="clinic-purchase-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="clinic-purchase-requests-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Clinic Sale Requests Section -->
+                <section class="section card mb-4" id="clinic-sale-requests" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Clinic Sale Requests</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="clinic-sale-search"
+                                    placeholder="Search sale requests...">
+                            </div>
+                        </div>
+
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span id="clinic-sale-count">0</span>
+                                requests</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('clinicSale')">☰
+                                    Columns</button>
+                                <div class="column-menu" id="clinic-sale-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="clinic-sale-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="clinic-sale-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="clinic-sale-requests-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <!-- Announcements Section -->
+                <section class="section card mb-4" id="announcements" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Announcements Management</h3>
+                        <div class="card-tools">
+                            <button onclick="openAnnouncementModal()" class="action-btn">+ Create New
+                                Announcement</button>
                         </div>
                     </div>
 
-                    <div class="column-controls">
-                        <span style="font-size: 13px; color: #64748b;">Showing <span id="purchase-count">0</span> requests</span>
-                        <div style="position: relative;">
-                            <button class="column-toggle-btn" onclick="toggleColumnMenu('purchase')">☰ Columns</button>
-                            <div class="column-menu" id="purchase-column-menu"></div>
+                    <div class="card-body p-0">
+                        <div class="table-controls">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="announcements-search"
+                                    placeholder="Search announcements...">
+                            </div>
+                        </div>
+
+                        <div class="column-controls">
+                            <span style="font-size: 13px; color: #64748b;">Showing <span
+                                    id="announcements-count">0</span> announcements</span>
+                            <div style="position: relative;">
+                                <button class="column-toggle-btn" onclick="toggleColumnMenu('announcements')">☰
+                                    Columns</button>
+                                <div class="column-menu" id="announcements-column-menu"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="loading-overlay" id="announcements-loading" style="display: none;">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <table class="data-table" id="announcements-table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody id="announcements-requests-tbody"></tbody>
+                            </table>
                         </div>
                     </div>
-
-                    <div class="table-container">
-                        <div class="loading-overlay" id="purchase-loading" style="display: none;">
-                            <div class="loading-spinner"></div>
-                        </div>
-                        <table class="data-table" id="purchase-table">
-                            <thead>
-                                <tr></tr>
-                            </thead>
-                            <tbody id="purchase-requests-tbody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Pharmacy Sale Requests Section -->
-            <section class="section card mb-4" id="pharmacy-sale-requests" style="display:none;">
-                <div class="card-header">
-                    <h3 class="card-title">Pharmacy Sale Requests</h3>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-controls">
-                        <div class="search-box">
-                            <input type="text" class="search-input" id="sale-search" placeholder="Search sale requests...">
-                        </div>
-                    </div>
-
-                    <div class="column-controls">
-                        <span style="font-size: 13px; color: #64748b;">Showing <span id="sale-count">0</span> requests</span>
-                        <div style="position: relative;">
-                            <button class="column-toggle-btn" onclick="toggleColumnMenu('sale')">☰ Columns</button>
-                            <div class="column-menu" id="sale-column-menu"></div>
-                        </div>
-                    </div>
-
-                    <div class="table-container">
-                        <div class="loading-overlay" id="sale-loading" style="display: none;">
-                            <div class="loading-spinner"></div>
-                        </div>
-                        <table class="data-table" id="sale-table">
-                            <thead>
-                                <tr></tr>
-                            </thead>
-                            <tbody id="sale-requests-tbody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Job Applications Section -->
-            <section class="section card mb-4" id="job-applications" style="display:none;">
-                <div class="card-header">
-                    <h3 class="card-title">Job Applications</h3>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-controls">
-                        <div class="search-box">
-                            <input type="text" class="search-input" id="jobs-search" placeholder="Search job applications...">
-                        </div>
-                    </div>
-
-                    <div class="column-controls">
-                        <span style="font-size: 13px; color: #64748b;">Showing <span id="jobs-count">0</span> applications</span>
-                        <div style="position: relative;">
-                            <button class="column-toggle-btn" onclick="toggleColumnMenu('jobs')">☰ Columns</button>
-                            <div class="column-menu" id="jobs-column-menu"></div>
-                        </div>
-                    </div>
-
-                    <div class="table-container">
-                        <div class="loading-overlay" id="jobs-loading" style="display: none;">
-                            <div class="loading-spinner"></div>
-                        </div>
-                        <table class="data-table" id="jobs-table">
-                            <thead>
-                                <tr></tr>
-                            </thead>
-                            <tbody id="jobs-requests-tbody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Recruitment Requests Section -->
-            <section class="section card mb-4" id="recruitment-requests" style="display:none;">
-                <div class="card-header">
-                    <h3 class="card-title">Recruitment Requests</h3>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-controls">
-                        <div class="search-box">
-                            <input type="text" class="search-input" id="recruitment-search" placeholder="Search recruitment requests...">
-                        </div>
-                    </div>
-
-                    <div class="column-controls">
-                        <span style="font-size: 13px; color: #64748b;">Showing <span id="recruitment-count">0</span> requests</span>
-                        <div style="position: relative;">
-                            <button class="column-toggle-btn" onclick="toggleColumnMenu('recruitment')">☰ Columns</button>
-                            <div class="column-menu" id="recruitment-column-menu"></div>
-                        </div>
-                    </div>
-
-                    <div class="table-container">
-                        <div class="loading-overlay" id="recruitment-loading" style="display: none;">
-                            <div class="loading-spinner"></div>
-                        </div>
-                        <table class="data-table" id="recruitment-table">
-                            <thead>
-                                <tr></tr>
-                            </thead>
-                            <tbody id="recruitment-requests-tbody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Announcements Section -->
-            <section class="section card mb-4" id="announcements" style="display:none;">
-                <div class="card-header">
-                    <h3 class="card-title">Announcements Management</h3>
-                    <div class="card-tools">
-                        <button onclick="openAnnouncementModal()" class="action-btn">+ Create New Announcement</button>
-                    </div>
-                </div>
-
-                <div class="card-body p-0">
-                    <div class="table-controls">
-                        <div class="search-box">
-                            <input type="text" class="search-input" id="announcements-search" placeholder="Search announcements...">
-                        </div>
-                    </div>
-
-                    <div class="column-controls">
-                        <span style="font-size: 13px; color: #64748b;">Showing <span id="announcements-count">0</span> announcements</span>
-                        <div style="position: relative;">
-                            <button class="column-toggle-btn" onclick="toggleColumnMenu('announcements')">☰ Columns</button>
-                            <div class="column-menu" id="announcements-column-menu"></div>
-                        </div>
-                    </div>
-
-                    <div class="table-container">
-                        <div class="loading-overlay" id="announcements-loading" style="display: none;">
-                            <div class="loading-spinner"></div>
-                        </div>
-                        <table class="data-table" id="announcements-table">
-                            <thead>
-                                <tr></tr>
-                            </thead>
-                            <tbody id="announcements-requests-tbody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-                </div>
+                </section>
             </div>
-        </main>
+    </div>
+    </main>
     </div>
 
     <!-- Announcement Modal -->
@@ -1256,7 +1533,7 @@
             <h2 id="modalTitle">Create Announcement</h2>
             <form id="announcementForm" onsubmit="saveAnnouncement(event)">
                 <input type="hidden" id="announcementId">
-                
+
                 <div class="form-group">
                     <label for="announcementTitle">Title</label>
                     <input type="text" id="announcementTitle" required>
@@ -1264,7 +1541,7 @@
 
                 <div class="form-group">
                     <label for="announcementMessage">Message</label>
-                    <textarea id="announcementMessage" rows="4" required ></textarea>
+                    <textarea id="announcementMessage" rows="4" required></textarea>
                 </div>
 
                 <div class="form-actions">
@@ -1285,16 +1562,18 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.5);
         }
+
         .modal-content {
             background-color: #fefefe;
             margin: 5% auto;
             padding: 2rem;
             border: 1px solid #888;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .close {
             color: #aaa;
             float: right;
@@ -1302,18 +1581,22 @@
             font-weight: bold;
             cursor: pointer;
         }
+
         .close:hover {
             color: #000;
         }
+
         .form-group {
             margin-bottom: 1.5rem;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: #334155;
         }
+
         .form-group input[type="text"],
         .form-group input[type="number"],
         .form-group input[type="datetime-local"],
@@ -1325,42 +1608,45 @@
             border-radius: 4px;
             font-size: 1rem;
         }
+
         .form-group textarea {
             resize: vertical;
         }
+
         .form-actions {
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
         }
+
         .form-actions button {
             flex: 1;
         }
     </style>
 
     <script>
-    //   async function downloadPDF() {
-    //   const { jsPDF } = window.jspdf;
+        //   async function downloadPDF() {
+        //   const { jsPDF } = window.jspdf;
 
-    //   // Capture full page (body)
-    //   const element = document.body;
+        //   // Capture full page (body)
+        //   const element = document.body;
 
-    //   // Take screenshot
-    //   const canvas = await html2canvas(element, { scale: 2 });
-    //   const imgData = canvas.toDataURL("image/png");
+        //   // Take screenshot
+        //   const canvas = await html2canvas(element, { scale: 2 });
+        //   const imgData = canvas.toDataURL("image/png");
 
-    //   // Create PDF
-    //   const pdf = new jsPDF("p", "mm", "a4");
+        //   // Create PDF
+        //   const pdf = new jsPDF("p", "mm", "a4");
 
-    //   // Calculate width/height for A4
-    //   const pdfWidth = pdf.internal.pageSize.getWidth();
-    //   const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        //   // Calculate width/height for A4
+        //   const pdfWidth = pdf.internal.pageSize.getWidth();
+        //   const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
-    //   pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        //   pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-    //   // Save file
-    //   pdf.save("page.pdf");
-    // }
+        //   // Save file
+        //   pdf.save("page.pdf");
+        // }
         // Simple navigation highlighting and section switching
         const sidebarLinks = document.querySelectorAll('#navigation .nav-link');
 
@@ -1398,273 +1684,453 @@
     </script>
 
     <script>
-    // ========== HIGH-PERFORMANCE TABLE FUNCTIONALITY ==========
-    
-    // Table state management
-    const tableState = {
-        client: {
-            data: [],
-            filteredData: [],
-            currentPage: 1,
-            itemsPerPage: 50,
-            sortColumn: null,
-            sortDirection: 'asc',
-            filters: {},
-            selectedRows: new Set(),
-            searchQuery: '',
-            columns: [
-                { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
-                { key: 'organizationName', label: 'Organization', visible: true, class: 'col-name' },
-                { key: 'businessType', label: 'Business Type', visible: true, class: 'col-type' },
-                { key: 'nationalId', label: 'National ID', visible: true, class: 'col-id' },
-                { key: 'tinNumber', label: 'TIN', visible: true, class: 'col-id' },
-                { key: 'location', label: 'Location', visible: true, class: 'col-location' },
-                { key: 'phoneNumber', label: 'Phone', visible: true, class: 'col-contact' },
-                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
-                { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
-                { key: 'services', label: 'Services', visible: true, class: 'col-flex' },
-                { key: 'createdAt', label: 'Date Submitted', visible: true, class: 'col-date' },
-                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
-            ]
-        },
+        // ========== HIGH-PERFORMANCE TABLE FUNCTIONALITY ==========
 
-        purchase: {
-            data: [],
-            filteredData: [],
-            currentPage: 1,
-            itemsPerPage: 50,
-            sortColumn: null,
-            sortDirection: 'asc',
-            filters: {},
-            selectedRows: new Set(),
-            searchQuery: '',
-            columns: [
-                { key: 'buyerName', label: 'Buyer Name', visible: true, class: 'col-name' },
-                { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
-                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
-                { key: 'contactMethod', label: 'Contact Method', visible: true, class: 'col-type' },
-                { key: 'nationalId', label: 'National ID', visible: true, class: 'col-id' },
-                { key: 'tinNumber', label: 'TIN Number', visible: true, class: 'col-id' },
-                { key: 'pharmacyType', label: 'Pharmacy Type', visible: true, class: 'col-type' },
-                { key: 'otherType', label: 'Other Type', visible: true, class: 'col-type' },
-                { key: 'preferredLocation', label: 'Preferred Location', visible: true, class: 'col-location' },
-                { key: 'operatingArea', label: 'Operating Area', visible: true, class: 'col-location' },
-                { key: 'businessStatus', label: 'Business Status', visible: true, class: 'col-type' },
-                { key: 'ownershipType', label: 'Ownership Type', visible: true, class: 'col-type' },
-                { key: 'minRevenue', label: 'Min Revenue', visible: true, class: 'col-type' },
-                { key: 'budgetRange', label: 'Budget Range', visible: true, class: 'col-type' },
-                { key: 'budgetFlexible', label: 'Budget Flexible', visible: true, class: 'col-type' },
-                { key: 'timeline', label: 'Timeline', visible: true, class: 'col-type' },
-                { key: 'insurancePartners', label: 'Insurance Partners', visible: true, class: 'col-flex' },
-                { key: 'supportServices', label: 'Support Services', visible: true, class: 'col-flex' },
-                { key: 'otherServices', label: 'Other Services', visible: true, class: 'col-flex' },
-                { key: 'additionalInfo', label: 'Additional Info', visible: true, class: 'col-flex' },
-                { key: 'clientSignature', label: 'Client Signature', visible: true, class: 'col-type' },
-                { key: 'date', label: 'Date', visible: true, class: 'col-date' },
-                { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
-                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
-            ]
-        },
+        // Table state management
+        const tableState = {
+            client: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
+                    { key: 'organizationName', label: 'Organization', visible: true, class: 'col-name' },
+                    { key: 'businessType', label: 'Business Type', visible: true, class: 'col-type' },
+                    { key: 'nationalId', label: 'National ID', visible: true, class: 'col-id' },
+                    { key: 'tinNumber', label: 'TIN', visible: true, class: 'col-id' },
+                    { key: 'location', label: 'Location', visible: true, class: 'col-location' },
+                    { key: 'phoneNumber', label: 'Phone', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
+                    { key: 'services', label: 'Services', visible: true, class: 'col-flex' },
+                    { key: 'createdAt', label: 'Date Submitted', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
 
-        sale: {
-            data: [],
-            filteredData: [],
-            currentPage: 1,
-            itemsPerPage: 50,
-            sortColumn: null,
-            sortDirection: 'asc',
-            filters: {},
-            selectedRows: new Set(),
-            searchQuery: '',
-            columns: [
-                { key: 'ownerName', label: 'Owner Name', visible: true, class: 'col-name' },
-                { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
-                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
-                { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
-                { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
-                { key: 'businessType', label: 'Business Type', visible: true, class: 'col-type' },
-                { key: 'location', label: 'Location', visible: true, class: 'col-location' },
-                { key: 'ownershipType', label: 'Ownership Type', visible: true, class: 'col-type' },
-                { key: 'premisesSize', label: 'Premises Size', visible: true, class: 'col-type' },
-                { key: 'licenseStatus', label: 'License Status', visible: true, class: 'col-type' },
-                { key: 'years', label: 'Years', visible: true, class: 'col-type' },
-                { key: 'salesRange', label: 'Sales Range', visible: true, class: 'col-type' },
-                { key: 'insurancePartners', label: 'Insurance Partners', visible: true, class: 'col-flex' },
-                { key: 'staffCount', label: 'Staff Count', visible: true, class: 'col-type' },
-                { key: 'inventoryValue', label: 'Inventory Value', visible: true, class: 'col-type' },
-                { key: 'equipmentIncluded', label: 'Equipment Included', visible: true, class: 'col-flex' },
-                { key: 'reason', label: 'Reason', visible: true, class: 'col-flex' },
-                { key: 'debts', label: 'Debts', visible: true, class: 'col-type' },
-                { key: 'debtAmount', label: 'Debt Amount', visible: true, class: 'col-type' },
-                { key: 'price', label: 'Price', visible: true, class: 'col-type' },
-                { key: 'negotiable', label: 'Negotiable', visible: true, class: 'col-type' },
-                { key: 'timeline', label: 'Timeline', visible: true, class: 'col-type' },
-                { key: 'valuationService', label: 'Valuation Service', visible: true, class: 'col-type' },
-                { key: 'additionalInfo', label: 'Additional Info', visible: true, class: 'col-flex' },
-                { key: 'documents', label: 'Documents', visible: true, class: 'col-flex' },
-                { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
-                { key: 'date', label: 'Date', visible: true, class: 'col-date' },
-                { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
-                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
-            ]
-        },
+            purchase: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'buyerName', label: 'Buyer Name', visible: true, class: 'col-name' },
+                    { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'contactMethod', label: 'Contact Method', visible: true, class: 'col-type' },
+                    { key: 'nationalId', label: 'National ID', visible: true, class: 'col-id' },
+                    { key: 'tinNumber', label: 'TIN Number', visible: true, class: 'col-id' },
+                    { key: 'pharmacyType', label: 'Pharmacy Type', visible: true, class: 'col-type' },
+                    { key: 'otherType', label: 'Other Type', visible: true, class: 'col-type' },
+                    { key: 'preferredLocation', label: 'Preferred Location', visible: true, class: 'col-location' },
+                    { key: 'operatingArea', label: 'Operating Area', visible: true, class: 'col-location' },
+                    { key: 'businessStatus', label: 'Business Status', visible: true, class: 'col-type' },
+                    { key: 'ownershipType', label: 'Ownership Type', visible: true, class: 'col-type' },
+                    { key: 'minRevenue', label: 'Min Revenue', visible: true, class: 'col-type' },
+                    { key: 'budgetRange', label: 'Budget Range', visible: true, class: 'col-type' },
+                    { key: 'budgetFlexible', label: 'Budget Flexible', visible: true, class: 'col-type' },
+                    { key: 'timeline', label: 'Timeline', visible: true, class: 'col-type' },
+                    { key: 'insurancePartners', label: 'Insurance Partners', visible: true, class: 'col-flex' },
+                    { key: 'supportServices', label: 'Support Services', visible: true, class: 'col-flex' },
+                    { key: 'otherServices', label: 'Other Services', visible: true, class: 'col-flex' },
+                    { key: 'additionalInfo', label: 'Additional Info', visible: true, class: 'col-flex' },
+                    { key: 'clientSignature', label: 'Client Signature', visible: true, class: 'col-type' },
+                    { key: 'date', label: 'Date', visible: true, class: 'col-date' },
+                    { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
 
-        jobs: {
-            data: [],
-            filteredData: [],
-            currentPage: 1,
-            itemsPerPage: 50,
-            sortColumn: null,
-            sortDirection: 'asc',
-            filters: {},
-            selectedRows: new Set(),
-            searchQuery: '',
-            columns: [
-                { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
-                { key: 'dob', label: 'Date of Birth', visible: true, class: 'col-date' },
-                { key: 'nationality', label: 'Nationality', visible: true, class: 'col-type' },
-                { key: 'idNumber', label: 'National ID', visible: true, class: 'col-id' },
-                { key: 'npcNumber', label: 'NPC Number', visible: true, class: 'col-id' },
-                { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
-                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
-                { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
-                { key: 'position', label: 'Position', visible: true, class: 'col-type' },
-                { key: 'otherPosition', label: 'Other Position', visible: true, class: 'col-type' },
-                { key: 'licenseStatus', label: 'License Status', visible: true, class: 'col-type' },
-                { key: 'qualification', label: 'Qualification', visible: true, class: 'col-type' },
-                { key: 'institution', label: 'Institution', visible: true, class: 'col-name' },
-                { key: 'graduationYear', label: 'Graduation Year', visible: true, class: 'col-type' },
-                { key: 'experience', label: 'Experience', visible: true, class: 'col-type' },
-                { key: 'pharmacyType', label: 'Pharmacy Type', visible: true, class: 'col-type' },
-                { key: 'schedule', label: 'Schedule', visible: true, class: 'col-type' },
-                { key: 'locationPref', label: 'Location Pref', visible: true, class: 'col-location' },
-                { key: 'relocate', label: 'Relocate', visible: true, class: 'col-type' },
-                { key: 'salaryFrom', label: 'Salary From', visible: true, class: 'col-type' },
-                { key: 'salaryTo', label: 'Salary To', visible: true, class: 'col-type' },
-                { key: 'startDate', label: 'Start Date', visible: true, class: 'col-date' },
-                { key: 'skills', label: 'Skills', visible: true, class: 'col-flex' },
-                { key: 'otherSkills', label: 'Other Skills', visible: true, class: 'col-flex' },
-                { key: 'employer1', label: 'Employer', visible: true, class: 'col-name' },
-                { key: 'position1', label: 'Position Held', visible: true, class: 'col-type' },
-                { key: 'duration1', label: 'Duration', visible: true, class: 'col-type' },
-                { key: 'reason1', label: 'Reason for Leaving', visible: true, class: 'col-flex' },
-                { key: 'refName1', label: 'Reference Name', visible: true, class: 'col-name' },
-                { key: 'refRelation1', label: 'Reference Relation', visible: true, class: 'col-type' },
-                { key: 'refPhone1', label: 'Reference Phone', visible: true, class: 'col-contact' },
-                { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
-                { key: 'signatureDate', label: 'Signature Date', visible: true, class: 'col-date' },
-                { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
-                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
-            ]
-        },
+            sale: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'ownerName', label: 'Owner Name', visible: true, class: 'col-name' },
+                    { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
+                    { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
+                    { key: 'businessType', label: 'Business Type', visible: true, class: 'col-type' },
+                    { key: 'location', label: 'Location', visible: true, class: 'col-location' },
+                    { key: 'ownershipType', label: 'Ownership Type', visible: true, class: 'col-type' },
+                    { key: 'premisesSize', label: 'Premises Size', visible: true, class: 'col-type' },
+                    { key: 'licenseStatus', label: 'License Status', visible: true, class: 'col-type' },
+                    { key: 'years', label: 'Years', visible: true, class: 'col-type' },
+                    { key: 'salesRange', label: 'Sales Range', visible: true, class: 'col-type' },
+                    { key: 'insurancePartners', label: 'Insurance Partners', visible: true, class: 'col-flex' },
+                    { key: 'staffCount', label: 'Staff Count', visible: true, class: 'col-type' },
+                    { key: 'inventoryValue', label: 'Inventory Value', visible: true, class: 'col-type' },
+                    { key: 'equipmentIncluded', label: 'Equipment Included', visible: true, class: 'col-flex' },
+                    { key: 'reason', label: 'Reason', visible: true, class: 'col-flex' },
+                    { key: 'debts', label: 'Debts', visible: true, class: 'col-type' },
+                    { key: 'debtAmount', label: 'Debt Amount', visible: true, class: 'col-type' },
+                    { key: 'price', label: 'Price', visible: true, class: 'col-type' },
+                    { key: 'negotiable', label: 'Negotiable', visible: true, class: 'col-type' },
+                    { key: 'timeline', label: 'Timeline', visible: true, class: 'col-type' },
+                    { key: 'valuationService', label: 'Valuation Service', visible: true, class: 'col-type' },
+                    { key: 'additionalInfo', label: 'Additional Info', visible: true, class: 'col-flex' },
+                    { key: 'documents', label: 'Documents', visible: true, class: 'col-flex' },
+                    { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                    { key: 'date', label: 'Date', visible: true, class: 'col-date' },
+                    { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
 
-        recruitment: {
-            data: [],
-            filteredData: [],
-            currentPage: 1,
-            itemsPerPage: 50,
-            sortColumn: null,
-            sortDirection: 'asc',
-            filters: {},
-            selectedRows: new Set(),
-            searchQuery: '',
-            columns: [
-                { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
-                { key: 'contactPerson', label: 'Contact Person', visible: true, class: 'col-name' },
-                { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
-                { key: 'email', label: 'Email', visible: true, class: 'col-email' },
-                { key: 'location', label: 'Location', visible: true, class: 'col-location' },
-                { key: 'type', label: 'Type', visible: true, class: 'col-type' },
-                { key: 'typeOther', label: 'Type Other', visible: true, class: 'col-type' },
-                { key: 'branches', label: 'Branches', visible: true, class: 'col-type' },
-                { key: 'staffCount', label: 'Staff Count', visible: true, class: 'col-type' },
-                { key: 'position', label: 'Position', visible: true, class: 'col-type' },
-                { key: 'positionsAvailable', label: 'Positions Available', visible: true, class: 'col-type' },
-                { key: 'employmentType', label: 'Employment Type', visible: true, class: 'col-type' },
-                { key: 'startDate', label: 'Start Date', visible: true, class: 'col-date' },
-                { key: 'workingHours', label: 'Working Hours', visible: true, class: 'col-type' },
-                { key: 'salaryFrom', label: 'Salary From', visible: true, class: 'col-type' },
-                { key: 'salaryTo', label: 'Salary To', visible: true, class: 'col-type' },
-                { key: 'housingTransport', label: 'Housing/Transport', visible: true, class: 'col-type' },
-                { key: 'bonus', label: 'Bonus', visible: true, class: 'col-type' },
-                { key: 'bonusDetails', label: 'Bonus Details', visible: true, class: 'col-flex' },
-                { key: 'qualification', label: 'Qualification', visible: true, class: 'col-type' },
-                { key: 'license', label: 'License', visible: true, class: 'col-type' },
-                { key: 'experience', label: 'Experience', visible: true, class: 'col-type' },
-                { key: 'language', label: 'Language', visible: true, class: 'col-type' },
-                { key: 'otherLanguage', label: 'Other Language', visible: true, class: 'col-type' },
-                { key: 'additionalSkills', label: 'Additional Skills', visible: true, class: 'col-flex' },
-                { key: 'responsibility1', label: 'Responsibility 1', visible: true, class: 'col-flex' },
-                { key: 'responsibility2', label: 'Responsibility 2', visible: true, class: 'col-flex' },
-                { key: 'responsibility3', label: 'Responsibility 3', visible: true, class: 'col-flex' },
-                { key: 'responsibility4', label: 'Responsibility 4', visible: true, class: 'col-flex' },
-                { key: 'responsibility5', label: 'Responsibility 5', visible: true, class: 'col-flex' },
-                { key: 'reportingLine', label: 'Reporting Line', visible: true, class: 'col-type' },
-                { key: 'systemUsed', label: 'System Used', visible: true, class: 'col-type' },
-                { key: 'teamStructure', label: 'Team Structure', visible: true, class: 'col-flex' },
-                { key: 'training', label: 'Training', visible: true, class: 'col-flex' },
-                { key: 'challenges', label: 'Challenges', visible: true, class: 'col-flex' },
-                { key: 'support', label: 'Support', visible: true, class: 'col-flex' },
-                { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
-                { key: 'signatureDate', label: 'Signature Date', visible: true, class: 'col-date' },
-                { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
-                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
-            ]
-        },
+            jobs: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
+                    { key: 'dob', label: 'Date of Birth', visible: true, class: 'col-date' },
+                    { key: 'nationality', label: 'Nationality', visible: true, class: 'col-type' },
+                    { key: 'idNumber', label: 'National ID', visible: true, class: 'col-id' },
+                    { key: 'npcNumber', label: 'NPC Number', visible: true, class: 'col-id' },
+                    { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
+                    { key: 'position', label: 'Position', visible: true, class: 'col-type' },
+                    { key: 'otherPosition', label: 'Other Position', visible: true, class: 'col-type' },
+                    { key: 'licenseStatus', label: 'License Status', visible: true, class: 'col-type' },
+                    { key: 'qualification', label: 'Qualification', visible: true, class: 'col-type' },
+                    { key: 'institution', label: 'Institution', visible: true, class: 'col-name' },
+                    { key: 'graduationYear', label: 'Graduation Year', visible: true, class: 'col-type' },
+                    { key: 'experience', label: 'Experience', visible: true, class: 'col-type' },
+                    { key: 'pharmacyType', label: 'Pharmacy Type', visible: true, class: 'col-type' },
+                    { key: 'schedule', label: 'Schedule', visible: true, class: 'col-type' },
+                    { key: 'locationPref', label: 'Location Pref', visible: true, class: 'col-location' },
+                    { key: 'relocate', label: 'Relocate', visible: true, class: 'col-type' },
+                    { key: 'salaryFrom', label: 'Salary From', visible: true, class: 'col-type' },
+                    { key: 'salaryTo', label: 'Salary To', visible: true, class: 'col-type' },
+                    { key: 'startDate', label: 'Start Date', visible: true, class: 'col-date' },
+                    { key: 'skills', label: 'Skills', visible: true, class: 'col-flex' },
+                    { key: 'otherSkills', label: 'Other Skills', visible: true, class: 'col-flex' },
+                    { key: 'employer1', label: 'Employer', visible: true, class: 'col-name' },
+                    { key: 'position1', label: 'Position Held', visible: true, class: 'col-type' },
+                    { key: 'duration1', label: 'Duration', visible: true, class: 'col-type' },
+                    { key: 'reason1', label: 'Reason for Leaving', visible: true, class: 'col-flex' },
+                    { key: 'refName1', label: 'Reference Name', visible: true, class: 'col-name' },
+                    { key: 'refRelation1', label: 'Reference Relation', visible: true, class: 'col-type' },
+                    { key: 'refPhone1', label: 'Reference Phone', visible: true, class: 'col-contact' },
+                    { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                    { key: 'signatureDate', label: 'Signature Date', visible: true, class: 'col-date' },
+                    { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
 
-        announcements: {
-            data: [],
-            filteredData: [],
-            currentPage: 1,
-            itemsPerPage: 50,
-            sortColumn: null,
-            sortDirection: 'asc',
-            filters: {},
-            selectedRows: new Set(),
-            searchQuery: '',
-            columns: [
-                { key: 'title', label: 'Title', visible: true, class: 'col-name' },
-                { key: 'message', label: 'Message', visible: true, class: 'col-flex' },
-                { key: 'createdAt', label: 'Created', visible: true, class: 'col-date' },
-                { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
-            ]
-        }
-    };
+            recruitment: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
+                    { key: 'contactPerson', label: 'Contact Person', visible: true, class: 'col-name' },
+                    { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'location', label: 'Location', visible: true, class: 'col-location' },
+                    { key: 'type', label: 'Type', visible: true, class: 'col-type' },
+                    { key: 'typeOther', label: 'Type Other', visible: true, class: 'col-type' },
+                    { key: 'branches', label: 'Branches', visible: true, class: 'col-type' },
+                    { key: 'staffCount', label: 'Staff Count', visible: true, class: 'col-type' },
+                    { key: 'position', label: 'Position', visible: true, class: 'col-type' },
+                    { key: 'positionsAvailable', label: 'Positions Available', visible: true, class: 'col-type' },
+                    { key: 'employmentType', label: 'Employment Type', visible: true, class: 'col-type' },
+                    { key: 'startDate', label: 'Start Date', visible: true, class: 'col-date' },
+                    { key: 'workingHours', label: 'Working Hours', visible: true, class: 'col-type' },
+                    { key: 'salaryFrom', label: 'Salary From', visible: true, class: 'col-type' },
+                    { key: 'salaryTo', label: 'Salary To', visible: true, class: 'col-type' },
+                    { key: 'housingTransport', label: 'Housing/Transport', visible: true, class: 'col-type' },
+                    { key: 'bonus', label: 'Bonus', visible: true, class: 'col-type' },
+                    { key: 'bonusDetails', label: 'Bonus Details', visible: true, class: 'col-flex' },
+                    { key: 'qualification', label: 'Qualification', visible: true, class: 'col-type' },
+                    { key: 'license', label: 'License', visible: true, class: 'col-type' },
+                    { key: 'experience', label: 'Experience', visible: true, class: 'col-type' },
+                    { key: 'language', label: 'Language', visible: true, class: 'col-type' },
+                    { key: 'otherLanguage', label: 'Other Language', visible: true, class: 'col-type' },
+                    { key: 'additionalSkills', label: 'Additional Skills', visible: true, class: 'col-flex' },
+                    { key: 'responsibility1', label: 'Responsibility 1', visible: true, class: 'col-flex' },
+                    { key: 'responsibility2', label: 'Responsibility 2', visible: true, class: 'col-flex' },
+                    { key: 'responsibility3', label: 'Responsibility 3', visible: true, class: 'col-flex' },
+                    { key: 'responsibility4', label: 'Responsibility 4', visible: true, class: 'col-flex' },
+                    { key: 'responsibility5', label: 'Responsibility 5', visible: true, class: 'col-flex' },
+                    { key: 'reportingLine', label: 'Reporting Line', visible: true, class: 'col-type' },
+                    { key: 'systemUsed', label: 'System Used', visible: true, class: 'col-type' },
+                    { key: 'teamStructure', label: 'Team Structure', visible: true, class: 'col-flex' },
+                    { key: 'training', label: 'Training', visible: true, class: 'col-flex' },
+                    { key: 'challenges', label: 'Challenges', visible: true, class: 'col-flex' },
+                    { key: 'support', label: 'Support', visible: true, class: 'col-flex' },
+                    { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                    { key: 'signatureDate', label: 'Signature Date', visible: true, class: 'col-date' },
+                    { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
 
-    // Initialize table features
-    function initializeTable(tableType) {
-        const state = tableState[tableType];
-        
-        // Setup search
-        const searchInput = document.getElementById(`${tableType}-search`);
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                state.searchQuery = e.target.value.toLowerCase();
-                applyFiltersAndSearch(tableType);
+            nurseJobs: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'fullName', label: 'Full Name', visible: true, class: 'col-name' },
+                    { key: 'dob', label: 'Date of Birth', visible: true, class: 'col-date' },
+                    { key: 'nationality', label: 'Nationality', visible: true, class: 'col-type' },
+                    { key: 'idNumber', label: 'National ID', visible: true, class: 'col-id' },
+                    { key: 'npcNumber', label: 'NPC Number', visible: true, class: 'col-id' },
+                    { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
+                    { key: 'position', label: 'Position', visible: true, class: 'col-type' },
+                    { key: 'otherPosition', label: 'Other Position', visible: true, class: 'col-type' },
+                    { key: 'licenseStatus', label: 'License Status', visible: true, class: 'col-type' },
+                    { key: 'qualification', label: 'Qualification', visible: true, class: 'col-type' },
+                    { key: 'institution', label: 'Institution', visible: true, class: 'col-name' },
+                    { key: 'graduationYear', label: 'Graduation Year', visible: true, class: 'col-type' },
+                    { key: 'experience', label: 'Experience', visible: true, class: 'col-type' },
+                    { key: 'pharmacyType', label: 'Pharmacy Type', visible: true, class: 'col-type' },
+                    { key: 'schedule', label: 'Schedule', visible: true, class: 'col-type' },
+                    { key: 'locationPref', label: 'Location Pref', visible: true, class: 'col-location' },
+                    { key: 'relocate', label: 'Relocate', visible: true, class: 'col-type' },
+                    { key: 'salaryFrom', label: 'Salary From', visible: true, class: 'col-type' },
+                    { key: 'salaryTo', label: 'Salary To', visible: true, class: 'col-type' },
+                    { key: 'startDate', label: 'Start Date', visible: true, class: 'col-date' },
+                    { key: 'skills', label: 'Skills', visible: true, class: 'col-flex' },
+                    { key: 'otherSkills', label: 'Other Skills', visible: true, class: 'col-flex' },
+                    { key: 'employer1', label: 'Employer', visible: true, class: 'col-name' },
+                    { key: 'position1', label: 'Position Held', visible: true, class: 'col-type' },
+                    { key: 'duration1', label: 'Duration', visible: true, class: 'col-type' },
+                    { key: 'reason1', label: 'Reason for Leaving', visible: true, class: 'col-flex' },
+                    { key: 'refName1', label: 'Reference Name', visible: true, class: 'col-name' },
+                    { key: 'refRelation1', label: 'Reference Relation', visible: true, class: 'col-type' },
+                    { key: 'refPhone1', label: 'Reference Phone', visible: true, class: 'col-contact' },
+                    { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                    { key: 'signatureDate', label: 'Signature Date', visible: true, class: 'col-date' },
+                    { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
+            nurseRecruitment: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
+                    { key: 'contactPerson', label: 'Contact Person', visible: true, class: 'col-name' },
+                    { key: 'phone', label: 'Phone', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'location', label: 'Location', visible: true, class: 'col-location' },
+                    { key: 'type', label: 'Type', visible: true, class: 'col-type' },
+                    { key: 'typeOther', label: 'Type Other', visible: true, class: 'col-type' },
+                    { key: 'branches', label: 'Branches', visible: true, class: 'col-type' },
+                    { key: 'staffCount', label: 'Staff Count', visible: true, class: 'col-type' },
+                    { key: 'position', label: 'Position', visible: true, class: 'col-type' },
+                    { key: 'positionsAvailable', label: 'Positions Available', visible: true, class: 'col-type' },
+                    { key: 'employmentType', label: 'Employment Type', visible: true, class: 'col-type' },
+                    { key: 'startDate', label: 'Start Date', visible: true, class: 'col-date' },
+                    { key: 'workingHours', label: 'Working Hours', visible: true, class: 'col-type' },
+                    { key: 'salaryFrom', label: 'Salary From', visible: true, class: 'col-type' },
+                    { key: 'salaryTo', label: 'Salary To', visible: true, class: 'col-type' },
+                    { key: 'housingTransport', label: 'Housing/Transport', visible: true, class: 'col-type' },
+                    { key: 'bonus', label: 'Bonus', visible: true, class: 'col-type' },
+                    { key: 'bonusDetails', label: 'Bonus Details', visible: true, class: 'col-flex' },
+                    { key: 'qualification', label: 'Qualification', visible: true, class: 'col-type' },
+                    { key: 'license', label: 'License', visible: true, class: 'col-type' },
+                    { key: 'experience', label: 'Experience', visible: true, class: 'col-type' },
+                    { key: 'language', label: 'Language', visible: true, class: 'col-type' },
+                    { key: 'otherLanguage', label: 'Other Language', visible: true, class: 'col-type' },
+                    { key: 'additionalSkills', label: 'Additional Skills', visible: true, class: 'col-flex' },
+                    { key: 'responsibility1', label: 'Responsibility 1', visible: true, class: 'col-flex' },
+                    { key: 'responsibility2', label: 'Responsibility 2', visible: true, class: 'col-flex' },
+                    { key: 'responsibility3', label: 'Responsibility 3', visible: true, class: 'col-flex' },
+                    { key: 'responsibility4', label: 'Responsibility 4', visible: true, class: 'col-flex' },
+                    { key: 'responsibility5', label: 'Responsibility 5', visible: true, class: 'col-flex' },
+                    { key: 'reportingLine', label: 'Reporting Line', visible: true, class: 'col-type' },
+                    { key: 'systemUsed', label: 'System Used', visible: true, class: 'col-type' },
+                    { key: 'teamStructure', label: 'Team Structure', visible: true, class: 'col-flex' },
+                    { key: 'training', label: 'Training', visible: true, class: 'col-flex' },
+                    { key: 'challenges', label: 'Challenges', visible: true, class: 'col-flex' },
+                    { key: 'support', label: 'Support', visible: true, class: 'col-flex' },
+                    { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                    { key: 'signatureDate', label: 'Signature Date', visible: true, class: 'col-date' },
+                    { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
+            clinicPurchase: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'buyerName', label: 'Buyer Name', visible: true, class: 'col-name' },
+                    { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'contactMethod', label: 'Contact Method', visible: true, class: 'col-type' },
+                    { key: 'nationalId', label: 'National ID', visible: true, class: 'col-id' },
+                    { key: 'tinNumber', label: 'TIN Number', visible: true, class: 'col-id' },
+                    { key: 'pharmacyType', label: 'Pharmacy Type', visible: true, class: 'col-type' },
+                    { key: 'otherType', label: 'Other Type', visible: true, class: 'col-type' },
+                    { key: 'preferredLocation', label: 'Preferred Location', visible: true, class: 'col-location' },
+                    { key: 'operatingArea', label: 'Operating Area', visible: true, class: 'col-location' },
+                    { key: 'businessStatus', label: 'Business Status', visible: true, class: 'col-type' },
+                    { key: 'ownershipType', label: 'Ownership Type', visible: true, class: 'col-type' },
+                    { key: 'minRevenue', label: 'Min Revenue', visible: true, class: 'col-type' },
+                    { key: 'budgetRange', label: 'Budget Range', visible: true, class: 'col-type' },
+                    { key: 'budgetFlexible', label: 'Budget Flexible', visible: true, class: 'col-type' },
+                    { key: 'timeline', label: 'Timeline', visible: true, class: 'col-type' },
+                    { key: 'insurancePartners', label: 'Insurance Partners', visible: true, class: 'col-flex' },
+                    { key: 'supportServices', label: 'Support Services', visible: true, class: 'col-flex' },
+                    { key: 'otherServices', label: 'Other Services', visible: true, class: 'col-flex' },
+                    { key: 'additionalInfo', label: 'Additional Info', visible: true, class: 'col-flex' },
+                    { key: 'clientSignature', label: 'Client Signature', visible: true, class: 'col-type' },
+                    { key: 'date', label: 'Date', visible: true, class: 'col-date' },
+                    { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
+            clinicSale: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'ownerName', label: 'Owner Name', visible: true, class: 'col-name' },
+                    { key: 'phoneNumber', label: 'Phone Number', visible: true, class: 'col-contact' },
+                    { key: 'email', label: 'Email', visible: true, class: 'col-email' },
+                    { key: 'contactMode', label: 'Contact Mode', visible: true, class: 'col-type' },
+                    { key: 'pharmacyName', label: 'Pharmacy Name', visible: true, class: 'col-name' },
+                    { key: 'businessType', label: 'Business Type', visible: true, class: 'col-type' },
+                    { key: 'location', label: 'Location', visible: true, class: 'col-location' },
+                    { key: 'ownershipType', label: 'Ownership Type', visible: true, class: 'col-type' },
+                    { key: 'premisesSize', label: 'Premises Size', visible: true, class: 'col-type' },
+                    { key: 'licenseStatus', label: 'License Status', visible: true, class: 'col-type' },
+                    { key: 'years', label: 'Years', visible: true, class: 'col-type' },
+                    { key: 'salesRange', label: 'Sales Range', visible: true, class: 'col-type' },
+                    { key: 'insurancePartners', label: 'Insurance Partners', visible: true, class: 'col-flex' },
+                    { key: 'staffCount', label: 'Staff Count', visible: true, class: 'col-type' },
+                    { key: 'inventoryValue', label: 'Inventory Value', visible: true, class: 'col-type' },
+                    { key: 'equipmentIncluded', label: 'Equipment Included', visible: true, class: 'col-flex' },
+                    { key: 'reason', label: 'Reason', visible: true, class: 'col-flex' },
+                    { key: 'debts', label: 'Debts', visible: true, class: 'col-type' },
+                    { key: 'debtAmount', label: 'Debt Amount', visible: true, class: 'col-type' },
+                    { key: 'price', label: 'Price', visible: true, class: 'col-type' },
+                    { key: 'negotiable', label: 'Negotiable', visible: true, class: 'col-type' },
+                    { key: 'timeline', label: 'Timeline', visible: true, class: 'col-type' },
+                    { key: 'valuationService', label: 'Valuation Service', visible: true, class: 'col-type' },
+                    { key: 'additionalInfo', label: 'Additional Info', visible: true, class: 'col-flex' },
+                    { key: 'documents', label: 'Documents', visible: true, class: 'col-flex' },
+                    { key: 'signature', label: 'Signature', visible: true, class: 'col-type' },
+                    { key: 'date', label: 'Date', visible: true, class: 'col-date' },
+                    { key: 'createdAt', label: 'Submitted At', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            },
+            announcements: {
+                data: [],
+                filteredData: [],
+                currentPage: 1,
+                itemsPerPage: 50,
+                sortColumn: null,
+                sortDirection: 'asc',
+                filters: {},
+                selectedRows: new Set(),
+                searchQuery: '',
+                columns: [
+                    { key: 'title', label: 'Title', visible: true, class: 'col-name' },
+                    { key: 'message', label: 'Message', visible: true, class: 'col-flex' },
+                    { key: 'createdAt', label: 'Created', visible: true, class: 'col-date' },
+                    { key: 'actions', label: 'Actions', visible: true, class: 'col-actions' }
+                ]
+            }
+        };
+
+        // Initialize table features
+        function initializeTable(tableType) {
+            const state = tableState[tableType];
+
+            // Setup search
+            const searchInput = document.getElementById(`${tableType}-search`);
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    state.searchQuery = e.target.value.toLowerCase();
+                    applyFiltersAndSearch(tableType);
+                });
+            }
+
+            // Setup column menu
+            setupColumnMenu(tableType);
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.filter-dropdown') && !e.target.closest('.column-controls')) {
+                    closeAllFilters(tableType);
+                    closeColumnMenu(tableType);
+                }
             });
         }
-        
-        // Setup column menu
-        setupColumnMenu(tableType);
-        
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.filter-dropdown') && !e.target.closest('.column-controls')) {
-                closeAllFilters(tableType);
-                closeColumnMenu(tableType);
-            }
-        });
-    }
 
-    // Setup column visibility menu
-    function setupColumnMenu(tableType) {
-        const state = tableState[tableType];
-        const menu = document.getElementById(`${tableType}-column-menu`);
-        if (!menu) return;
-        
-        menu.innerHTML = state.columns
-            .filter(col => col.key !== 'checkbox' && col.key !== 'actions')
-            .map(col => `
+        // Setup column visibility menu
+        function setupColumnMenu(tableType) {
+            const state = tableState[tableType];
+            const menu = document.getElementById(`${tableType}-column-menu`);
+            if (!menu) return;
+
+            menu.innerHTML = state.columns
+                .filter(col => col.key !== 'checkbox' && col.key !== 'actions')
+                .map(col => `
             <div class="column-option">
                 <input type="checkbox" 
                        id="col-${tableType}-${col.key}" 
@@ -1673,458 +2139,486 @@
                 <label for="col-${tableType}-${col.key}">${col.label}</label>
             </div>
         `).join('');
-    }
-
-    // Toggle column visibility
-    function toggleColumn(tableType, columnKey, visible) {
-        const state = tableState[tableType];
-        const column = state.columns.find(col => col.key === columnKey);
-        if (column) {
-            column.visible = visible;
-            renderTable(tableType);
         }
-    }
 
-    // Toggle column menu
-    function toggleColumnMenu(tableType) {
-        const menu = document.getElementById(`${tableType}-column-menu`);
-        if (menu) {
-            menu.classList.toggle('show');
+        // Toggle column visibility
+        function toggleColumn(tableType, columnKey, visible) {
+            const state = tableState[tableType];
+            const column = state.columns.find(col => col.key === columnKey);
+            if (column) {
+                column.visible = visible;
+                renderTable(tableType);
+            }
         }
-    }
 
-    function closeColumnMenu(tableType) {
-        const menu = document.getElementById(`${tableType}-column-menu`);
-        if (menu) {
-            menu.classList.remove('show');
+        // Toggle column menu
+        function toggleColumnMenu(tableType) {
+            const menu = document.getElementById(`${tableType}-column-menu`);
+            if (menu) {
+                menu.classList.toggle('show');
+            }
         }
-    }
 
-    // Sort table
-    function sortTable(tableType, column) {
-        const state = tableState[tableType];
-        
-        if (state.sortColumn === column) {
-            state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
-        } else {
-            state.sortColumn = column;
-            state.sortDirection = 'asc';
+        function closeColumnMenu(tableType) {
+            const menu = document.getElementById(`${tableType}-column-menu`);
+            if (menu) {
+                menu.classList.remove('show');
+            }
         }
-        
-        updateSortIndicators(tableType);
-        applyFiltersAndSearch(tableType);
-    }
 
-    // Update sort indicators
-    function updateSortIndicators(tableType) {
-        const state = tableState[tableType];
-        const indicators = document.querySelectorAll(`#${tableType}-table .sort-indicator`);
-        
-        indicators.forEach(indicator => {
-            const column = indicator.dataset.column;
-            if (column === state.sortColumn) {
-                indicator.textContent = state.sortDirection === 'asc' ? '↑' : '↓';
-                indicator.classList.add('active');
+        // Sort table
+        function sortTable(tableType, column) {
+            const state = tableState[tableType];
+
+            if (state.sortColumn === column) {
+                state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
             } else {
-                indicator.textContent = '↕';
-                indicator.classList.remove('active');
+                state.sortColumn = column;
+                state.sortDirection = 'asc';
             }
-        });
-    }
 
-    // Toggle filter dropdown
-    function toggleFilter(tableType, column) {
-        const filterMenu = document.getElementById(`${tableType}-filter-${column}`);
-        if (filterMenu) {
-            filterMenu.classList.toggle('show');
+            updateSortIndicators(tableType);
+            applyFiltersAndSearch(tableType);
         }
-    }
 
-    function closeAllFilters(tableType) {
-        const filters = document.querySelectorAll(`#${tableType}-table .filter-menu`);
-        filters.forEach(filter => filter.classList.remove('show'));
-    }
+        // Update sort indicators
+        function updateSortIndicators(tableType) {
+            const state = tableState[tableType];
+            const indicators = document.querySelectorAll(`#${tableType}-table .sort-indicator`);
 
-    // Filter column
-    function filterColumn(tableType, column, value) {
-        const state = tableState[tableType];
-        if (value) {
-            state.filters[column] = value.toLowerCase();
-        } else {
-            delete state.filters[column];
-        }
-        applyFiltersAndSearch(tableType);
-    }
-
-    // Clear filter
-    function clearFilter(tableType, column) {
-        const state = tableState[tableType];
-        delete state.filters[column];
-        const input = document.querySelector(`#${tableType}-filter-${column} .filter-input`);
-        if (input) input.value = '';
-        applyFiltersAndSearch(tableType);
-    }
-
-    // Apply filters and search
-    function applyFiltersAndSearch(tableType) {
-        const state = tableState[tableType];
-
-        state.filteredData = (state.data || []).filter(row => {
-            // Apply search
-            if (state.searchQuery) {
-                const searchableText = Object.values(row).join(' ').toLowerCase();
-                if (!searchableText.includes(state.searchQuery)) {
-                    return false;
+            indicators.forEach(indicator => {
+                const column = indicator.dataset.column;
+                if (column === state.sortColumn) {
+                    indicator.textContent = state.sortDirection === 'asc' ? '↑' : '↓';
+                    indicator.classList.add('active');
+                } else {
+                    indicator.textContent = '↕';
+                    indicator.classList.remove('active');
                 }
-            }
-
-            // Apply column filters
-            for (const [column, filterValue] of Object.entries(state.filters)) {
-                const cellValue = String(row[column] || '').toLowerCase();
-                if (!cellValue.includes(filterValue)) {
-                    return false;
-                }
-            }
-
-            return true;
-        });
-
-        // Apply sorting
-        if (state.sortColumn) {
-            state.filteredData.sort((a, b) => {
-                const aVal = a[state.sortColumn] ?? '';
-                const bVal = b[state.sortColumn] ?? '';
-
-                if (aVal === bVal) return 0;
-                const comparison = aVal < bVal ? -1 : 1;
-                return state.sortDirection === 'asc' ? comparison : -comparison;
             });
         }
 
-        state.currentPage = 1;
-        renderTable(tableType);
-    }
-
-    function normalizeRowId(rowId) {
-        return String(rowId);
-    }
-
-    // Toggle select all
-    function toggleSelectAll(tableType) {
-        const state = tableState[tableType];
-        const selectAllCheckbox = document.getElementById(`${tableType}-select-all`);
-        const pageData = getCurrentPageData(tableType);
-
-        if (selectAllCheckbox && selectAllCheckbox.checked) {
-            pageData.forEach(row => state.selectedRows.add(normalizeRowId(row.id)));
-        } else {
-            pageData.forEach(row => state.selectedRows.delete(normalizeRowId(row.id)));
+        // Toggle filter dropdown
+        function toggleFilter(tableType, column) {
+            const filterMenu = document.getElementById(`${tableType}-filter-${column}`);
+            if (filterMenu) {
+                filterMenu.classList.toggle('show');
+            }
         }
 
-        updateBulkActions(tableType);
-        renderTable(tableType);
-    }
-
-    // Toggle row selection
-    function toggleRowSelection(tableType, rowId) {
-        const state = tableState[tableType];
-        const normalizedId = normalizeRowId(rowId);
-
-        if (state.selectedRows.has(normalizedId)) {
-            state.selectedRows.delete(normalizedId);
-        } else {
-            state.selectedRows.add(normalizedId);
+        function closeAllFilters(tableType) {
+            const filters = document.querySelectorAll(`#${tableType}-table .filter-menu`);
+            filters.forEach(filter => filter.classList.remove('show'));
         }
 
-        updateBulkActions(tableType);
-        renderTable(tableType);
-    }
-
-    // Update bulk actions visibility
-    function updateBulkActions(tableType) {
-        const state = tableState[tableType];
-        const bulkActions = document.getElementById(`${tableType}-bulk-actions`);
-        const selectedCount = document.getElementById(`${tableType}-selected-count`);
-
-        if (!bulkActions || !selectedCount) return;
-
-        if (state.selectedRows.size > 0) {
-            bulkActions.classList.add('show');
-            selectedCount.textContent = state.selectedRows.size;
-        } else {
-            bulkActions.classList.remove('show');
-            selectedCount.textContent = '0';
+        // Filter column
+        function filterColumn(tableType, column, value) {
+            const state = tableState[tableType];
+            if (value) {
+                state.filters[column] = value.toLowerCase();
+            } else {
+                delete state.filters[column];
+            }
+            applyFiltersAndSearch(tableType);
         }
-    }
 
-    // Get current page data
-    function getCurrentPageData(tableType) {
-        const state = tableState[tableType];
-        const start = (state.currentPage - 1) * state.itemsPerPage;
-        const end = start + state.itemsPerPage;
-        return (state.filteredData || []).slice(start, end);
-    }
+        // Clear filter
+        function clearFilter(tableType, column) {
+            const state = tableState[tableType];
+            delete state.filters[column];
+            const input = document.querySelector(`#${tableType}-filter-${column} .filter-input`);
+            if (input) input.value = '';
+            applyFiltersAndSearch(tableType);
+        }
 
-    // Change page
-    function changePage(tableType, direction) {
-        const state = tableState[tableType];
-        const maxPage = Math.ceil((state.filteredData || []).length / state.itemsPerPage) || 1;
+        // Apply filters and search
+        function applyFiltersAndSearch(tableType) {
+            const state = tableState[tableType];
 
-        state.currentPage += direction;
-        state.currentPage = Math.max(1, Math.min(state.currentPage, maxPage));
+            state.filteredData = (state.data || []).filter(row => {
+                // Apply search
+                if (state.searchQuery) {
+                    const searchableText = Object.values(row).join(' ').toLowerCase();
+                    if (!searchableText.includes(state.searchQuery)) {
+                        return false;
+                    }
+                }
 
-        renderTable(tableType);
-    }
+                // Apply column filters
+                for (const [column, filterValue] of Object.entries(state.filters)) {
+                    const cellValue = String(row[column] || '').toLowerCase();
+                    if (!cellValue.includes(filterValue)) {
+                        return false;
+                    }
+                }
 
-    function renderTableHeader(tableType) {
-        const state = tableState[tableType];
-        const table = document.getElementById(`${tableType}-table`);
-        if (!table) return;
+                return true;
+            });
 
-        const headerRow = table.querySelector('thead tr');
-        if (!headerRow) return;
+            // Apply sorting
+            if (state.sortColumn) {
+                state.filteredData.sort((a, b) => {
+                    const aVal = a[state.sortColumn] ?? '';
+                    const bVal = b[state.sortColumn] ?? '';
 
-        headerRow.innerHTML = state.columns.map(col => {
-            if (!col.visible) return `<th style="display:none;"></th>`;
+                    if (aVal === bVal) return 0;
+                    const comparison = aVal < bVal ? -1 : 1;
+                    return state.sortDirection === 'asc' ? comparison : -comparison;
+                });
+            }
 
-            if (col.key === 'checkbox') {
-                return `
+            state.currentPage = 1;
+            renderTable(tableType);
+        }
+
+        function normalizeRowId(rowId) {
+            return String(rowId);
+        }
+
+        // Toggle select all
+        function toggleSelectAll(tableType) {
+            const state = tableState[tableType];
+            const selectAllCheckbox = document.getElementById(`${tableType}-select-all`);
+            const pageData = getCurrentPageData(tableType);
+
+            if (selectAllCheckbox && selectAllCheckbox.checked) {
+                pageData.forEach(row => state.selectedRows.add(normalizeRowId(row.id)));
+            } else {
+                pageData.forEach(row => state.selectedRows.delete(normalizeRowId(row.id)));
+            }
+
+            updateBulkActions(tableType);
+            renderTable(tableType);
+        }
+
+        // Toggle row selection
+        function toggleRowSelection(tableType, rowId) {
+            const state = tableState[tableType];
+            const normalizedId = normalizeRowId(rowId);
+
+            if (state.selectedRows.has(normalizedId)) {
+                state.selectedRows.delete(normalizedId);
+            } else {
+                state.selectedRows.add(normalizedId);
+            }
+
+            updateBulkActions(tableType);
+            renderTable(tableType);
+        }
+
+        // Update bulk actions visibility
+        function updateBulkActions(tableType) {
+            const state = tableState[tableType];
+            const bulkActions = document.getElementById(`${tableType}-bulk-actions`);
+            const selectedCount = document.getElementById(`${tableType}-selected-count`);
+
+            if (!bulkActions || !selectedCount) return;
+
+            if (state.selectedRows.size > 0) {
+                bulkActions.classList.add('show');
+                selectedCount.textContent = state.selectedRows.size;
+            } else {
+                bulkActions.classList.remove('show');
+                selectedCount.textContent = '0';
+            }
+        }
+
+        // Get current page data
+        function getCurrentPageData(tableType) {
+            const state = tableState[tableType];
+            const start = (state.currentPage - 1) * state.itemsPerPage;
+            const end = start + state.itemsPerPage;
+            return (state.filteredData || []).slice(start, end);
+        }
+
+        // Change page
+        function changePage(tableType, direction) {
+            const state = tableState[tableType];
+            const maxPage = Math.ceil((state.filteredData || []).length / state.itemsPerPage) || 1;
+
+            state.currentPage += direction;
+            state.currentPage = Math.max(1, Math.min(state.currentPage, maxPage));
+
+            renderTable(tableType);
+        }
+
+        function renderTableHeader(tableType) {
+            const state = tableState[tableType];
+            const table = document.getElementById(`${tableType}-table`);
+            if (!table) return;
+
+            const headerRow = table.querySelector('thead tr');
+            if (!headerRow) return;
+
+            headerRow.innerHTML = state.columns.map(col => {
+                if (!col.visible) return `<th style="display:none;"></th>`;
+
+                if (col.key === 'checkbox') {
+                    return `
                     <th class="${col.class}">
                         <input type="checkbox" class="row-checkbox" id="${tableType}-select-all" onchange="toggleSelectAll('${tableType}')">
                     </th>
                 `;
-            }
+                }
 
-            if (col.key === 'actions') {
+                if (col.key === 'actions') {
+                    return `<th class="${col.class}">${col.label}</th>`;
+                }
+
                 return `<th class="${col.class}">${col.label}</th>`;
+            }).join('');
+        }
+
+        // Render table
+        function renderTable(tableType) {
+            const state = tableState[tableType];
+            const tbody = document.getElementById(`${tableType}-requests-tbody`);
+            if (!tbody) return;
+
+            renderTableHeader(tableType);
+
+            const pageData = getCurrentPageData(tableType);
+
+            // Update count
+            const countElement = document.getElementById(`${tableType}-count`);
+            if (countElement) {
+                countElement.textContent = (state.filteredData || []).length;
             }
 
-            return `<th class="${col.class}">${col.label}</th>`;
-        }).join('');
-    }
+            // Update select all checkbox
+            const selectAllCheckbox = document.getElementById(`${tableType}-select-all`);
+            if (selectAllCheckbox) {
+                const allSelected = pageData.length > 0 && pageData.every(row => state.selectedRows.has(normalizeRowId(row.id)));
+                selectAllCheckbox.checked = allSelected;
+            }
 
-    // Render table
-    function renderTable(tableType) {
-        const state = tableState[tableType];
-        const tbody = document.getElementById(`${tableType}-requests-tbody`);
-        if (!tbody) return;
+            // Render rows
+            if (pageData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="${state.columns.length}" style="text-align: center; padding: 2rem;">No data found</td></tr>`;
+                return;
+            }
 
-        renderTableHeader(tableType);
+            tbody.innerHTML = pageData.map(row => {
+                const rowId = normalizeRowId(row.id);
+                const isSelected = state.selectedRows.has(rowId);
+                const rowClass = isSelected ? 'selected' : '';
 
-        const pageData = getCurrentPageData(tableType);
-
-        // Update count
-        const countElement = document.getElementById(`${tableType}-count`);
-        if (countElement) {
-            countElement.textContent = (state.filteredData || []).length;
-        }
-
-        // Update select all checkbox
-        const selectAllCheckbox = document.getElementById(`${tableType}-select-all`);
-        if (selectAllCheckbox) {
-            const allSelected = pageData.length > 0 && pageData.every(row => state.selectedRows.has(normalizeRowId(row.id)));
-            selectAllCheckbox.checked = allSelected;
-        }
-
-        // Render rows
-        if (pageData.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="${state.columns.length}" style="text-align: center; padding: 2rem;">No data found</td></tr>`;
-            return;
-        }
-
-        tbody.innerHTML = pageData.map(row => {
-            const rowId = normalizeRowId(row.id);
-            const isSelected = state.selectedRows.has(rowId);
-            const rowClass = isSelected ? 'selected' : '';
-
-            return `
+                return `
                 <tr class="${rowClass}">
                     ${renderColumns(tableType, row)}
                 </tr>
             `;
-        }).join('');
+            }).join('');
 
-        requestAnimationFrame(() => applyOverflowTooltips(tableType));
-    }
-
-    let globalTooltipEl = null;
-    function ensureGlobalTooltip() {
-        if (globalTooltipEl) return globalTooltipEl;
-        const el = document.createElement('div');
-        el.id = 'global-tooltip';
-        document.body.appendChild(el);
-        globalTooltipEl = el;
-
-        window.addEventListener('scroll', hideGlobalTooltip, true);
-        window.addEventListener('resize', hideGlobalTooltip);
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') hideGlobalTooltip();
-        });
-
-        return el;
-    }
-
-    function positionGlobalTooltip(x, y) {
-        const el = globalTooltipEl;
-        if (!el || el.style.display === 'none') return;
-
-        const offset = 12;
-        const margin = 8;
-
-        let left = x + offset;
-        let top = y + offset;
-
-        const rect = el.getBoundingClientRect();
-
-        if (left + rect.width > window.innerWidth - margin) {
-            left = window.innerWidth - rect.width - margin;
-        }
-        if (top + rect.height > window.innerHeight - margin) {
-            top = y - rect.height - offset;
+            requestAnimationFrame(() => applyOverflowTooltips(tableType));
         }
 
-        left = Math.max(margin, left);
-        top = Math.max(margin, top);
+        let globalTooltipEl = null;
+        function ensureGlobalTooltip() {
+            if (globalTooltipEl) return globalTooltipEl;
+            const el = document.createElement('div');
+            el.id = 'global-tooltip';
+            document.body.appendChild(el);
+            globalTooltipEl = el;
 
-        el.style.left = `${left}px`;
-        el.style.top = `${top}px`;
-    }
+            window.addEventListener('scroll', hideGlobalTooltip, true);
+            window.addEventListener('resize', hideGlobalTooltip);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideGlobalTooltip();
+            });
 
-    function showGlobalTooltip(text, x, y) {
-        const el = ensureGlobalTooltip();
-        el.textContent = text;
-        el.style.display = 'block';
-        positionGlobalTooltip(x, y);
-    }
+            return el;
+        }
 
-    function hideGlobalTooltip() {
-        if (!globalTooltipEl) return;
-        globalTooltipEl.style.display = 'none';
-        globalTooltipEl.textContent = '';
-    }
+        function positionGlobalTooltip(x, y) {
+            const el = globalTooltipEl;
+            if (!el || el.style.display === 'none') return;
 
-    function applyOverflowTooltips(tableType) {
-        const table = document.getElementById(`${tableType}-table`);
-        if (!table) return;
+            const offset = 12;
+            const margin = 8;
 
-        ensureGlobalTooltip();
+            let left = x + offset;
+            let top = y + offset;
 
-        const cells = table.querySelectorAll('tbody td');
-        cells.forEach(cell => {
-            if (cell.classList.contains('col-checkbox') || cell.classList.contains('col-actions')) {
-                cell.classList.remove('cell-tooltip');
-                cell.removeAttribute('data-tooltip');
-                cell.removeAttribute('title');
-                cell.removeAttribute('data-full-tooltip');
-                cell.onmouseenter = null;
-                cell.onmousemove = null;
-                cell.onmouseleave = null;
-                return;
+            const rect = el.getBoundingClientRect();
+
+            if (left + rect.width > window.innerWidth - margin) {
+                left = window.innerWidth - rect.width - margin;
+            }
+            if (top + rect.height > window.innerHeight - margin) {
+                top = y - rect.height - offset;
             }
 
-            if (cell.querySelector('button, input, select, textarea')) {
-                cell.classList.remove('cell-tooltip');
-                cell.removeAttribute('data-tooltip');
-                cell.removeAttribute('title');
-                cell.removeAttribute('data-full-tooltip');
-                cell.onmouseenter = null;
-                cell.onmousemove = null;
-                cell.onmouseleave = null;
-                return;
-            }
+            left = Math.max(margin, left);
+            top = Math.max(margin, top);
 
-            const textEl = cell.querySelector('.cell-text') || cell;
-            const text = (textEl.textContent || '').trim();
-            if (!text) {
-                cell.classList.remove('cell-tooltip');
-                cell.removeAttribute('data-tooltip');
-                cell.removeAttribute('title');
-                cell.removeAttribute('data-full-tooltip');
-                cell.onmouseenter = null;
-                cell.onmousemove = null;
-                cell.onmouseleave = null;
-                return;
-            }
+            el.style.left = `${left}px`;
+            el.style.top = `${top}px`;
+        }
 
-            cell.setAttribute('data-full-tooltip', text);
-            cell.onmouseenter = (e) => {
-                const liveTextEl = cell.querySelector('.cell-text') || cell;
-                const liveText = (liveTextEl.textContent || '').trim();
-                if (!liveText) {
-                    hideGlobalTooltip();
+        function showGlobalTooltip(text, x, y) {
+            const el = ensureGlobalTooltip();
+            el.textContent = text;
+            el.style.display = 'block';
+            positionGlobalTooltip(x, y);
+        }
+
+        function hideGlobalTooltip() {
+            if (!globalTooltipEl) return;
+            globalTooltipEl.style.display = 'none';
+            globalTooltipEl.textContent = '';
+        }
+
+        function applyOverflowTooltips(tableType) {
+            const table = document.getElementById(`${tableType}-table`);
+            if (!table) return;
+
+            ensureGlobalTooltip();
+
+            const cells = table.querySelectorAll('tbody td');
+            cells.forEach(cell => {
+                if (cell.classList.contains('col-checkbox') || cell.classList.contains('col-actions')) {
+                    cell.classList.remove('cell-tooltip');
+                    cell.removeAttribute('data-tooltip');
+                    cell.removeAttribute('title');
+                    cell.removeAttribute('data-full-tooltip');
+                    cell.onmouseenter = null;
+                    cell.onmousemove = null;
+                    cell.onmouseleave = null;
                     return;
                 }
 
-                const isOverflowing = (liveTextEl.scrollWidth > liveTextEl.clientWidth + 1);
-                if (!isOverflowing) {
-                    hideGlobalTooltip();
+                if (cell.querySelector('button, input, select, textarea')) {
+                    cell.classList.remove('cell-tooltip');
+                    cell.removeAttribute('data-tooltip');
+                    cell.removeAttribute('title');
+                    cell.removeAttribute('data-full-tooltip');
+                    cell.onmouseenter = null;
+                    cell.onmousemove = null;
+                    cell.onmouseleave = null;
                     return;
                 }
 
-                cell.setAttribute('title', liveText);
-                showGlobalTooltip(liveText, e.clientX, e.clientY);
-            };
-            cell.onmousemove = (e) => positionGlobalTooltip(e.clientX, e.clientY);
-            cell.onmouseleave = hideGlobalTooltip;
-        });
-    }
+                const textEl = cell.querySelector('.cell-text') || cell;
+                const text = (textEl.textContent || '').trim();
+                if (!text) {
+                    cell.classList.remove('cell-tooltip');
+                    cell.removeAttribute('data-tooltip');
+                    cell.removeAttribute('title');
+                    cell.removeAttribute('data-full-tooltip');
+                    cell.onmouseenter = null;
+                    cell.onmousemove = null;
+                    cell.onmouseleave = null;
+                    return;
+                }
 
-    // Render columns for a row
-    function renderColumns(tableType, row) {
-        const state = tableState[tableType];
-        const rowId = normalizeRowId(row.id);
+                cell.setAttribute('data-full-tooltip', text);
+                cell.onmouseenter = (e) => {
+                    const liveTextEl = cell.querySelector('.cell-text') || cell;
+                    const liveText = (liveTextEl.textContent || '').trim();
+                    if (!liveText) {
+                        hideGlobalTooltip();
+                        return;
+                    }
 
-        return state.columns.map(col => {
-            if (!col.visible) return '<td style="display: none;"></td>';
+                    const isOverflowing = (liveTextEl.scrollWidth > liveTextEl.clientWidth + 1);
+                    if (!isOverflowing) {
+                        hideGlobalTooltip();
+                        return;
+                    }
 
-            if (col.key === 'checkbox') {
-                return `
+                    cell.setAttribute('title', liveText);
+                    showGlobalTooltip(liveText, e.clientX, e.clientY);
+                };
+                cell.onmousemove = (e) => positionGlobalTooltip(e.clientX, e.clientY);
+                cell.onmouseleave = hideGlobalTooltip;
+            });
+        }
+
+        // Render columns for a row
+        function renderColumns(tableType, row) {
+            const state = tableState[tableType];
+            const rowId = normalizeRowId(row.id);
+
+            return state.columns.map(col => {
+                if (!col.visible) return '<td style="display: none;"></td>';
+
+                if (col.key === 'checkbox') {
+                    return `
                     <td class="${col.class}">
                         <input type="checkbox" class="row-checkbox" 
                                ${state.selectedRows.has(rowId) ? 'checked' : ''}
                                onchange="toggleRowSelection('${tableType}', ${JSON.stringify(rowId)})">
                     </td>
                 `;
-            }
+                }
 
-            if (col.key === 'actions') {
-                if (tableType === 'client') {
-                    return `
+                if (col.key === 'actions') {
+                    if (tableType === 'client') {
+                        return `
                         <td class="${col.class}">
                             <button class="delete-btn" onclick='confirmDelete("client-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
-                }
-                if (tableType === 'purchase') {
-                    return `
+                    }
+                    if (tableType === 'purchase') {
+                        return `
                         <td class="${col.class}">
                             <button class="delete-btn" onclick='confirmDelete("pharmacy-purchase-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.buyerName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
-                }
-                if (tableType === 'sale') {
-                    return `
+                    }
+                    if (tableType === 'sale') {
+                        return `
                         <td class="${col.class}">
                             <button class="delete-btn" onclick='confirmDelete("pharmacy-sale-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.ownerName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
-                }
-                if (tableType === 'jobs') {
-                    return `
+                    }
+                    if (tableType === 'jobs') {
+                        return `
                         <td class="${col.class}">
                             <button class="delete-btn" onclick='confirmDelete("job-applications", ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
-                }
-                if (tableType === 'recruitment') {
-                    return `
+                    }
+                    if (tableType === 'recruitment') {
+                        return `
                         <td class="${col.class}">
                             <button class="delete-btn" onclick='confirmDelete("recruitment-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.pharmacyName || 'Unknown')})'>Delete</button>
                         </td>
                     `;
-                }
-                if (tableType === 'announcements') {
-                    return `
+                    }
+                    if (tableType === 'nurseJobs') {
+                        return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick='confirmDelete("nurse-job-applications", ${JSON.stringify(rowId)}, ${JSON.stringify(row.fullName || 'Unknown')})'>Delete</button>
+                        </td>
+                    `;
+                    }
+                    if (tableType === 'nurseRecruitment') {
+                        return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick='confirmDelete("nurse-recruitment-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.pharmacyName || 'Unknown')})'>Delete</button>
+                        </td>
+                    `;
+                    }
+                    if (tableType === 'clinicPurchase') {
+                        return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick='confirmDelete("clinic-purchase-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.buyerName || 'Unknown')})'>Delete</button>
+                        </td>
+                    `;
+                    }
+                    if (tableType === 'clinicSale') {
+                        return `
+                        <td class="${col.class}">
+                            <button class="delete-btn" onclick='confirmDelete("clinic-sale-requests", ${JSON.stringify(rowId)}, ${JSON.stringify(row.ownerName || 'Unknown')})'>Delete</button>
+                        </td>
+                    `;
+                    }
+                    if (tableType === 'announcements') {
+                        return `
                         <td class="${col.class}">
                             <div class="row-actions">
                                 <button class="action-btn" onclick='editAnnouncement(${JSON.stringify(rowId)})' style="padding: 0.25rem 0.75rem;">Edit</button>
@@ -2132,630 +2626,785 @@
                             </div>
                         </td>
                     `;
+                    }
+
+                    return `<td class="${col.class}"></td>`;
                 }
 
-                return `<td class="${col.class}"></td>`;
+                let value = row[col.key] ?? '';
+                if (col.key === 'services' && Array.isArray(value)) {
+                    value = value.join(', ');
+                }
+                if (col.key === 'createdAt' && value) {
+                    value = new Date(value).toLocaleString();
+                }
+
+                return `<td class="${col.class}"><span class="cell-text">${value}</span></td>`;
+            }).join('');
+        }
+
+        // Update pagination
+        function updatePagination(tableType) {
+            const state = tableState[tableType];
+            const maxPage = Math.ceil((state.filteredData || []).length / state.itemsPerPage) || 1;
+            const info = document.getElementById(`${tableType}-info`);
+            const prevBtn = document.getElementById(`${tableType}-prev`);
+            const nextBtn = document.getElementById(`${tableType}-next`);
+
+            if (info) {
+                info.textContent = `Page ${state.currentPage} of ${maxPage}`;
             }
 
-            let value = row[col.key] ?? '';
-            if (col.key === 'services' && Array.isArray(value)) {
-                value = value.join(', ');
+            if (prevBtn) prevBtn.disabled = state.currentPage <= 1;
+            if (nextBtn) nextBtn.disabled = state.currentPage >= maxPage;
+        }
+
+        // Bulk operations
+        function bulkDelete(tableType) {
+            const state = tableState[tableType];
+            if (confirm(`Are you sure you want to delete ${state.selectedRows.size} selected items?`)) {
+                console.log('Bulk delete:', tableType, Array.from(state.selectedRows));
             }
-            if (col.key === 'createdAt' && value) {
-                value = new Date(value).toLocaleString();
-            }
-
-            return `<td class="${col.class}"><span class="cell-text">${value}</span></td>`;
-        }).join('');
-    }
-
-    // Update pagination
-    function updatePagination(tableType) {
-        const state = tableState[tableType];
-        const maxPage = Math.ceil((state.filteredData || []).length / state.itemsPerPage) || 1;
-        const info = document.getElementById(`${tableType}-info`);
-        const prevBtn = document.getElementById(`${tableType}-prev`);
-        const nextBtn = document.getElementById(`${tableType}-next`);
-
-        if (info) {
-            info.textContent = `Page ${state.currentPage} of ${maxPage}`;
         }
 
-        if (prevBtn) prevBtn.disabled = state.currentPage <= 1;
-        if (nextBtn) nextBtn.disabled = state.currentPage >= maxPage;
-    }
+        function bulkExport(tableType) {
+            const state = tableState[tableType];
+            const selectedIds = new Set(Array.from(state.selectedRows));
+            const selectedData = (state.data || []).filter(row => selectedIds.has(normalizeRowId(row.id)));
 
-    // Bulk operations
-    function bulkDelete(tableType) {
-        const state = tableState[tableType];
-        if (confirm(`Are you sure you want to delete ${state.selectedRows.size} selected items?`)) {
-            console.log('Bulk delete:', tableType, Array.from(state.selectedRows));
-        }
-    }
+            const headers = state.columns
+                .filter(col => col.visible && col.key !== 'checkbox' && col.key !== 'actions')
+                .map(col => col.label);
 
-    function bulkExport(tableType) {
-        const state = tableState[tableType];
-        const selectedIds = new Set(Array.from(state.selectedRows));
-        const selectedData = (state.data || []).filter(row => selectedIds.has(normalizeRowId(row.id)));
+            const csvContent = [
+                headers.join(','),
+                ...selectedData.map(row => {
+                    return state.columns
+                        .filter(col => col.visible && col.key !== 'checkbox' && col.key !== 'actions')
+                        .map(col => `"${String(row[col.key] ?? '').replace(/"/g, '""')}"`)
+                        .join(',');
+                })
+            ].join('\n');
 
-        const headers = state.columns
-            .filter(col => col.visible && col.key !== 'checkbox' && col.key !== 'actions')
-            .map(col => col.label);
-
-        const csvContent = [
-            headers.join(','),
-            ...selectedData.map(row => {
-                return state.columns
-                    .filter(col => col.visible && col.key !== 'checkbox' && col.key !== 'actions')
-                    .map(col => `"${String(row[col.key] ?? '').replace(/"/g, '""')}"`)
-                    .join(',');
-            })
-        ].join('\n');
-
-        const blob = new Blob([csvContent], { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${tableType}-export.csv`;
-        a.click();
-        window.URL.revokeObjectURL(url);
-    }
-
-    function confirmDelete(sectionKey, id, label) {
-        const deleteMap = {
-            'client-requests': { tableType: 'client', endpoint: 'client-requests', refetch: fetchClientRequests, render: renderClientRequests },
-            'pharmacy-purchase-requests': { tableType: 'purchase', endpoint: 'pharmacy-purchase-requests', refetch: fetchPharmacyPurchaseRequests, render: renderPharmacyPurchaseRequests },
-            'pharmacy-sale-requests': { tableType: 'sale', endpoint: 'pharmacy-sale-requests', refetch: fetchPharmacySaleRequests, render: renderPharmacySaleRequests },
-            'job-applications': { tableType: 'jobs', endpoint: 'job-applications', refetch: fetchJobApplications, render: renderJobApplications },
-            'recruitment-requests': { tableType: 'recruitment', endpoint: 'recruitment-requests', refetch: fetchRecruitmentRequests, render: renderRecruitmentRequests }
-        };
-
-        const cfg = deleteMap[sectionKey];
-        if (!cfg) {
-            alert('Delete is not configured for this section.');
-            return;
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${tableType}-export.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
         }
 
-        if (confirm(`Are you sure you want to delete "${label}"?`)) {
-            deleteRequest(cfg, id);
-        }
-    }
+        function confirmDelete(sectionKey, id, label) {
+            const deleteMap = {
+                'nurse-job-applications': { tableType: 'nurseJobs', endpoint: 'nurse-job-applications', refetch: fetchNurseJobApplications, render: renderNurseJobApplications },
+                'nurse-recruitment-requests': { tableType: 'nurseRecruitment', endpoint: 'nurse-recruitment-requests', refetch: fetchNurseRecruitmentRequests, render: renderNurseRecruitmentRequests },
+                'clinic-purchase-requests': { tableType: 'clinicPurchase', endpoint: 'clinic-purchase-requests', refetch: fetchClinicPurchaseRequests, render: renderClinicPurchaseRequests },
+                'clinic-sale-requests': { tableType: 'clinicSale', endpoint: 'clinic-sale-requests', refetch: fetchClinicSaleRequests, render: renderClinicSaleRequests },
+                'client-requests': { tableType: 'client', endpoint: 'client-requests', refetch: fetchClientRequests, render: renderClientRequests },
+                'pharmacy-purchase-requests': { tableType: 'purchase', endpoint: 'pharmacy-purchase-requests', refetch: fetchPharmacyPurchaseRequests, render: renderPharmacyPurchaseRequests },
+                'pharmacy-sale-requests': { tableType: 'sale', endpoint: 'pharmacy-sale-requests', refetch: fetchPharmacySaleRequests, render: renderPharmacySaleRequests },
+                'job-applications': { tableType: 'jobs', endpoint: 'job-applications', refetch: fetchJobApplications, render: renderJobApplications },
+                'recruitment-requests': { tableType: 'recruitment', endpoint: 'recruitment-requests', refetch: fetchRecruitmentRequests, render: renderRecruitmentRequests }
+            };
 
-    async function deleteRequest(cfg, id) {
-        const normalizedId = normalizeRowId(id);
-        if (String(normalizedId || '').startsWith('temp-')) {
-            alert('Cannot delete this item because it has no server ID.');
-            return;
-        }
-
-        const state = tableState[cfg.tableType];
-        const prevData = (state?.data || []).slice();
-
-        if (state && Array.isArray(state.data)) {
-            state.data = state.data.filter(r => normalizeRowId(r.id) !== normalizedId);
-            state.filteredData = state.data;
-            renderTable(cfg.tableType);
-        }
-
-        try {
-            const token = localStorage.getItem('token');
-            const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/${cfg.endpoint}/${normalizedId}`, {
-                method: 'DELETE',
-                headers: { 'Authorization': 'Bearer ' + token }
-            });
-
-            if (res.status === 401) {
-                localStorage.removeItem('token');
-                window.location.href = '/LoginForm.html';
+            const cfg = deleteMap[sectionKey];
+            if (!cfg) {
+                alert('Delete is not configured for this section.');
                 return;
             }
 
-            if (res.ok) {
-                alert('Deleted successfully!');
-                const data = await cfg.refetch();
-                cfg.render(data || []);
-            } else {
+            if (confirm(`Are you sure you want to delete "${label}"?`)) {
+                deleteRequest(cfg, id);
+            }
+        }
+
+        async function deleteRequest(cfg, id) {
+            const normalizedId = normalizeRowId(id);
+            if (String(normalizedId || '').startsWith('temp-')) {
+                alert('Cannot delete this item because it has no server ID.');
+                return;
+            }
+
+            const state = tableState[cfg.tableType];
+            const prevData = (state?.data || []).slice();
+
+            if (state && Array.isArray(state.data)) {
+                state.data = state.data.filter(r => normalizeRowId(r.id) !== normalizedId);
+                state.filteredData = state.data;
+                renderTable(cfg.tableType);
+            }
+
+            try {
+                const token = localStorage.getItem('token');
+                const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/${cfg.endpoint}/${normalizedId}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return;
+                }
+
+                if (res.ok) {
+                    alert('Deleted successfully!');
+                    const data = await cfg.refetch();
+                    cfg.render(data || []);
+                } else {
+                    if (state) {
+                        state.data = prevData;
+                        state.filteredData = prevData;
+                        renderTable(cfg.tableType);
+                    }
+                    alert('Failed to delete.');
+                }
+            } catch (error) {
+                console.error('Error deleting item:', error);
                 if (state) {
                     state.data = prevData;
                     state.filteredData = prevData;
                     renderTable(cfg.tableType);
                 }
-                alert('Failed to delete.');
+                alert('An error occurred while deleting.');
             }
-        } catch (error) {
-            console.error('Error deleting item:', error);
-            if (state) {
-                state.data = prevData;
-                state.filteredData = prevData;
-                renderTable(cfg.tableType);
-            }
-            alert('An error occurred while deleting.');
         }
-    }
 
-    window.confirmDelete = confirmDelete;
-    window.deleteRequest = deleteRequest;
+        window.confirmDelete = confirmDelete;
+        window.deleteRequest = deleteRequest;
 
-    // Show loading
-    function showLoading(tableType) {
-        const loading = document.getElementById(`${tableType}-loading`);
-        if (loading) loading.style.display = 'flex';
-    }
-
-    // Hide loading
-    function hideLoading(tableType) {
-        const loading = document.getElementById(`${tableType}-loading`);
-        if (loading) loading.style.display = 'none';
-    }
-
-// Redirect to login if not authenticated
-const token = localStorage.getItem('token');
-if (!token) {
-    window.location.href = '/LoginForm.html';
-}
-
-// Fetch and render client requests
-async function fetchClientRequests() {
-    try {
-        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/client-requests', {
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-        if (res.status === 401) {
-            localStorage.removeItem('token');
-            window.location.href = '/LoginForm.html';
-            return [];
+        // Show loading
+        function showLoading(tableType) {
+            const loading = document.getElementById(`${tableType}-loading`);
+            if (loading) loading.style.display = 'flex';
         }
-        if (!res.ok) return [];
-        return await res.json();
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-}
 
-function renderClientRequests(requests) {
-    const state = tableState.client;
-    
-    // Add unique IDs to requests if they don't have them
-    const requestsWithIds = requests.map((req, index) => ({
-        ...req,
-        id: String(req.id || req._id || `temp-${index}`)
-    }));
-    
-    // Update state
-    state.data = requestsWithIds;
-    state.filteredData = requestsWithIds;
-    
-    // Initialize table if not already done
-    if (!document.getElementById('client-search').dataset.initialized) {
-        initializeTable('client');
-        document.getElementById('client-search').dataset.initialized = 'true';
-    }
-    
-    // Render table
-    renderTable('client');
-}
-
-// Fetch and render pharmacy purchase requests
-async function fetchPharmacyPurchaseRequests() {
-    try {
-        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/pharmacy-purchase-requests', {
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-        if (res.status === 401) {
-            localStorage.removeItem('token');
-            window.location.href = '/LoginForm.html';
-            return [];
+        // Hide loading
+        function hideLoading(tableType) {
+            const loading = document.getElementById(`${tableType}-loading`);
+            if (loading) loading.style.display = 'none';
         }
-        if (!res.ok) return [];
-        return await res.json();
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-}
 
-function renderPharmacyPurchaseRequests(requests) {
-    const state = tableState.purchase;
-
-    const requestsWithIds = (requests || []).map((req, index) => ({
-        ...req,
-        id: String(req.id || req._id || `temp-${index}`)
-    }));
-
-    state.data = requestsWithIds;
-    state.filteredData = requestsWithIds;
-
-    const search = document.getElementById('purchase-search');
-    if (search && !search.dataset.initialized) {
-        initializeTable('purchase');
-        search.dataset.initialized = 'true';
-    }
-
-    renderTable('purchase');
-}
-
-// Fetch and render pharmacy sale requests
-async function fetchPharmacySaleRequests() {
-    try {
-        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/pharmacy-sale-requests', {
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-        if (res.status === 401) {
-            localStorage.removeItem('token');
-            window.location.href = '/LoginForm.html';
-            return [];
-        }
-        if (!res.ok) return [];
-        return await res.json();
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-}
-
-function renderPharmacySaleRequests(requests) {
-    const state = tableState.sale;
-
-    const requestsWithIds = (requests || []).map((req, index) => ({
-        ...req,
-        id: String(req.id || req._id || `temp-${index}`)
-    }));
-
-    state.data = requestsWithIds;
-    state.filteredData = requestsWithIds;
-
-    const search = document.getElementById('sale-search');
-    if (search && !search.dataset.initialized) {
-        initializeTable('sale');
-        search.dataset.initialized = 'true';
-    }
-
-    renderTable('sale');
-}
-
-// Fetch and render job applications
-async function fetchJobApplications() {
-    try {
-        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/job-applications', {
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-        if (res.status === 401) {
-            localStorage.removeItem('token');
-            window.location.href = '/LoginForm.html';
-            return [];
-        }
-        if (!res.ok) return [];
-        return await res.json();
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-}
-
-function renderJobApplications(applications) {
-    const state = tableState.jobs;
-
-    const appsWithIds = (applications || []).map((app, index) => ({
-        ...app,
-        id: String(app.id || app._id || `temp-${index}`)
-    }));
-
-    state.data = appsWithIds;
-    state.filteredData = appsWithIds;
-
-    const search = document.getElementById('jobs-search');
-    if (search && !search.dataset.initialized) {
-        initializeTable('jobs');
-        search.dataset.initialized = 'true';
-    }
-
-    renderTable('jobs');
-}
-
-// Fetch and render recruitment requests
-async function fetchRecruitmentRequests() {
-    try {
-        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/recruitment-requests', {
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-        if (res.status === 401) {
-            localStorage.removeItem('token');
-            window.location.href = '/LoginForm.html';
-            return [];
-        }
-        if (!res.ok) return [];
-        return await res.json();
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-}
-
-function renderRecruitmentRequests(requests) {
-    const state = tableState.recruitment;
-
-    const requestsWithIds = (requests || []).map((req, index) => ({
-        ...req,
-        id: String(req.id || `temp-${index}`)
-    }));
-
-    state.data = requestsWithIds;
-    state.filteredData = requestsWithIds;
-
-    const search = document.getElementById('recruitment-search');
-    if (search && !search.dataset.initialized) {
-        initializeTable('recruitment');
-        search.dataset.initialized = 'true';
-    }
-
-    renderTable('recruitment');
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-    // Fetch and render all tables
-    const results = await Promise.allSettled([
-        fetchClientRequests(),
-        fetchPharmacyPurchaseRequests(),
-        fetchPharmacySaleRequests(),
-        fetchJobApplications(),
-        fetchRecruitmentRequests()
-    ]);
-
-    const data = results.map(r => (r.status === 'fulfilled' ? r.value : []));
-    renderClientRequests(data[0] || []);
-    renderPharmacyPurchaseRequests(data[1] || []);
-    renderPharmacySaleRequests(data[2] || []);
-    renderJobApplications(data[3] || []);
-    renderRecruitmentRequests(data[4] || []);
-});
-
-// ========== ANNOUNCEMENTS MANAGEMENT ==========
-
-let editingAnnouncementId = null;
-
-async function fetchAnnouncements() {
-    try {
+        // Redirect to login if not authenticated
         const token = localStorage.getItem('token');
-        const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/announcements', {
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-        if (res.status === 401) {
-            localStorage.removeItem('token');
+        if (!token) {
             window.location.href = '/LoginForm.html';
-            return [];
-        }
-        if (!res.ok) {
-            console.error('Error fetching announcements:', res.status);
-            renderAnnouncements([]);
-            return [];
         }
 
-        const announcements = await res.json();
-        if (!Array.isArray(announcements)) {
-            console.error('Error fetching announcements: Response is not an array', announcements);
-            renderAnnouncements([]);
-            return [];
+        // Fetch and render client requests
+        async function fetchClientRequests() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/client-requests', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
         }
 
-        renderAnnouncements(announcements);
-        return announcements;
-    } catch (error) {
-        console.error('Error fetching announcements:', error);
-        alert('An error occurred while fetching announcements.');
-        renderAnnouncements([]);
-        return [];
-    }
-}
+        function renderClientRequests(requests) {
+            const state = tableState.client;
 
-function renderAnnouncements(announcements) {
-    const state = tableState.announcements;
+            // Add unique IDs to requests if they don't have them
+            const requestsWithIds = requests.map((req, index) => ({
+                ...req,
+                id: String(req.id || req._id || `temp-${index}`)
+            }));
 
-    const announcementsWithIds = (announcements || []).map((ann, index) => ({
-        ...ann,
-        id: String(ann.id || ann._id || `temp-${index}`)
-    }));
+            // Update state
+            state.data = requestsWithIds;
+            state.filteredData = requestsWithIds;
 
-    state.data = announcementsWithIds;
-    state.filteredData = announcementsWithIds;
+            // Initialize table if not already done
+            if (!document.getElementById('client-search').dataset.initialized) {
+                initializeTable('client');
+                document.getElementById('client-search').dataset.initialized = 'true';
+            }
 
-    const search = document.getElementById('announcements-search');
-    if (search && !search.dataset.initialized) {
-        initializeTable('announcements');
-        search.dataset.initialized = 'true';
-    }
+            // Render table
+            renderTable('client');
+        }
 
-    renderTable('announcements');
-}
+        // Fetch and render pharmacy purchase requests
+        async function fetchPharmacyPurchaseRequests() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/pharmacy-purchase-requests', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
 
-function getTypeColor(type) {
-    const colors = {
-        'info': '#3b82f6',
-        'success': '#10b981',
-        'warning': '#f59e0b',
-        'important': '#ef4444'
-    };
-    return colors[type] || colors.info;
-}
+        function renderPharmacyPurchaseRequests(requests) {
+            const state = tableState.purchase;
 
-function openAnnouncementModal(announcement = null) {
-    editingAnnouncementId = announcement ? announcement.id : null;
-    const modal = document.getElementById('announcementModal');
-    const form = document.getElementById('announcementForm');
-    const modalTitle = document.getElementById('modalTitle');
-    
-    if (announcement) {
-        modalTitle.textContent = 'Edit Announcement';
-        document.getElementById('announcementId').value = announcement.id;
-        document.getElementById('announcementTitle').value = announcement.title || '';
-        document.getElementById('announcementMessage').value = announcement.message || '';
-    } else {
-        modalTitle.textContent = 'Create New Announcement';
-        form.reset();
-        document.getElementById('announcementId').value = '';
-    }
-    
-    modal.style.display = 'block';
-}
+            const requestsWithIds = (requests || []).map((req, index) => ({
+                ...req,
+                id: String(req.id || req._id || `temp-${index}`)
+            }));
 
-function closeAnnouncementModal() {
-    document.getElementById('announcementModal').style.display = 'none';
-    editingAnnouncementId = null;
-    document.getElementById('announcementForm').reset();
-}
+            state.data = requestsWithIds;
+            state.filteredData = requestsWithIds;
 
-async function saveAnnouncement(event) {
-    event.preventDefault();
-    
-    const token = localStorage.getItem('token');
-    const formData = {
-        title: document.getElementById('announcementTitle').value,
-        message: document.getElementById('announcementMessage').value
-    };
+            const search = document.getElementById('purchase-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('purchase');
+                search.dataset.initialized = 'true';
+            }
 
-    try {
-        const id = editingAnnouncementId;
-        const url = id 
-            ? `https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${id}`
-            : 'https://bendik-pharmacy-consultancy.onrender.com/api/announcements';
-        const method = id ? 'PUT' : 'POST';
+            renderTable('purchase');
+        }
 
-        const res = await fetch(url, {
-            method: method,
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            },
-            body: JSON.stringify(formData)
+        // Fetch and render pharmacy sale requests
+        async function fetchPharmacySaleRequests() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/pharmacy-sale-requests', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
+
+        function renderPharmacySaleRequests(requests) {
+            const state = tableState.sale;
+
+            const requestsWithIds = (requests || []).map((req, index) => ({
+                ...req,
+                id: String(req.id || req._id || `temp-${index}`)
+            }));
+
+            state.data = requestsWithIds;
+            state.filteredData = requestsWithIds;
+
+            const search = document.getElementById('sale-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('sale');
+                search.dataset.initialized = 'true';
+            }
+
+            renderTable('sale');
+        }
+
+        // Fetch and render job applications
+        async function fetchJobApplications() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/job-applications', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
+
+        function renderJobApplications(applications) {
+            const state = tableState.jobs;
+
+            const appsWithIds = (applications || []).map((app, index) => ({
+                ...app,
+                id: String(app.id || app._id || `temp-${index}`)
+            }));
+
+            state.data = appsWithIds;
+            state.filteredData = appsWithIds;
+
+            const search = document.getElementById('jobs-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('jobs');
+                search.dataset.initialized = 'true';
+            }
+
+            renderTable('jobs');
+        }
+
+        // Fetch and render recruitment requests
+        async function fetchRecruitmentRequests() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/recruitment-requests', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
+
+        function renderRecruitmentRequests(requests) {
+            const state = tableState.recruitment;
+
+            const requestsWithIds = (requests || []).map((req, index) => ({
+                ...req,
+                id: String(req.id || `temp-${index}`)
+            }));
+
+            state.data = requestsWithIds;
+            state.filteredData = requestsWithIds;
+
+            const search = document.getElementById('recruitment-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('recruitment');
+                search.dataset.initialized = 'true';
+            }
+
+            renderTable('recruitment');
+        }
+
+
+
+        async function fetchNurseJobApplications() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/nurse-job-applications', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
+
+        function renderNurseJobApplications(items) {
+            const state = tableState.nurseJobs;
+
+            const itemsWithIds = (items || []).map((item, index) => ({
+                ...item,
+                id: String(item.id || item._id || 'temp-' + index)
+            }));
+
+            state.data = itemsWithIds;
+            state.filteredData = itemsWithIds;
+
+            const search = document.getElementById('nurse-jobs-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('nurseJobs');
+                search.dataset.initialized = 'true';
+            }
+
+            renderTable('nurseJobs');
+        }
+
+
+        async function fetchNurseRecruitmentRequests() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/nurse-recruitment-requests', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
+
+        function renderNurseRecruitmentRequests(items) {
+            const state = tableState.nurseRecruitment;
+
+            const itemsWithIds = (items || []).map((item, index) => ({
+                ...item,
+                id: String(item.id || item._id || 'temp-' + index)
+            }));
+
+            state.data = itemsWithIds;
+            state.filteredData = itemsWithIds;
+
+            const search = document.getElementById('nurse-recruitment-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('nurseRecruitment');
+                search.dataset.initialized = 'true';
+            }
+
+            renderTable('nurseRecruitment');
+        }
+
+
+        async function fetchClinicPurchaseRequests() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/clinic-purchase-requests', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
+
+        function renderClinicPurchaseRequests(items) {
+            const state = tableState.clinicPurchase;
+
+            const itemsWithIds = (items || []).map((item, index) => ({
+                ...item,
+                id: String(item.id || item._id || 'temp-' + index)
+            }));
+
+            state.data = itemsWithIds;
+            state.filteredData = itemsWithIds;
+
+            const search = document.getElementById('clinic-purchase-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('clinicPurchase');
+                search.dataset.initialized = 'true';
+            }
+
+            renderTable('clinicPurchase');
+        }
+
+
+        async function fetchClinicSaleRequests() {
+            try {
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/clinic-sale-requests', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) return [];
+                return await res.json();
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
+
+        function renderClinicSaleRequests(items) {
+            const state = tableState.clinicSale;
+
+            const itemsWithIds = (items || []).map((item, index) => ({
+                ...item,
+                id: String(item.id || item._id || 'temp-' + index)
+            }));
+
+            state.data = itemsWithIds;
+            state.filteredData = itemsWithIds;
+
+            const search = document.getElementById('clinic-sale-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('clinicSale');
+                search.dataset.initialized = 'true';
+            }
+
+            renderTable('clinicSale');
+        }
+
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Fetch and render all tables
+            const results = await Promise.allSettled([
+                fetchClientRequests(),
+                fetchPharmacyPurchaseRequests(),
+                fetchPharmacySaleRequests(),
+                fetchJobApplications(),
+                fetchRecruitmentRequests()
+            ]);
+
+            const data = results.map(r => (r.status === 'fulfilled' ? r.value : []));
+            renderClientRequests(data[0] || []);
+            renderPharmacyPurchaseRequests(data[1] || []);
+            renderPharmacySaleRequests(data[2] || []);
+            renderJobApplications(data[3] || []);
+            renderRecruitmentRequests(data[4] || []);
         });
 
-        if (res.ok) {
-            alert(id ? 'Announcement updated successfully!' : 'Announcement created successfully!');
-            closeAnnouncementModal();
-            await fetchAnnouncements();
-        } else {
-            const error = await res.json();
-            alert('Error: ' + (error.error || 'Failed to save announcement'));
+        // ========== ANNOUNCEMENTS MANAGEMENT ==========
+
+        let editingAnnouncementId = null;
+
+        async function fetchAnnouncements() {
+            try {
+                const token = localStorage.getItem('token');
+                const res = await fetch('https://bendik-pharmacy-consultancy.onrender.com/api/announcements', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/LoginForm.html';
+                    return [];
+                }
+                if (!res.ok) {
+                    console.error('Error fetching announcements:', res.status);
+                    renderAnnouncements([]);
+                    return [];
+                }
+
+                const announcements = await res.json();
+                if (!Array.isArray(announcements)) {
+                    console.error('Error fetching announcements: Response is not an array', announcements);
+                    renderAnnouncements([]);
+                    return [];
+                }
+
+                renderAnnouncements(announcements);
+                return announcements;
+            } catch (error) {
+                console.error('Error fetching announcements:', error);
+                alert('An error occurred while fetching announcements.');
+                renderAnnouncements([]);
+                return [];
+            }
         }
-    } catch (error) {
-        console.error('Error saving announcement:', error);
-        alert('An error occurred while saving the announcement.');
-    }
-}
 
-async function editAnnouncement(id) {
-    try {
-        const normalizedId = normalizeRowId(id);
+        function renderAnnouncements(announcements) {
+            const state = tableState.announcements;
 
-        const getLocal = () => (tableState.announcements?.data || []).find(a => (
-            normalizeRowId(a.id) === normalizedId
-        ));
+            const announcementsWithIds = (announcements || []).map((ann, index) => ({
+                ...ann,
+                id: String(ann.id || ann._id || `temp-${index}`)
+            }));
 
-        let announcement = getLocal();
-        if (!announcement) {
-            await fetchAnnouncements();
-            announcement = getLocal();
-        }
+            state.data = announcementsWithIds;
+            state.filteredData = announcementsWithIds;
 
-        if (!announcement) {
-            alert('Announcement not found. Please refresh and try again.');
-            return;
-        }
+            const search = document.getElementById('announcements-search');
+            if (search && !search.dataset.initialized) {
+                initializeTable('announcements');
+                search.dataset.initialized = 'true';
+            }
 
-        if (String(announcement.id || '').startsWith('temp-')) {
-            alert('Cannot edit this announcement because it has no server ID.');
-            return;
-        }
-
-        openAnnouncementModal(announcement);
-    } catch (error) {
-        console.error('Error fetching announcement:', error);
-        alert('An error occurred while loading the announcement.');
-    }
-}
-
-function confirmDeleteAnnouncement(id, title) {
-    if (confirm(`Are you sure you want to delete the announcement "${title}"?`)) {
-        deleteAnnouncement(id);
-    }
-}
-
-async function deleteAnnouncement(id) {
-    try {
-        const normalizedId = normalizeRowId(id);
-        const state = tableState.announcements;
-        const prevData = (state?.data || []).slice();
-
-        if (state && Array.isArray(state.data)) {
-            state.data = state.data.filter(a => normalizeRowId(a.id) !== normalizedId);
-            state.filteredData = state.data;
             renderTable('announcements');
         }
 
-        const token = localStorage.getItem('token');
-        const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${normalizedId}`, {
-            method: 'DELETE',
-            headers: { 'Authorization': 'Bearer ' + token }
-        });
-        
-        if (res.ok) {
-            alert('Announcement deleted successfully!');
-            await fetchAnnouncements();
-        } else {
-            if (state) {
-                state.data = prevData;
-                state.filteredData = prevData;
-                renderTable('announcements');
+        function getTypeColor(type) {
+            const colors = {
+                'info': '#3b82f6',
+                'success': '#10b981',
+                'warning': '#f59e0b',
+                'important': '#ef4444'
+            };
+            return colors[type] || colors.info;
+        }
+
+        function openAnnouncementModal(announcement = null) {
+            editingAnnouncementId = announcement ? announcement.id : null;
+            const modal = document.getElementById('announcementModal');
+            const form = document.getElementById('announcementForm');
+            const modalTitle = document.getElementById('modalTitle');
+
+            if (announcement) {
+                modalTitle.textContent = 'Edit Announcement';
+                document.getElementById('announcementId').value = announcement.id;
+                document.getElementById('announcementTitle').value = announcement.title || '';
+                document.getElementById('announcementMessage').value = announcement.message || '';
+            } else {
+                modalTitle.textContent = 'Create New Announcement';
+                form.reset();
+                document.getElementById('announcementId').value = '';
             }
-            alert('Failed to delete announcement.');
-        }
-    } catch (error) {
-        console.error('Error deleting announcement:', error);
-        const state = tableState.announcements;
-        if (state && Array.isArray(state.data)) {
-            await fetchAnnouncements();
-        }
-        alert('An error occurred while deleting the announcement.');
-    }
-}
 
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('announcementModal');
-    if (event.target === modal) {
-        closeAnnouncementModal();
-    }
-}
-</script>
+            modal.style.display = 'block';
+        }
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
-      crossorigin="anonymous"
-    ></script>
+        function closeAnnouncementModal() {
+            document.getElementById('announcementModal').style.display = 'none';
+            editingAnnouncementId = null;
+            document.getElementById('announcementForm').reset();
+        }
+
+        async function saveAnnouncement(event) {
+            event.preventDefault();
+
+            const token = localStorage.getItem('token');
+            const formData = {
+                title: document.getElementById('announcementTitle').value,
+                message: document.getElementById('announcementMessage').value
+            };
+
+            try {
+                const id = editingAnnouncementId;
+                const url = id
+                    ? `https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${id}`
+                    : 'https://bendik-pharmacy-consultancy.onrender.com/api/announcements';
+                const method = id ? 'PUT' : 'POST';
+
+                const res = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (res.ok) {
+                    alert(id ? 'Announcement updated successfully!' : 'Announcement created successfully!');
+                    closeAnnouncementModal();
+                    await fetchAnnouncements();
+                } else {
+                    const error = await res.json();
+                    alert('Error: ' + (error.error || 'Failed to save announcement'));
+                }
+            } catch (error) {
+                console.error('Error saving announcement:', error);
+                alert('An error occurred while saving the announcement.');
+            }
+        }
+
+        async function editAnnouncement(id) {
+            try {
+                const normalizedId = normalizeRowId(id);
+
+                const getLocal = () => (tableState.announcements?.data || []).find(a => (
+                    normalizeRowId(a.id) === normalizedId
+                ));
+
+                let announcement = getLocal();
+                if (!announcement) {
+                    await fetchAnnouncements();
+                    announcement = getLocal();
+                }
+
+                if (!announcement) {
+                    alert('Announcement not found. Please refresh and try again.');
+                    return;
+                }
+
+                if (String(announcement.id || '').startsWith('temp-')) {
+                    alert('Cannot edit this announcement because it has no server ID.');
+                    return;
+                }
+
+                openAnnouncementModal(announcement);
+            } catch (error) {
+                console.error('Error fetching announcement:', error);
+                alert('An error occurred while loading the announcement.');
+            }
+        }
+
+        function confirmDeleteAnnouncement(id, title) {
+            if (confirm(`Are you sure you want to delete the announcement "${title}"?`)) {
+                deleteAnnouncement(id);
+            }
+        }
+
+        async function deleteAnnouncement(id) {
+            try {
+                const normalizedId = normalizeRowId(id);
+                const state = tableState.announcements;
+                const prevData = (state?.data || []).slice();
+
+                if (state && Array.isArray(state.data)) {
+                    state.data = state.data.filter(a => normalizeRowId(a.id) !== normalizedId);
+                    state.filteredData = state.data;
+                    renderTable('announcements');
+                }
+
+                const token = localStorage.getItem('token');
+                const res = await fetch(`https://bendik-pharmacy-consultancy.onrender.com/api/announcements/${normalizedId}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+
+                if (res.ok) {
+                    alert('Announcement deleted successfully!');
+                    await fetchAnnouncements();
+                } else {
+                    if (state) {
+                        state.data = prevData;
+                        state.filteredData = prevData;
+                        renderTable('announcements');
+                    }
+                    alert('Failed to delete announcement.');
+                }
+            } catch (error) {
+                console.error('Error deleting announcement:', error);
+                const state = tableState.announcements;
+                if (state && Array.isArray(state.data)) {
+                    await fetchAnnouncements();
+                }
+                alert('An error occurred while deleting the announcement.');
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('announcementModal');
+            if (event.target === modal) {
+                closeAnnouncementModal();
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
     <script src="./AdminLTE-4.0.0-rc4/AdminLTE-4.0.0-rc4/dist/js/adminlte.js"></script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const sidebarWrapper = document.querySelector('.sidebar-wrapper');
-        if (sidebarWrapper && window.OverlayScrollbarsGlobal?.OverlayScrollbars) {
-          OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-            scrollbars: {
-              theme: 'os-theme-light',
-              autoHide: 'leave',
-            },
-          });
-        }
-      });
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+            if (sidebarWrapper && window.OverlayScrollbarsGlobal?.OverlayScrollbars) {
+                OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+                    scrollbars: {
+                        theme: 'os-theme-light',
+                        autoHide: 'leave',
+                    },
+                });
+            }
+        });
     </script>
-
 </body>
-</html>
 
+</html>
