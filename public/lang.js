@@ -32,11 +32,16 @@ const translations = {
         "service_strategic_planning": "Strategic Planning",
 
         // Why Choose Us Points
-        "why_expertise": "Expertise Rooted in Pharmaceutical Excellence: Bendik Pharmacy Consultancy is led by licensed pharmacists and seasoned healthcare professionals who understand the unique challenges facing pharmacies in Rwanda and beyond.",
-        "why_tailored": "Tailor-Made Solutions: We don't offer \"one-size-fits-all\" advice. Every pharmacy is different. We assess your needs and provide custom strategies to improve compliance, profitability, and operational efficiency.",
-        "why_comprehensive": "Comprehensive Services: From start-up guidance and SOP development to audits, staff training, and business planning — Bendik offers end-to-end consultancy support for both new and existing pharmacies.",
-        "why_affordable": "Affordable and Transparent Pricing: We believe in quality service at reasonable and flexible rates. You get value for your investment with clear deliverables and measurable results.",
-        "why_compliance": "Regulatory Compliance Focus: We ensure your pharmacy aligns with all Ministry of Health and Rwanda FDA requirements. Our services are designed to reduce risks of closure, fines, or license issues.",
+        "why_expertise": "Expertise Rooted in Pharmaceutical Excellence",
+        "why_expertise_desc": "Bendik Pharmacy Consultancy is led by licensed pharmacists and seasoned healthcare professionals who understand the unique challenges facing pharmacies in Rwanda and beyond.",
+        "why_tailored": "Tailor-Made Solutions",
+        "why_tailored_desc": "We don't offer \"one-size-fits-all\" advice. Every pharmacy is different. We assess your needs and provide custom strategies to improve compliance, profitability, and operational efficiency.",
+        "why_comprehensive": "Comprehensive Services",
+        "why_comprehensive_desc": "From start-up guidance and SOP development to audits, staff training, and business planning — Bendik offers end-to-end consultancy support for both new and existing pharmacies.",
+        "why_affordable": "Affordable and Transparent Pricing",
+        "why_affordable_desc": "We believe in quality service at reasonable and flexible rates. You get value for your investment with clear deliverables and measurable results.",
+        "why_compliance": "Regulatory Compliance Focus",
+        "why_compliance_desc": "We ensure your pharmacy aligns with all Ministry of Health and Rwanda FDA requirements. Our services are designed to reduce risks of closure, fines, or license issues.",
 
         // About Section
         "about_title": "Who We Are",
@@ -877,11 +882,16 @@ const translations = {
         "service_strategic_planning": "Gahunda yo Gutegura Iterambere",
 
         // Why Choose Us Points
-        "why_expertise": "Ubunyamwuga bushingiye ku Bunararibonye mu by'Imiti: Bendik Pharmacy Consultancy iyobowe n'abaforomokemisi babifitiye uruhushya ndetse n'inzobere mu by'ubuzima bafite ubunararibonye mu gukemura ibibazo byihariye farumasi zihura nabyo mu Rwanda no hanze yarwo.",
-        "why_tailored": "Ibisubizo Bihuye n'Ibyo Ukeneye: Ntituguha inama rusange zidahuye n'ibibazo byawe. Farumasi yose irihariye. Dusuzuma ibyo ukeneye hanyuma tukaguha ingamba zihariye zigufasha kubahiriza amategeko, kongera inyungu, no kunoza imikorere.",
-        "why_comprehensive": "Serivisi Zujuje Ibyo Ukeneye Byose: Uhereye ku nama zo gutangiza farumasi, gutegura SOP, kugenzura imikorere, amahugurwa y'abakozi, kugeza ku igenamigambi ry'ubucuruzi — Bendik itanga ubujyanama bwuzuye haba ku farumasi nshya ndetse n'izimaze igihe zikora.",
-        "why_affordable": "Ibiciro Bihendutse kandi Binyuze mu Mucyo: Twemera gutanga serivisi zinoze ku giciro cyiza kandi cyoroshye. Uhabwa inyungu ku ishoramari ryawe bifite ibisobanuro bigaragara ndetse n'ibisubizo bipimika.",
-        "why_compliance": "Icyerekezo cyo Kubahiriza Amategeko: Tugufasha guhuza farumasi yawe n'ibisabwa byose by'Ikigo cy'Ubuzima (Ministry of Health) n'Ikigo gishinzwe Imiti mu Rwanda (Rwanda FDA). Serivisi zacu zateguwe hagamijwe kugabanya ibyago byo gufungwa, gucibwa amande, cyangwa guhura n'ibibazo by'uruhushya.",
+        "why_expertise": "Ubunyamwuga bushingiye ku Bunararibonye mu by'Imiti",
+        "why_expertise_desc": "Bendik Pharmacy Consultancy iyobowe n'abaforomokemisi babifitiye uruhushya ndetse n'inzobere mu by'ubuzima bafite ubunararibonye mu gukemura ibibazo byihariye farumasi zihura nabyo mu Rwanda no hanze yarwo.",
+        "why_tailored": "Ibisubizo Bihuye n'Ibyo Ukeneye",
+        "why_tailored_desc": "Ntituguha inama rusange zidahuye n'ibibazo byawe. Farumasi yose irihariye. Dusuzuma ibyo ukeneye hanyuma tukaguha ingamba zihariye zigufasha kubahiriza amategeko, kongera inyungu, no kunoza imikorere.",
+        "why_comprehensive": "Serivisi Zujuje Ibyo Ukeneye Byose",
+        "why_comprehensive_desc": "Uhereye ku nama zo gutangiza farumasi, gutegura SOP, kugenzura imikorere, amahugurwa y'abakozi, kugeza ku igenamigambi ry'ubucuruzi — Bendik itanga ubujyanama bwuzuye haba ku farumasi nshya ndetse n'izimaze igihe zikora.",
+        "why_affordable": "Ibiciro Bihendutse kandi Binyuze mu Mucyo",
+        "why_affordable_desc": "Twemera gutanga serivisi zinoze ku giciro cyiza kandi cyoroshye. Uhabwa inyungu ku ishoramari ryawe bifite ibisobanuro bigaragara ndetse n'ibisubizo bipimika.",
+        "why_compliance": "Icyerekezo cyo Kubahiriza Amategeko",
+        "why_compliance_desc": "Tugufasha guhuza farumasi yawe n'ibisabwa byose by'Ikigo cy'Ubuzima (Ministry of Health) n'Ikigo gishinzwe Imiti mu Rwanda (Rwanda FDA). Serivisi zacu zateguwe hagamijwe kugabanya ibyago byo gufungwa, gucibwa amande, cyangwa guhura n'ibibazo by'uruhushya.",
 
         // About Section
         "about_title": "Abo Turibo",
