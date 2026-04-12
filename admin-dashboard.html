@@ -1656,8 +1656,18 @@
             const activeSection = document.getElementById(sectionId);
             if (activeSection) activeSection.style.display = '';
 
-            if (sectionId === 'announcements') {
-                fetchAnnouncements();
+            // Re-render table when section is shown to ensure proper display
+            const sectionToTableType = {
+                'nurse-job-applications': 'nurseJobs',
+                'nurse-recruitment-requests': 'nurseRecruitment',
+                'clinic-purchase-requests': 'clinicPurchase',
+                'clinic-sale-requests': 'clinicSale',
+                'announcements': 'announcements'
+            };
+
+            const tableType = sectionToTableType[sectionId];
+            if (tableType && tableState[tableType]) {
+                renderTable(tableType);
             }
         }
 
@@ -3160,7 +3170,8 @@
                 fetchNurseJobApplications(),
                 fetchNurseRecruitmentRequests(),
                 fetchClinicPurchaseRequests(),
-                fetchClinicSaleRequests()
+                fetchClinicSaleRequests(),
+                fetchAnnouncements()
             ]);
 
             const data = results.map(r => (r.status === 'fulfilled' ? r.value : []));
@@ -3173,6 +3184,7 @@
             renderNurseRecruitmentRequests(data[6] || []);
             renderClinicPurchaseRequests(data[7] || []);
             renderClinicSaleRequests(data[8] || []);
+            renderAnnouncements(data[9] || []);
         });
 
         // ========== ANNOUNCEMENTS MANAGEMENT ==========
