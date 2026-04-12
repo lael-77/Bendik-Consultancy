@@ -3155,7 +3155,11 @@
                 fetchPharmacyPurchaseRequests(),
                 fetchPharmacySaleRequests(),
                 fetchJobApplications(),
-                fetchRecruitmentRequests()
+                fetchRecruitmentRequests(),
+                fetchNurseJobApplications(),
+                fetchNurseRecruitmentRequests(),
+                fetchClinicPurchaseRequests(),
+                fetchClinicSaleRequests()
             ]);
 
             const data = results.map(r => (r.status === 'fulfilled' ? r.value : []));
@@ -3164,6 +3168,10 @@
             renderPharmacySaleRequests(data[2] || []);
             renderJobApplications(data[3] || []);
             renderRecruitmentRequests(data[4] || []);
+            renderNurseJobApplications(data[5] || []);
+            renderNurseRecruitmentRequests(data[6] || []);
+            renderClinicPurchaseRequests(data[7] || []);
+            renderClinicSaleRequests(data[8] || []);
         });
 
         // ========== ANNOUNCEMENTS MANAGEMENT ==========
