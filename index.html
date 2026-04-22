@@ -558,6 +558,29 @@
             color: var(--white);
             width: 90%;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom scrollbar for slide content */
+        .slide-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .slide-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .slide-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        .slide-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
         }
 
         @media (max-width: 1024px) {
@@ -566,7 +589,9 @@
                 top: auto;
                 left: auto;
                 transform: none;
-                padding: 40px 0;
+                padding: 30px 0;
+                max-height: none;
+                overflow-y: visible;
             }
         }
 
@@ -605,7 +630,7 @@
         }
 
         .services-list-column {
-            padding: 30px 30px 48px;
+            padding: 20px 25px 35px;
             border-radius: 10px;
             color: #fff;
             width: 100%;
@@ -616,20 +641,20 @@
 
         @media (max-width: 1024px) {
             .services-list-column {
-                padding: 25px 20px 40px;
+                padding: 20px 20px 35px;
                 max-width: 100%;
             }
         }
 
         @media (max-width: 768px) {
             .services-list-column {
-                padding: 20px 15px 35px;
+                padding: 15px 15px 30px;
             }
         }
 
         .services-list-column h3 {
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
             color: #fff;
             text-align: center;
         }
@@ -645,8 +670,8 @@
         .services-menu li {
             width: 42%;
             /* Enforces a solid 16% central gap between left and right lists */
-            margin-bottom: 18px;
-            font-size: 1rem;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
             position: relative;
             display: flex;
             align-items: center;
@@ -659,7 +684,7 @@
             flex: 1;
             min-width: 0;
             text-align: left;
-            margin-right: 15px;
+            margin-right: 10px;
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
@@ -669,10 +694,10 @@
             /* Prevents long labels from misaligning the buttons */
             background: #4CAF50;
             color: #ffffff;
-            padding: 5px 12px;
+            padding: 4px 10px;
             text-decoration: none;
-            border-radius: 6px;
-            font-size: 11px;
+            border-radius: 5px;
+            font-size: 10px;
             font-weight: 600;
             line-height: 1.2;
             white-space: nowrap;
@@ -687,7 +712,7 @@
             }
 
             .services-menu li .service-label {
-                margin-right: 10px;
+                margin-right: 8px;
             }
         }
 
@@ -698,7 +723,7 @@
                 /* Full width on smaller screens */
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 6px;
             }
 
             .services-menu li .service-label {
@@ -835,7 +860,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 40px;
+            gap: 30px;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
@@ -847,13 +872,13 @@
             .slide-two-columns {
                 max-width: 100%;
                 padding: 0 15px;
-                gap: 30px;
+                gap: 25px;
             }
         }
 
         @media (max-width: 1024px) {
             .slide-two-columns {
-                gap: 25px;
+                gap: 20px;
                 padding: 0 10px;
             }
         }
