@@ -534,7 +534,7 @@
                 height: auto;
                 min-height: 100vh;
                 overflow: visible;
-                padding-bottom: 40px;
+                padding-bottom: 0px;
             }
 
             .slide {
@@ -1190,7 +1190,7 @@
         @media (max-width: 1024px) {
             header {
                 padding: 12px 0;
-                height: 70px;
+                height: 77px;
             }
 
             .header-container {
@@ -1238,7 +1238,8 @@
             }
 
             .language-switcher-overlay {
-                display: none;
+                top: 60px;
+                right: 10px;
             }
 
             nav ul {
@@ -1376,9 +1377,21 @@
 
         /* MOBILE MENU - Additional mobile-specific adjustments */
         @media (max-width: 768px) {
+            .language-switcher-overlay {
+                top: 65px;
+                right: 8px;
+            }
+
             nav ul {
                 top: 70px;
                 height: calc(100vh - 70px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .language-switcher-overlay {
+                top: 65px;
+                right: 5px;
             }
         }
 
